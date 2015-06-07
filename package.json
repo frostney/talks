@@ -1,0 +1,23 @@
+{
+  "name": "talks",
+  "version": "1.0.0",
+  "description": "Fancy talks I've done or will be doing",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frostney/talks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frostney/talks/issues"
+  },
+  "homepage": "https://github.com/frostney/talks#readme",
+  "dependencies": {
+    "remark": "^0.1.0"
+  }
+}
