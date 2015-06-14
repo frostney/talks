@@ -23,7 +23,7 @@
         float: left;
         padding-top: 1rem;
       }
-      .left-column h2:last-of-type, .left-column h3:last-child {
+      .left-column h2:last-of-type, .left-column h3:last-child, .left-column h4:last-child, .left-column h5:last-child {
         color: #000;
       }
       .left-column h2:first-child, .left-column h3:first-child {
@@ -41,9 +41,14 @@
         padding: 0;
       }
 
-      ul li {
+      .right-column ul li {
         margin-top: 2.5rem;
         margin-bottom: 2.5rem;
+      }
+
+      ul li {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
       }
 
       ul li:first-child {
@@ -66,8 +71,8 @@ class: center, middle
 2. React Native vs. React
 3. Getting started
 4. Let's make a thing (Livedemo)
-5. Native extensions
-6. When should I use React Native?
+5. Native modules
+6. The current state of React Native
 7. The future of React Native
 
 ---
@@ -76,7 +81,10 @@ class: center, middle
 
 > Over-engineering simple things into complex stuff since 2009
 
+![This is me](images/me.jpg)
+
 Twitter: @frostney_
+
 Github: frostney
 
 ---
@@ -133,7 +141,7 @@ class: center, middle
 .right-column[
 - Create native application in JavaScript
 - Apply `React` principles
-- Currently only available for iOS
+- Currently iOS only
 ]
 
 ---
@@ -159,7 +167,7 @@ class: center, middle
 ]
 
 .right-column[
-- JavaScriptCore
+- JavaScript runtime on iOS (JavaScriptCore)
 ]
 
 ---
@@ -172,7 +180,7 @@ class: center, middle
 ]
 
 .right-column[
-- JavaScriptCore
+- JavaScript runtime on iOS (JavaScriptCore)
 - No WebView
 ]
 
@@ -186,7 +194,7 @@ class: center, middle
 ]
 
 .right-column[
-- JavaScriptCore
+- JavaScript runtime on iOS (JavaScriptCore)
 - No WebView
 - UI runs in a separate thread
 ]
@@ -198,6 +206,50 @@ class: center, middle
 .left-column[
 ### Basics
 ### Internals
+### Philosophy
+]
+
+.right-column[
+
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+### Philosophy
+]
+
+.right-column[
+- "Learn once, write everywhere"
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+### Philosophy
+]
+
+.right-column[
+- "Learn once, write everywhere"
+- Web development workflow brought to mobile
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+### Philosophy
 ### Cordova
 ]
 
@@ -212,6 +264,7 @@ class: center, middle
 .left-column[
 ### Basics
 ### Internals
+### Philosophy
 ### Cordova
 ]
 
@@ -226,6 +279,7 @@ class: center, middle
 .left-column[
 ### Basics
 ### Internals
+### Philosophy
 ### Cordova
 ]
 
@@ -242,12 +296,46 @@ class: center, middle
 .left-column[
 ### Basics
 ### Internals
+### Philosophy
 ### Cordova
 ### NativeScript
 ]
 
 .right-column[
-Bling bling
+
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+### Philosophy
+### Cordova
+### NativeScript
+]
+
+.right-column[
+- Similar to React Native in many ways
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+### Philosophy
+### Cordova
+### NativeScript
+]
+
+.right-column[
+- Similar to React Native in many ways
+- Available for iOS, Android and Windows Phone
 ]
 
 ---
@@ -255,7 +343,8 @@ Bling bling
 # React Native vs. React
 
 .left-column[
-
+### React Primer
+#### Props & state
 ]
 
 .right-column[
@@ -264,7 +353,74 @@ Bling bling
 
 ---
 
+# React Native vs. React
+
+.left-column[
+### React Primer
+#### Props & state
+#### Rendering
+]
+
+.right-column[
+
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+#### Props & state
+#### Rendering
+]
+
+.right-column[
+```javascript
+var MyComponent = React.createClass({
+  render: function() {
+    // My rendering goes here
+  }
+});
+```
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+#### Props & state
+#### Rendering
+]
+
+.right-column[
+```javascript
+var MyComponent = React.createClass({
+  render: function() {
+*    return <div className="my-component">Hello there</div>;
+  }
+});
+```
+]
+
+---
+
 # Getting started
+
+## Prerequisites
+- Mac
+- Xcode
+- (Apple Developer account)
+- Node.js
+
+--
+
+# Node.js
+`npm install -g react-native-cli`
+
+Rather used to the iOS side of things? React Native can also be installed through CocoaPods.
 
 ---
 
@@ -272,21 +428,136 @@ Bling bling
 
 ---
 
-# Pitfalls
+# Native extensions
+
+--
+
+- Write extensions in Objective-C or Swift
+
+--
+
+- Create custom modules as `NSObject` or `UIView`
+
+--
+
+- Automagically maps Objective-C primitives, dictionaries and arrays
 
 ---
 
-# Native extensions
+# Native modules (Simple classes)
+
+--
+
+```objc
+#import "RCTBridgeModule.h"
+
+@interface RNBeacon : NSObject <RCTBridgeModule>
+
+@end
+```
+
+--
+
+```objc
+#import "RCTBridge.h"
+
+#import "RNExample.h"
+
+@implementation RNExample
+
+RCT_EXPORT_MODULE();
+
+@synthesize bridge = _bridge;
+
+RCT_EXPORT_METHOD(someCoolMethod)
+{
+    NSLog(@"Hi there, you called this cool method.");
+}
+
+@end
+```
+
+--
+
+```javascript
+var RNExample = require('NativeModules').RNExample;
+RNExample.someCoolMethod(); // Some nice text on the console now
+```
+
+---
+
+# Native modules (Custom views)
+
+---
+
+# The current state of React Native
+
+--
+
+- Publicly available since March 2015
+
+--
+
+- Used in Facebook production apps (Facebook Ads, Facebook Groups)
+
+--
+
+- There is no equivalent of Gesture Responsers in React Native
+
+--
+
+- Experimental Animation API
+
+--
+
+```javascript
+// Node.js
+var moduleName = 'mything.js';
+var mod = require(moduleName);
+```
+
+--
+
+```javascript
+// React Native
+var moduleName = 'mything.js';
+var mod = require(moduleName);
+// Error: Cannot find 'mything.js'
+```
 
 ---
 
 # The future of React Native
+
+--
+
+- Improved asset management
+
+--
+
+- Android support coming "soon"
+
+---
+
+# Things I should mention
+
+--
+
+#### RNPlay: Online playground for React Native
+
+![RNPlay](images/rnplay.png)
 
 ---
 
 class: center, middle
 
 # Questions?
+
+---
+
+### Twitter: @frostney_
+
+### Github: frostney
 
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
