@@ -19,5 +19,13 @@
   "homepage": "https://github.com/frostney/talks#readme",
   "dependencies": {
     "remark": "^0.1.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-gh-pages": "^0.10.0",
+    "jit-grunt": "^0.9.1",
+    "load-grunt-config": "^0.17.1",
+    "time-grunt": "^1.2.1"
   }
 }
