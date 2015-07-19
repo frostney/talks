@@ -85,13 +85,13 @@ Github: frostney
 # Agenda
 
 1. The history of Babel
-2. How to configure Babel
-3. What does Babel do
+2. What does Babel do
+3. How to configure Babel
 4. Babel: Targeting ES2015
 5. Babel: Targeting ES2016
 6. Babel on the server
 7. Babel ❤️ React
-8. Beyond ES2015
+8. Beyond ES2015+
 
 ---
 
@@ -166,7 +166,7 @@ person.showAge();
 
 --
 
-* CoffeeScript's compile target is still ES3
+* CoffeeScript's compile target is still ES3 (Yes, even today in 2015)
 
 --
 
@@ -349,6 +349,349 @@ class: center, middle
 
 ---
 
+class: center, middle, fullscreen-image
+
+![Tower of Babel](images/babel-pronounce.png)
+
+---
+
+## What does Babel do?
+
+--
+
+* Transpiles JavaScript into JavaScript
+
+---
+
+## What does Babel do?
+
+* Transpiles _next-generation_ JavaScript into _current-generation_ JavaScript
+
+--
+
+* Provides polyfills for ES2015 (https://github.com/zloirock/core-js)
+
+---
+
+## ES Stages & proposals
+
+--
+
+The TC39 categorises proposals into 4 stages:
+
+* Stage 0 - Strawman
+* Stage 1 - Proposal
+* Stage 2 - Draft
+* Stage 3 - Candidate
+* Stage 4 - Finished
+
+--
+
+Stage 0: Class properties, ...
+
+--
+
+Stage 1: Async/await, Decorators, ...
+
+--
+
+Stage 2 and above enabled by default.
+
+---
+
+## How to configure Babel
+
+--
+
+`babel myfilename.js`
+
+--
+
+* Loose mode: Make code faster, but less spec-compliant
+
+--
+
+* Stage: Which stage to compile
+
+--
+
+* Modules: CommonJS, AMD, etc.
+
+--
+
+```javascript
+// .babelrc
+{
+  "stage": 1,
+  "loose": ["es6.modules", "es6.classes"],
+  "ignore": [
+    "foo.js",
+    "bar/**/*.js"
+  ]
+}
+```
+
+---
+
+## How to configure Babel
+
+--
+
+Webpack
+
+--
+
+`npm install --save-dev babel-loader`
+
+```javascript
+module: {
+  loaders: [
+    { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}
+  ]
+}
+```
+
+---
+
+## How to configure Babel
+
+--
+
+Grunt
+
+`npm install --save-dev grunt-babel`
+
+```javascript
+grunt.initConfig({
+  "babel": {
+    options: {
+      sourceMap: true
+    },
+    dist: {
+      files: {
+        "dist/app.js": "src/app.js"
+      }
+    }
+  }
+});
+```
+
+---
+
+## How to configure Babel
+
+--
+
+Gulp
+
+`npm install --save-dev gulp-babel`
+
+```javascript
+var gulp = require("gulp");
+var babel = require("gulp-babel");
+
+gulp.task("default", function () {
+  return gulp.src("src/app.js")
+    .pipe(babel())
+    .pipe(gulp.dest("dist"));
+});
+```
+
+--
+
+Brunch, Broccoli, Duo and what-have-you are supported as well.
+
+---
+
+## Babel: Targeting ES2015
+
+--
+
+###Arrow functions
+
+--
+
+```javascript
+[1, 2, 3, 4].map(item => item * 2)
+```
+
+--
+
+```javascript
+let miniBind = function(callback) {
+  return () => {
+    callback.apply(this, argument);
+  };
+};
+```
+
+---
+
+## Babel: Targeting ES2015
+
+--
+
+###Classes
+
+--
+
+```javascript
+class FancyClass {
+  constructor(something = 'Heya') {
+    this.something = something;
+  }
+
+  log() {
+    console.log(this.something);
+  }
+}
+```
+
+--
+
+```javascript
+class SuperFancy extends FancyClass {
+  constructor(something) {
+    super(something);
+
+    this.something += ' there!';
+  }
+}
+```
+
+---
+
+## Babel: Targeting ES2015
+
+--
+
+###Modules
+
+```javascript
+import Shapes from './Shapes';
+import Vector from './Vector';
+// Module imports are constants!
+
+var Triangle = Shapes.create([
+  new Vector(0.5, 0),
+  new Vector(0, 1),
+  new Vector(1, 1)
+]);
+
+export default Triangle;
+```
+
+---
+
+## Babel: Targeting ES2016
+
+--
+
+###Async/Await
+
+```javascript
+async function routeHandler(userId) {
+  try {
+    let user = await getUser(userId);
+    let hash = await createHash(user.password);
+
+    console.log("hash is " + hash);
+  }
+
+  catch (err) {
+    console.error(err.message);
+  }
+}
+
+routeHandler("user-1");
+```
+
+---
+
+## Babel: Targeting ES2016
+
+--
+
+###Class properties and decorators
+```javascript
+@useGraplingHook({from: 'LuciusFox'})
+@superRich
+class Batman {
+  suitColor = 'black';
+
+  @canUseBatMobil
+  use(vehicle) {
+
+  }
+}
+```
+
+---
+
+## Babel on the server
+
+--
+
+`babel-node` for the REPL
+
+--
+
+`babel-node myfile.js`
+
+--
+
+Require hook:
+
+```javascript
+require("babel/register");
+```
+
+--
+
+Or transpile the server side code and use and use optional runtime
+
+---
+
+## Babel loves React (And other frameworks, too)
+
+--
+
+* JSX transformer built-in and activated by default
+
+--
+
+* Additional JSX performance plugins available
+
+---
+
+## Beyond ES2015+
+
+### Create your own Babel plugin
+```javascript
+export default function({ Plugin, types: t }) {
+  return new Plugin("foo-bar", {
+    visitor: {
+      CallExpression(node, parent) {
+        return t.isIdentifier(node.callee);
+      }
+    }
+  });
+}
+```
+
+--
+
+### Or use available plugins
+* Babel Emoji Plugin
+
+---
+
+class: center, middle, fullscreen-image
+
+![6to5](images/babel-repl.png)
+
+---
+
 class: center, middle
 
 # Thank you!
@@ -358,6 +701,13 @@ http://frostney.github.io/talks/babel/slides
 ### Twitter: @frostney_
 
 ### Github: frostney
+
+---
+
+Image credit:
+* Sebastian McKenzie
+* Wikipedia
+* 20th Century Fox
 
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
