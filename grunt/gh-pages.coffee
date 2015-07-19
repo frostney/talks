@@ -1,5 +1,5 @@
 module.exports =
   deploy:
     options:
-      base: '.'
+      base: 'files'
     src: ['**/*']
