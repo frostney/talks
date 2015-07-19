@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>I'm using Babel and so should you</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+
+      .fullscreen-image img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .fullscreen-image-80 img {
+        width: 80%;
+        height: 80%;
+      }
+
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        padding-top: 1rem;
+      }
+      .left-column h2:last-of-type, .left-column h3:last-child, .left-column h4:last-child, .left-column h5:last-child {
+        color: #000;
+      }
+      .left-column h2:first-child, .left-column h3:first-child {
+        margin-top: 0;
+      }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1rem;
+        font-size: 1.8rem;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      .right-column ul li {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      ul li {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      ul li:first-child {
+        margin-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# I'm using Babel and so should you
+
+Johannes Stein
+
+Twitter: @frostney_
+
+Github: frostney
+
+---
+
+# Agenda
+
+1. The history of Babel
+2. How to configure Babel
+3. What does Babel do
+4. Babel: Targeting ES2015
+5. Babel: Targeting ES2016
+6. Babel on the server
+7. Babel ❤️ React
+8. Beyond ES2015
+
+---
+
+class: center, middle
+
+![Timetravel](images/back-to-the-future.jpg)
+
+###It's mid 2014 and we want to use ES6
+###(Back when the ES2015 name wasn't official)
+### What can we do?
+
+---
+
+class: center, middle
+
+![Babybel](images/coffeescript.png)
+
+---
+
+```coffeescript
+class Person
+  constructor: (@age) ->
+
+  showAge: -> console.log @age
+
+makeSomeoneOlder = (Person) -> Person.age += 10
+
+person = new Person(18)
+person.showAge()
+makeSomeoneOlder person
+person.showAge()
+```
+
+---
+
+```javascript
+var Person, makeSomeoneOlder, person;
+
+Person = (function() {
+  function Person(age) {
+    this.age = age;
+  }
+
+  Person.prototype.showAge = function() {
+    return console.log(this.age);
+  };
+
+  return Person;
+
+})();
+
+makeSomeoneOlder = function(Person) {
+  return Person.age += 10;
+};
+
+person = new Person(18);
+
+person.showAge();
+
+makeSomeoneOlder(person);
+
+person.showAge();
+```
+
+---
+
+## Why is CoffeeScript not what we're looking for?
+
+--
+
+* CoffeeScript is not a standardized language
+
+--
+
+* CoffeeScript's compile target is still ES3
+
+--
+
+* Its syntax has a specific Ruby taste
+
+--
+
+###But:
+
+--
+
+* Its JavaScript output is really clean
+
+---
+
+class: center, middle, fullscreen-image-80
+
+![Traceur](images/traceur.svg)
+
+---
+
+```javascript
+class Person {
+  contructor(age) {
+    this.age = age;
+  }
+
+  showAge() {
+    console.log(this.age);
+  }
+}
+
+var makeSomeoneOlder = person => person.age += 10;
+
+var person = new Person(18);
+person.showAge();
+makeSomeoneOlder(person);
+person.showAge();
+```
+
+---
+
+```javascript
+$traceurRuntime.ModuleStore.getAnonymousModule(function() {
+  "use strict";
+  var Person = function() {
+    function Person() {}
+    return ($traceurRuntime.createClass)(Person, {
+      contructor: function(age) {
+        this.age = age;
+      },
+      showAge: function() {
+        console.log(this.age);
+      }
+    }, {});
+  }();
+  var makeSomeoneOlder = function(person) {
+    return person.age += 10;
+  };
+  var person = new Person(18);
+  person.showAge();
+  makeSomeoneOlder(person);
+  person.showAge();
+  return {};
+});
+//# sourceURL=traceured.js
+```
+
+---
+
+## Why is Traceur not what we're looking for?
+
+--
+
+* What the hell is going on with its JavaScript output? (Dart anyone?)
+
+--
+
+* Traceur runtime is needed all the time every time
+
+--
+
+###But:
+
+--
+
+* You can use ES6 now!
+
+---
+
+class: center, middle, fullscreen-image-80
+
+![6to5](images/6to5.png)
+
+---
+
+```javascript
+class Person {
+  contructor(age) {
+    this.age = age;
+  }
+
+  showAge() {
+    console.log(this.age);
+  }
+}
+
+var makeSomeoneOlder = person => person.age += 10;
+
+var person = new Person(18);
+person.showAge();
+makeSomeoneOlder(person);
+person.showAge();
+```
+
+---
+
+```javascript
+var Person = function () {
+  function Person() {
+  }
+  Person.prototype.contructor = function (age) {
+    this.age = age;
+  };
+  Person.prototype.showAge = function () {
+    console.log(this.age);
+  };
+  return Person;
+}();
+var makeSomeoneOlder = function (person) {
+  return person.age += 10;
+};
+var person = new Person(18);
+person.showAge();
+makeSomeoneOlder(person);
+person.showAge();
+```
+
+---
+
+class: center, middle, fullscren-image-80
+
+![6to5Love](images/6to5-love.gif)
+
+---
+
+class: center, middle
+
+![7to5](images/7to5.png)
+
+---
+
+class: center, middle
+
+![7to6](images/7to6.png)
+
+---
+
+class: center, middle
+
+![2015to5](images/es2015to5.png)
+
+---
+
+class: center, middle, fullscreen-image-80
+
+![Babybel](images/babybel.png)
+
+---
+
+class: center, middle, fullscreen-image
+
+![Tower of Babel](images/tower_of_babel.jpg)
+
+---
+
+class: center, middle
+
+![Babel](images/babel.png)
+
+---
+
+class: center, middle
+
+# Thank you!
+
+http://frostney.github.io/talks/babel/slides
+
+### Twitter: @frostney_
+
+### Github: frostney
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
