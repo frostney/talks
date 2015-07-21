@@ -1,0 +1,4 @@
+1. Person
+2. Modules
+3. React Server
+4. Emoji (babel --plugins emojification)

@@ -1,0 +1,15 @@
+{
+  "name": "babel-examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "emoji.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-plugin-emojification": "^1.0.1",
+    "react": "^0.13.3"
+  }
+}
