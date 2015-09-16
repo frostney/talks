@@ -54,3 +54,5 @@ bower_components
 *.sublime-workspace
 
 .grunt
+
+examples
