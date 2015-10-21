@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to React Native</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        padding-top: 1rem;
+      }
+      .left-column h2:last-of-type, .left-column h3:last-child, .left-column h4:last-child, .left-column h5:last-child {
+        color: #000;
+      }
+      .left-column h2:first-child, .left-column h3:first-child {
+        margin-top: 0;
+      }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1rem;
+        font-size: 1.8rem;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      .right-column ul li {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      ul li {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      ul li:first-child {
+        margin-top: 0;
+      }
+
+      a, a:hover, a:visited {
+        text-decoration: none;
+        color: navy;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Introduction to Hapi.js
+---
+class: center, middle
+
+![happy](images/happyjs.jpg)
+---
+class: center, middle
+
+![Hapijs](images/hapijs.svg)
+---
+class: center, middle
+
+### http://nodejsreactions.tumblr.com/post/94827924315/hapijs
+
+![hapi](images/hapijs-nodejsreactions.gif)
+---
+
+# Who am I?
+
+Johannes Stein
+
+![me](images/me.jpg)
+
+Twitter: [@frostney_](https://twitter.com/frostney_)
+
+Github: [frostney](https://github.com/frostney)
+
+---
+
+# Agenda
+
+![Hapijs](images/hapijs.svg)
+
+1. What is Hapi?
+2. Hello World in Hapi
+3. Let's make a thing (Livedemo)
+4. Request lifecycle
+5. Creating plugins
+6. Hapi vs. all the other frameworks
+
+---
+class: center, middle
+
+## Companies trusting Hapi
+![HapiUsers](images/hapijs_users.png)
+
+---
+class: center, middle
+
+## Companies trusting Hapi
+![Npm](images/npm-logo.svg)
+
+http://blog.npmjs.org/post/88024339405/nearing-practical-maintainability
+
+---
+
+# What is Hapi?
+
+--
+
+## www.hapijs.com - https://github.com/hapijs/hapi
+
+--
+### A rich framework for building applications and services
+--
+<br/>
+### hapi enables developers to focus on writing reusable application logic instead of spending time building infrastructure.
+
+
+---
+
+# What is Hapi?
+## History
+
+--
+
+- Originally developed at Walmart Labs
+
+--
+
+- Started as a framework built on top of Express
+
+---
+
+# What is Hapi?
+## Philosophy
+
+- Configuration over code
+
+--
+
+- Pluggable
+
+--
+
+- Easily integratable: Authentication, caching, cookies, logging, validation & views
+
+---
+
+# Hello World in Hapi
+
+--
+
+```
+npm install hapi --save
+```
+
+---
+
+# Hello World in Hapi
+
+```javascript
+var Hapi = require('hapi');
+```
+
+---
+
+# Hello World in Hapi
+
+```javascript
+var Hapi = require('hapi');
+
+*var server = new Hapi.Server();
+```
+
+---
+
+# Hello World in Hapi
+
+```javascript
+var Hapi = require('hapi');
+
+var server = new Hapi.Server();
+
+*server.connection({
+*  host: 'localhost',
+*  port: 8000
+*});
+```
+
+---
+
+# Hello World in Hapi
+
+```javascript
+var Hapi = require('hapi');
+
+var server = new Hapi.Server();
+
+server.connection({
+  host: 'localhost',
+  port: 8000
+});
+
+*server.route({
+*  method: 'GET',
+*  path: '/hello',
+*  handler: function (request, reply) {
+*    reply('hello world');
+*  }
+*});
+```
+
+---
+
+# Hello World in Hapi
+
+```javascript
+var Hapi = require('hapi');
+
+var server = new Hapi.Server();
+
+server.connection({
+  host: 'localhost',
+  port: 8000
+});
+
+server.route({
+  method: 'GET',
+  path: '/hello',
+  handler: function (request, reply) {
+    reply('hello world');
+  }
+});
+
+*server.start(function() {
+*  console.log('Server running at:', server.info.uri);
+*});
+```
+
+---
+
+# Let's make a thing
+--
+
+## Things I want to show:
+
+- Logging
+- Validation
+- Views
+
+---
+
+# Request lifecycle
+
+--
+
+- Each request passes through a pre-defined list of steps
+
+--
+
+- Extension points that can be hooked into
+
+---
+
+# Request lifecycle
+
+- Request
+- Extension point: `onRequest`
+- Lookup & parsing cookies
+- Extension point: `onPreAuth`
+- Authentication
+- Extension point: `onPostAuth`
+- Validate path, query & payload
+- Extension point: `onPreHandler`
+- Route prerequisites & route handler
+- Extension point: `onPostHandler`
+- Send response (and emit events)
+
+---
+
+# Request lifecycle
+
+```
+- Request
+- Extension point: `onRequest`
+- Lookup route using request path
+- Process query extension (e.g. JSONP)
+- Parse cookies
+- Extension point: `onPreAuth`
+- Authenticate request
+- Read and parse payload
+- Authenticate request payload
+- Extension point: `onPostAuth`
+- Validate path parameters
+- Validate query
+- Validate payload
+- Extension point: `onPreHandler`
+- Route prerequisites
+- Route handler
+- Extension point: `onPostHandler`
+- Validate response payload
+- Extension point: `onPreResponse`
+- Send response
+- Emit `response` event
+- Wait for tails
+- Emits `tail` event
+```
+
+---
+
+# Request lifecycle
+
+```javascript
+var Hapi = require('hapi');
+var server = new Hapi.Server();
+
+server.ext({
+  type: 'onRequest',
+  method: function(request, reply) {
+    // Change all requests to '/test'
+    request.setUrl('/test');
+    return reply.continue();
+  }
+});
+
+var handler = function (request, reply) {
+  return reply({status: 'ok'});
+};
+
+server.route({method: 'GET', path: '/test', handler: handler});
+server.start(function (err) { });
+```
+
+---
+
+# Creating plugins
+
+```javascript
+var helloWorldPlugin = {
+  register: function(server, options, next) {
+    next();
+  }
+};
+```
+
+---
+
+# Creating plugins
+
+```javascript
+var helloWorldPlugin = {
+  register: function(server, options, next) {
+    next();
+  }
+};
+
+*helloWorldPlugin.register.attributes = {
+*  name: 'helloWorld',
+*  version: '1.0.0'
+*};
+```
+
+---
+
+# Creating plugins
+
+```javascript
+var helloWorldPlugin = {
+  register: function(server, options, next) {
+*    server.route({
+*      method: 'GET',
+*      path: '/hello',
+*      handler: function(request, reply) {
+*        reply('hello world');
+*      }
+*    });
+
+    next();
+  }
+};
+
+helloWorldPlugin.register.attributes = {
+  name: 'helloWorld',
+  version: '1.0.0'
+};
+
+module.exports = helloWorldPlugin;
+```
+
+---
+
+# Creating plugins
+
+```javascript
+server.register(require('./helloWorldPlugin'), function(err) {
+  if (err) {
+    console.error('Failed to load plugin:', err);
+  }
+});
+```
+
+---
+# Hapi vs. all the other frameworks
+
+![Karate](images/karate.gif)
+---
+# Hapi vs. all the other frameworks
+## Express
+
+![Express](images/express.png)
+
+--
+
+- Lightweight
+
+--
+
+- Inspired by Sinatra
+
+---
+# Hapi vs. all the other frameworks
+## Express
+
+```javascript
+var express = require('express');
+var app = express();
+
+app.get('/hello', function(req, res) {
+  res.send('hello world');
+});
+
+var server = app.listen(8000, function() {
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('Example app listening at http://%s:%s', host, port);
+});
+```
+
+---
+# Hapi vs. all the other frameworks
+## Restify
+
+![Restify](images/restify.png)
+
+--
+
+- No templating and rendering
+
+--
+
+- Similar API to Express
+
+---
+# Hapi vs. all the other frameworks
+## Restify
+
+```javascript
+var restify = require('restify');
+
+var server = restify.createServer();
+
+server.get('/hello', function(req, res) {
+  res.send('hello world');
+});
+
+server.listen(8000, function() {
+  console.log('Example app listening at %s', server.url);
+});
+```
+
+---
+# Hapi vs. all the other frameworks
+## Sails
+
+![Sails](images/sailsjs.png)
+
+--
+
+- MVC framework built on top of Express.js
+
+--
+
+- ORM integrated (Waterline)
+
+--
+
+- WebSockets out-of-the box (socket.io)
+
+---
+# Hapi vs. all the other frameworks
+## Keystone
+
+![Keystone](images/keystone.svg)
+
+--
+
+- Built on top of Express.js
+
+--
+
+- Integrates with MongoDB and Mongoose
+
+--
+
+- Focus on CMS
+
+---
+
+# Things I found to be exciting
+## Proxying requests
+
+```javascript
+server.route({
+  method: ['GET', 'POST'],
+  path: '/proxy/{path*}',
+  handler: {
+    proxy: {
+      mapUri: function(req, callback) {
+        callback(null, 'https://www.google.de/#q=' + req.url.path);
+      },
+      passThrough: true,
+      xforward: true
+    }
+  }
+});
+```
+
+---
+
+# Things I found to be exciting
+## Server methods
+
+```javascript
+var add = function(a, b, next) {
+  return next(null, a + b);
+};
+
+server.method('sum', add);
+
+server.methods.sum(4, 5, function (err, result) {
+    console.log(result);
+});
+```
+---
+
+class: center, middle
+
+# Thank you!
+
+## http://frostney.github.io/talks/hapi/slides
+
+### Twitter: [@frostney_](https://twitter.com/frostney_)
+
+### Github: [frostney](https://github.com/frostney)
+
+---
+
+# References
+
+* http://hapijs.com/
+* https://blog.risingstack.com/getting-started-with-hapi-8/
+* http://blog.npmjs.org/post/88024339405/nearing-practical-maintainability
+* https://changelog.com/116/
+
+# Credits
+* http://expressjs.com/
+* https://github.com/restify/node-restify
+* http://clipartpanda.com
+* http://giphy.com/gifs/cheezburger-kick-pain-karate-3xz2BHM2zwM3mFfYgo
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>
