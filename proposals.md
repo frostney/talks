@@ -8,4 +8,4 @@ This talk will be part history lesson, part showcase, part live coding. I will g
 ### React for Game Development
 Proposed to: React Conf 2015, React Amsterdam, React Europe
 
-Using React for game development may not seem like an obvious choice at first. With React itself being compared to the Doom 3 game engine at F8 2014, we may not be in such a bad spot. At first, we will take a look at how games are usually structured. Then we will examine different concepts in game development such as the entity-component pattern and how we can . At the end, we'll take a look at all  put it all together into a React-powered game.
+Using React for game development may not seem like an obvious choice at first. With React itself being compared to the Doom 3 game engine at F8 2014, we may not be in such a bad spot. At first, we will take a look at how games are usually structured. Then we will examine different concepts in game development such as the entity-component pattern and how we can implement them in React. At the end, we'll take a look at all  put it all together into a React-powered game.
