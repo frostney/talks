@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Useful tips for your Webpack config</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1 {
+        font-weight: bold;
+      }
+
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .remark-slide-content {
+        background: rgba(255,255,255,1);
+        background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(226,231,233,1) 41%, rgba(178,191,194,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(41%, rgba(226,231,233,1)), color-stop(100%, rgba(178,191,194,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(226,231,233,1) 41%, rgba(178,191,194,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(226,231,233,1) 41%, rgba(178,191,194,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(226,231,233,1) 41%, rgba(178,191,194,1) 100%);
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(226,231,233,1) 41%, rgba(178,191,194,1) 100%);
+      }
+
+      .orange {
+        background: rgba(255,255,255,1);
+        background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,231,213,1) 41%, rgba(229,190,143,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(41%, rgba(246,231,213,1)), color-stop(100%, rgba(229,190,143,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,231,213,1) 41%, rgba(229,190,143,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,231,213,1) 41%, rgba(229,190,143,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,231,213,1) 41%, rgba(229,190,143,1) 100%);
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(246,231,213,1) 41%, rgba(229,190,143,1) 100%);
+      }
+
+      .blue {
+        background: rgba(255,255,255,1);
+        background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,230,238,1) 41%, rgba(163,188,210,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(41%, rgba(221,230,238,1)), color-stop(100%, rgba(163,188,210,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,230,238,1) 41%, rgba(163,188,210,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,230,238,1) 41%, rgba(163,188,210,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,230,238,1) 41%, rgba(163,188,210,1) 100%);
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(221,230,238,1) 41%, rgba(163,188,210,1) 100%);
+      }
+
+      .green {
+        background: rgba(255,255,255,1);
+        background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,238,227,1) 41%, rgba(163,210,181,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(41%, rgba(221,238,227,1)), color-stop(100%, rgba(163,210,181,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,238,227,1) 41%, rgba(163,210,181,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,238,227,1) 41%, rgba(163,210,181,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,238,227,1) 41%, rgba(163,210,181,1) 100%);
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(221,238,227,1) 41%, rgba(163,210,181,1) 100%);
+      }
+
+      .bigcode .remark-code {
+        font-size: 26px;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      .right-column ul li {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      ul li {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      ul li:first-child {
+        margin-top: 0;
+      }
+
+      a, a:hover, a:visited {
+        text-decoration: none;
+        color: navy;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Rendering e-mail templates with React
+
+--
+
+## http://frostney.github.io/talks/rendering-email-templates
+
+---
+class: center, middle
+
+# <strike>Rendering e-mail templates with React</strike>
+
+# Rendering HTML on the server with React that looks like straight out of the 90s
+---
+class: center, middle
+
+# A wild __[@frostney](https://twitter.com/frostney_)__ appears
+
+--
+
+## Also known as *Johannes Stein* in the real world
+
+--
+
+### On a honeymoon with React (and React Native)
+
+--
+
+### Open-source is my jam
+
+--
+
+## <i class="fa fa-twitter"></i> @frostney_
+
+--
+
+## <i class="fa fa-github"></i> frostney
+
+---
+class: center, middle
+
+# The premise
+
+--
+
+## Can I use React for everything?
+
+---
+class: center, middle
+
+## So, rendering e-mails.
+
+---
+class: center, middle
+
+![spam](verifyemail.png)
+
+---
+class: center, middle
+
+![spam](sharegrid.png)
+
+---
+class: center, middle
+
+![spam](resetpassword.png)
+
+---
+class: center, middle
+
+## Seems simple enough, right?
+
+--
+
+## No... no... not by a long shot.
+
+---
+
+# Problem #1: We need to support all kinds of e-mail clients
+
+--
+
+- Outlook 2007 = Basically Internet Explorer 6
+
+--
+
+- Prefer `table` over `div`
+
+--
+
+- Try to avoid additional HTTP requests
+
+--
+
+- Base64? Not a good idea. Avoid at all costs.
+
+--
+
+- Keep everything as small as possible
+
+---
+
+# What do we end up with?
+
+- HTML4 and CSS2
+
+--
+
+- Buttons are practically tables with an image on each side
+
+--
+
+- Spacing are actually transparent images stretched to the size we need
+
+---
+
+# What do we end up with?
+
+#### Reference: http://templates.mailchimp.com/development/html/
+
+```html
+<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+  <tr>
+    <td align="center" valign="top">
+      <table border="0" cellpadding="20" cellspacing="0" width="600" id="emailContainer">
+        <tr>
+          <td align="center" valign="top">
+            <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
+              <tr>
+                <td align="center" valign="top">
+                  This is where my header content goes.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" valign="top">
+            <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailBody">
+              <tr>
+                <td align="center" valign="top">
+                  This is where my body content goes.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" valign="top">
+            <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailFooter">
+              <tr>
+                <td align="center" valign="top">
+                  This is where my footer content goes.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+```
+
+---
+
+# Let's react-ify this
+
+```jsx
+<Body>
+  <Header />
+  <Content />
+  <Footer />
+</Body>
+```
+
+---
+
+# Low-level components
+
+- `H2`
+- `H3`
+- `Table`
+- `Table.Cell`
+- `Table.Row`
+- `Text`
+- `Image`
+
+---
+
+# High-level components
+
+- `Logo`
+- `Widget`
+- `Body`
+- `Footer`
+- `Button`
+
+---
+
+# Let's react-ify this (real world example)
+
+![emailreallife](emailreallife.png)
+
+---
+
+# Problem #2: Some e-mail clients render different
+
+--
+
+- Some clients prefer stylesheets in the `head` section
+
+--
+
+- Some clients prefer styles to be inline on the element itself
+
+--
+
+- Some clients only consider stylesheets if they are declared with `!important`
+
+--
+
+- Example: Mobile Gmail App for Android completely strips away `head`
+
+---
+class: green
+
+# Solution: Let's do all of this!
+
+--
+
+```html
+<style>
+a { color: white !important; }
+</style>
+```
+
+--
+
+```javascript
+// Link.js
+
+export default function(props) {
+  return <a style={{ color: 'white' }}>{props.children}</a>
+};
+```
+
+---
+
+# Problem #3: Spam filters
+
+![spam](itsspam.png)
+
+---
+class: green
+
+# Solution: Spam filters
+
+- Image-to-text ratio too high
+
+--
+
+- Avoid all caps
+
+--
+
+- Avoid "spammy" words or sentences: Don't do "Click here", "free", "buy now", etc.
+
+--
+
+- Avoid duplicated content
+
+--
+
+- Bad HTML (for example missing `<table>`) can get you filtered
+
+---
+
+# Other tips
+
+--
+
+- Include a plain text alternative
+
+--
+
+- Use `dangerouslySetInnerHTML` for IE conditionals
+
+--
+
+- Use media queries for mobile devices
+
+![mobile](resetpassword_mobile.png)
+
+---
+
+# Rendering on the server
+
+--
+
+```js
+import ReactDOM from 'react-dom/server';
+
+ReactDOM.renderToStaticMarkup(<MyEmailTemplate />);
+```
+
+--
+
+Use `renderToStaticMarkup`, because we don't need `data-react` elements in our markup.
+
+---
+
+# Problem #4: React filters attributes
+
+--
+
+- React filters `background` and `bgcolor` on tables
+
+--
+
+- Same goes for `valign` and `align`
+
+--
+
+![sadjake](sadjake.gif)
+
+---
+class: blue
+
+# Solution: Use `data-*` attributes
+
+--
+
+```javascript
+// MyTable.js
+
+export default function(props) {
+  return (
+    <table>
+      <tbody>
+        <tr>
+          <td data-align="center" data-valign="top">
+            {props.children}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
+}
+```
+
+--
+
+```javascript
+import ReactDOM from 'react-dom/server';
+import MyTable from './MyTable';
+
+let renderedEmail = ReactDOM.renderToStaticMarkup(<MyTable>Hello there</MyTable>);
+renderedEmail = renderedEmail.replace(/data-align/g, 'align');
+renderedEmail = renderedEmail.replace(/data-valign/g, 'valign');
+```
+
+---
+class: green
+
+# Solution: Use `is`
+
+--
+
+```javascript
+// MyTable.js
+
+export default function(props) {
+  return (
+    <table>
+      <tbody>
+        <tr>
+          <td is align="center" valign="top">
+            {props.children}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
+}
+```
+
+--
+
+```javascript
+import ReactDOM from 'react-dom/server';
+import MyTable from './MyTable';
+
+const renderedEmail = ReactDOM.renderToStaticMarkup(<MyTable>Hello there</MyTable>);
+```
+
+---
+class: center, middle
+
+# Thank you!
+
+---
+class: center, middle
+
+# Credits
+
+## http://templates.mailchimp.com/
+## http://giphy.com/gifs/dog-sad-crying-QPUg0x3VGlg6Q
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>
