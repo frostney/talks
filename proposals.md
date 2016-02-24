@@ -15,7 +15,7 @@ Using React for game development may not seem like an obvious choice at first. W
 ### Webpack for server bundles
 Length: ~25 minutes
 
-We have embraced Webpack for our client-side bundles, bundling all our client-side assets and customizing them along the way. With isomorphic/universal JavaScript being treated as the holy grail right now, let's consider using Webpack for our server as well. Where are the differences to how we usually write our Node.js server, pitfalls, advantanges and disadvantages. We will cover how to setup Webpack for Node.js server, how to optimize them and how get features like live-reloading and the Webpack Dev Server working in this environment.
+We have embraced Webpack for our client-side bundles, bundling all our client-side assets and customizing them along the way. With isomorphic/universal JavaScript being treated as the holy grail right now, let's consider using Webpack for our server as well. Where are the differences to how we usually write our Node.js server? We will go into pitfalls, advantanges and disadvantages. We will cover how to setup Webpack for Node.js server, how to optimize them and how get features like live-reloading and the Webpack Dev Server working in this environment.
 
 ### Let's talk about Sketch & Zeplin
 Length: ~30 minutes
