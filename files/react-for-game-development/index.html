@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React for Game Development</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1 {
+        font-weight: bold;
+      }
+
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .remark-slide-content {
+        background: rgba(255,255,255,1);
+        background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(226,231,233,1) 41%, rgba(178,191,194,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(41%, rgba(226,231,233,1)), color-stop(100%, rgba(178,191,194,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(226,231,233,1) 41%, rgba(178,191,194,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(226,231,233,1) 41%, rgba(178,191,194,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(226,231,233,1) 41%, rgba(178,191,194,1) 100%);
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(226,231,233,1) 41%, rgba(178,191,194,1) 100%);
+      }
+
+      .orange {
+        background: rgba(255,255,255,1);
+        background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,231,213,1) 41%, rgba(229,190,143,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(41%, rgba(246,231,213,1)), color-stop(100%, rgba(229,190,143,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,231,213,1) 41%, rgba(229,190,143,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,231,213,1) 41%, rgba(229,190,143,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,231,213,1) 41%, rgba(229,190,143,1) 100%);
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(246,231,213,1) 41%, rgba(229,190,143,1) 100%);
+      }
+
+      .blue {
+        background: rgba(255,255,255,1);
+        background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,230,238,1) 41%, rgba(163,188,210,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(41%, rgba(221,230,238,1)), color-stop(100%, rgba(163,188,210,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,230,238,1) 41%, rgba(163,188,210,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,230,238,1) 41%, rgba(163,188,210,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,230,238,1) 41%, rgba(163,188,210,1) 100%);
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(221,230,238,1) 41%, rgba(163,188,210,1) 100%);
+      }
+
+      .green {
+        background: rgba(255,255,255,1);
+        background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,238,227,1) 41%, rgba(163,210,181,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(41%, rgba(221,238,227,1)), color-stop(100%, rgba(163,210,181,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,238,227,1) 41%, rgba(163,210,181,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,238,227,1) 41%, rgba(163,210,181,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,238,227,1) 41%, rgba(163,210,181,1) 100%);
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(221,238,227,1) 41%, rgba(163,210,181,1) 100%);
+      }
+
+      .bigcode .remark-code {
+        font-size: 26px;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      .right-column ul li {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      ul li {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      ul li:first-child {
+        margin-top: 0;
+      }
+
+      a, a:hover, a:visited {
+        text-decoration: none;
+        color: navy;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# React for Game Development
+
+--
+
+## http://frostney.github.io/talks/react-for-game-development
+
+---
+class: center, middle
+
+# A wild __[@frostney](https://twitter.com/frostney_)__ appears
+
+--
+
+### Also known as *Johannes Stein* in the real world
+
+--
+
+### Regularly participates in game jams
+
+--
+
+### Loves React - like religiously
+
+---
+class: center, middle
+
+Insert image here (F8 2014)
+
+---
+1. How does a game work?
+2. Techniques in game development
+3. Putting it all together
+
+---
+# How does a game work?
+
+--
+
+## Event-based games
+
+
+--
+
+Example: Point 'n Click adventures, "Clickers", simple strategy games
+
+---
+# How does a game work?
+
+--
+
+## Game-loop based games
+
+Example: Jump 'n Runs
+
+---
+
+# Techniques in game development
+
+--
+
+## Game Loop
+
+---
+
+# Techniques in game development
+
+--
+
+## Dirty rectangle checking
+
+--
+
+We get that for free in React! Thanks, virtual DOM!
+
+---
+
+# Techniques in game development
+
+--
+
+## Entity Component Pattern
+
+---
+# Techniques in game development
+
+--
+
+## Scene graph
+
+--
+
+Entities in a tree structure
+
+--
+
+We get that for free in React! Thanks!
+
+---
+
+# Techniques in game development
+
+--
+
+## Object pools
+
+--
+
+- Re-using game objects
+
+--
+
+- Don't destroy them, re-use them
+
+--
+Word of warning: Beware of premature optimization!
+
+---
+
+# React Native for Game Development
+
+--
+
+## Learn Once, Write Everywhere
+
+--
+
+- Native controls
+
+--
+
+- Look and feel for each platfrom
+
+---
+
+# React Native for Game Development
+
+--
+
+## Write Once, Compile To Everything
+
+--
+
+- We write our own UI
+
+--
+
+- We don't care as much about the look and feel
+
+---
+
+# React Native for Game Development
+
+--
+
+## Come to the dark side, we have almost 100% code reuse across platforms
+
+
+---
+class: center, middle
+
+# Thank you!
+
+---
+class: center, middle
+
+# Credits
+
+## http://templates.mailchimp.com/
+## http://giphy.com/gifs/dog-sad-crying-QPUg0x3VGlg6Q
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>
