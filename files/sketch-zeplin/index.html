@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sketch & Zeplin Workflow</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+
+      h1 {
+        font-weight: bold;
+      }
+
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .remark-slide-content {
+        color: #fff;
+        font-size: 1.5rem;
+        background: rgba(72,79,79,1);
+        background: -moz-linear-gradient(45deg, rgba(72,79,79,1) 0%, rgba(38,37,33,1) 100%);
+        background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(72,79,79,1)), color-stop(100%, rgba(38,37,33,1)));
+        background: -webkit-linear-gradient(45deg, rgba(72,79,79,1) 0%, rgba(38,37,33,1) 100%);
+        background: -o-linear-gradient(45deg, rgba(72,79,79,1) 0%, rgba(38,37,33,1) 100%);
+        background: -ms-linear-gradient(45deg, rgba(72,79,79,1) 0%, rgba(38,37,33,1) 100%);
+        background: linear-gradient(45deg, rgba(72,79,79,1) 0%, rgba(38,37,33,1) 100%);
+      }
+
+      .bigcode .remark-code {
+        font-size: 26px;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      .right-column ul li {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      ul li {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      ul li:first-child {
+        margin-top: 0;
+      }
+
+      a, a:hover, a:visited {
+        text-decoration: none;
+        color: rgb(180, 180, 180);
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Sketch & Zeplin Workflow
+
+--
+
+## http://frostney.github.io/talks/sketch-zeplin
+
+---
+class: center, middle
+
+# A wild __[@frostney](https://twitter.com/frostney_)__ appears
+
+--
+
+### Johannes Stein
+
+--
+
+### Digitaler Nomade
+
+--
+
+### Freelance Software-Entwickler bei Toptal
+
+---
+class: center, middle
+
+# Wie funktioniert es bisher?
+
+---
+
+# Wie funktioniert es bisher?
+
+--
+
+- Designer entwickelt das Design...
+
+--
+
+- ...wird zu PNG/JPG/PDF exportiert.
+
+--
+
+- Spezifikation als separates PNG/etc.
+
+---
+class: middle, center
+
+![design](design.png)
+
+---
+class: middle, center
+
+![result](result.png)
+
+---
+
+# Das Problem
+
+--
+
+- Entwickler müssen die Designs ausmessen
+
+--
+
+- Wie kommen die Assets zum Entwickler?
+
+--
+
+- Fonts
+
+--
+
+- Daumen drücken: Hoffentlich passiert nichts beim Export
+
+--
+
+- Was passiert wenn sich etwas verändert?
+
+---
+class: center, middle
+
+# There has to be a better way
+
+![therehastobeabetterway](therehastobeabetterway.gif)
+
+---
+class: center, middle
+
+# Zeplin
+
+## https://zeplin.io
+
+![zeplin](zeplin.svg)
+
+---
+class: center, middle
+
+## Zuvor: __Designer -> Entwickler__
+
+---
+class: center, middle
+
+## Jetzt: __Designer -> Zeplin <- Entwickler__
+
+---
+class: center, middle
+
+![zeplin_screenshot](zeplin_screenshot.png)
+
+---
+class: center, middle
+
+# Demo
+
+---
+# Was ist cool bei Zeplin?
+--
+
+- Einfacher Export von Sketch
+
+--
+
+- "Alles an einem Platz"
+
+--
+
+- Kommentare
+
+---
+# Was ist nicht so cool bei Zeplin?
+--
+
+- Code Generierung
+
+--
+
+- Keine Photoshop Unterstützung
+
+--
+
+- Nur ein kostenloses aktives Projekt, danach kostenpflichtig
+
+---
+# Alternativen
+
+--
+
+## Atomic: https://atomic.io/
+
+--
+
+## Invision: http://www.invisionapp.com/
+
+---
+class: center, middle
+
+# Vielen Dank!
+
+--
+
+## http://frostney.github.io/talks/sketch-zeplin
+
+---
+class: center, middle
+
+# Credits
+
+## http://www.slideshare.net/milom/paris-dribbble-meetup-zeplinio
+## http://imgur.com/fNUwddn
+## https://zeplin.io
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>
