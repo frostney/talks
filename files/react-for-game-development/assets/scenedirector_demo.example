@@ -1,0 +1,23 @@
+<SceneDirector
+  scenes={{
+    MainMenu: ({ switchToScene }) => {
+      const switchToLevel1 = () => switchToScene('Level1');
+
+      return (
+        <div>
+          <button onClick={switchToLevel1}>Switch to level 1</button>
+          <div>This is the main menu</div>
+        </div>
+      );
+    },
+    Level1: ({ switchToScene }) => {
+      const switchBack = () => switchToScene('MainMenu');
+
+      return (
+        <div>
+          <button onClick={switchBack}>Go back</button>
+          <div>This is the first level</div>
+        </div>
+      )
+    }
+  }} />

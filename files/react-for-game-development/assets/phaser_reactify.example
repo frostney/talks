@@ -1,0 +1,25 @@
+import React, { Component } from 'react';
+import arrow from 'assets/sprites/arrow.png';
+
+class Game extends Component {
+  constructor() {
+    this.state = {
+      angle: 0,
+    };
+  }
+
+  render() {
+    console.log(`angle: ${this.state.angle}`);
+
+    return (
+      <div style={{ width: 800, height: 600, backgroundColor: '#0072bc' }}>
+        <div style={{
+          transform: rotate(`${this.state}`deg),
+          backgroundImage: arrow,
+          position: 'absolute',
+          left: 400,
+          top: 300 }} />
+      </div>
+    )
+  }
+}

@@ -1,0 +1,26 @@
+// Passing in scenes in the form of `{ [String]: ReactComponent }`
+class SceneDirector extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currentScene: 'Menu',
+    };
+  }
+
+  switchTo = scene => {
+    this.setState({
+      currentScene: scene,
+    });
+  }
+
+  render() {
+    const sceneElement = this.props.scenes[this.state.currentScene];
+
+    return React.createElement(sceneElement, {
+      sceneDirector: {
+        switchTo: this.switchTo,
+      },
+    });
+  }
+}

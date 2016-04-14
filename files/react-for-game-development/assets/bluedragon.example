@@ -1,0 +1,8 @@
+const BlueDragon = (...args) => (
+  <Dragon {...args}>
+    <SpitIce {...args} />
+    <IceResistance {...args} />
+    <Boss {...args} />
+    <Cute {...args} />
+  </Dragon>
+);

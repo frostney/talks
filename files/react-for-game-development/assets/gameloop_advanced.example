@@ -1,0 +1,29 @@
+const subscribers = [];
+const isRunning = true;
+
+const GameLoop = {
+  subscribe(callback) {
+    subscribers.push(callback);
+  },
+  run() {
+    let time;
+
+    (function loop() {
+      requestAnimationFrame.call(window, loop);
+
+      let now = performance.now();
+      let dt = now - (time || now);
+
+      time = now;
+
+      if (!isRunning) {
+        return;
+      }
+
+      subscribers.forEach(subscriber => subscriber.call(null, dt));
+    })();
+  },
+  stop() {
+    isRunning = false;
+  },
+};

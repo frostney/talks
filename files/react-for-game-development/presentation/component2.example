@@ -1,0 +1,5 @@
+<AnimatedSpriteSheet
+  filename={templar}
+  bounds={{ x: 0, y: 0, width: 1280, height: 320 }}
+  frame={{ width: 80, height: 80 }}
+  speed={100} />
