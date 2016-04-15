@@ -179,7 +179,7 @@ export default class Presentation extends React.Component {
             <Heading size={1} fit caps lineHeight={5} textColor="white">
               React For Game Development
             </Heading>
-            <Heading size={6} textColor="white" lineHeight={3}>React Amsterdam</Heading>
+            <Heading size={6} textColor="white" lineHeight={3}>React Amsterdam 2016</Heading>
             <Layout>
               <Fill>
                 <Text>Johannes Stein</Text>
@@ -632,14 +632,14 @@ export default class Presentation extends React.Component {
             </Layout>
           </Slide>
           <Slide>
-            <Heading size={1} caps lineHeight={2}>Credits</Heading>
-            <Heading size={6} textColor="white">F8 2014 Rethinking Web Development: https://www.youtube.com/watch?v=nYkdrAPrdcw</Heading>
-            <Heading size={6} textColor="white">LucasArts Entertainment Company LLC - The Secret of Monkey Island</Heading>
-            <Heading size={6} textColor="white">Nintendo - Super Mario Bros.</Heading>
-            <Heading size={6} textColor="white">Lucasfilm Ltd. LLC</Heading>
-            <Heading size={6} textColor="white">20th Century Fox</Heading>
-            <Heading size={6} textColor="white">CBS - http://giphy.com/gifs/how-i-met-your-mother-yes-thumbs-up-3WY8qMF9l3ldK</Heading>
-            <Heading size={6} textColor="white">http://gameprogrammingpatterns.com/ - Robert Nystrom</Heading>
+            <Heading size={2} textColor="white" caps lineHeight={1}>Credits</Heading>
+            <Text><Link href="https://www.youtube.com/watch?v=nYkdrAPrdcw">F8 2014 Rethinking Web Development</Link></Text>
+            <Text>LucasArts Entertainment Company LLC - The Secret of Monkey Island</Text>
+            <Text>Nintendo - Super Mario Bros.</Text>
+            <Text>Lucasfilm Ltd. LLC</Text>
+            <Text>20th Century Fox</Text>
+            <Text><Link href="http://giphy.com/gifs/how-i-met-your-mother-yes-thumbs-up-3WY8qMF9l3ldK">CBS</Link></Text>
+            <Text><Link href="http://gameprogrammingpatterns.com/">Robert Nystrom - Game Programming Patterns</Link></Text>
           </Slide>
         </Deck>
       </Spectacle>
