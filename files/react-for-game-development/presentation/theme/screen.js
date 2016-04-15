@@ -24,7 +24,7 @@ const screen = (colorArgs = defaultColors, fontArgs = defaultFonts) => {
         background: colors.primary,
         fontFamily: fonts.primary,
         fontWeight: "normal",
-        fontSize: "2em",
+        fontSize: "2rem",
         color: colors.secondary,
         overflow: "hidden"
       },

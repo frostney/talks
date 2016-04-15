@@ -6,12 +6,12 @@ import {
   Appear,
 //  BlockQuote,
 //  Cite,
-  CodePane,
+//  CodePane,
   Deck,
-//  Fill,
+  Fill,
   Heading,
   Image,
-//  Layout,
+  Layout,
   Link,
 //  ListItem,
 //  List,
@@ -74,7 +74,11 @@ const images = {
   mario: require("../assets/mario.png"),
   bluedragon: require("../assets/bluedragon.png"),
   reddragon: require("../assets/reddragon.png"),
-  templar: require("../assets/character_walk_sword.png")
+  templar: require("../assets/character_walk_sword.png"),
+  water: require("../assets/water.png"),
+  ship: require("../assets/ship.png"),
+  pirateship: require("../assets/ship_pirate.png"),
+  cannonball: require("../assets/cannonball.png")
 };
 
 preloader(images);
@@ -88,17 +92,85 @@ const theme = createTheme({
   <button style={buttonStyle}>{children}</button>
 ); */
 
+const World = ({ children }) => (
+  <div style={{
+    position: "absolute",
+    backgroundImage: `url(${images.water})`,
+    backgroundSize: "cover",
+    width: "100%",
+    height: "100%" }}
+  >
+    {children}
+  </div>
+);
+
+const Hit = () => <div />;
+const BlackFlag = () => <div />;
+
+
+const Ship = ({ x, y, children }) => {
+  const styles = {
+    position: "absolute",
+    left: x,
+    top: y,
+    backgroundImage: `url(${images.ship})`,
+    backgroundSize: "cover",
+    width: 160,
+    height: 160
+  };
+
+  React.Children.forEach(children, (child) => {
+    if (child.type === BlackFlag) {
+      styles.backgroundImage = `url(${images.pirateship})`;
+    }
+
+    if (child.type === Hit) {
+      const filter = "brightness(2.5) hue-rotate(-60deg)";
+
+      styles.filter = filter;
+      styles.WebkitFilter = filter;
+    }
+  });
+
+  return (
+    <div style={styles}>{children}</div>
+  );
+};
+
+const Cannonball = ({ x, y }) => {
+  return (
+    <div style={{
+      position: "absolute",
+      left: x,
+      top: y,
+      backgroundImage: `url(${images.cannonball})`,
+      backgroundSize: "cover",
+      width: 30,
+      height: 30 }}
+    />
+  );
+};
+
 export default class Presentation extends React.Component {
   render() {
     return (
       <Spectacle theme={theme}>
-        <Deck transition={["slide"]} progress="bar" transitionDuration={400} controls={false}>
+        <Deck transition={["slide"]} progress="number" transitionDuration={400} controls={false}>
           <Slide bgColor="primary">
-            <Heading size={1} fit caps lineHeight={1} textColor="white">
+            <Heading size={1} fit caps lineHeight={5} textColor="white">
               React For Game Development
             </Heading>
+            <Heading size={6} textColor="white" lineHeight={3}>React Amsterdam</Heading>
+            <Layout>
+              <Fill>
+                <Text>Johannes Stein</Text>
+              </Fill>
+              <Fill>
+                <Text>@frostney_</Text>
+              </Fill>
+            </Layout>
           </Slide>
-          <Slide bgColor="primary">
+          <Slide bgColor="primary" notes="Been an indie developer">
             <Heading size={1} fit caps lineHeight={2}>
               A wild <Link href="https://twitter.com/frostney_">@frostney</Link> appears
             </Heading>
@@ -181,7 +253,7 @@ export default class Presentation extends React.Component {
               <Text style={{ marginTop: 60 }}>Or any of these: EaselJS, pixi.js, Three.js, melonJS, Cocos2D-HTML5, Panda.js, LimeJS, Crafty, Lyria, PlayCanvas ...</Text>
             </Appear>
           </Slide>
-          <Slide bgImage={images.fightclub} bgDarken={0.75}>
+          <Slide bgImage={images.fightclub} bgDarken={0.75} notes="and game development">
             <Appear>
               <Heading size={1} fit caps lineHeight={2}>
                 First rule of game jams
@@ -191,7 +263,7 @@ export default class Presentation extends React.Component {
               <Heading size={1}>Use the tools you're most familiar with</Heading>
             </Appear>
           </Slide>
-          <Slide transition={["fade"]} bgImage={images["f8-2014"]} />
+          <Slide transition={["fade"]} bgImage={images["f8-2014"]} notes="F8 2014 - Pete Hunt" />
           <Slide transition={["fade"]} bgImage={images["f8-2014-2"]} />
           <Slide>
             <Heading size={1} caps lineHeight={1}>
@@ -247,10 +319,6 @@ export default class Presentation extends React.Component {
               Example: Point 'n' Click adventures, Visual novels, "Clickers", turn based games
             </Text>
             <Image src={images.monkeyisland} />
-          </Slide>
-          <Slide>
-            <iframe width="800" height="600" frameBorder="0" src="http://frostney.github.io/survivalguide-vampires" />
-            <Link href="http://frostney.github.io/survivalguide-vampires">http://frostney.github.io/survivalguide-vampires</Link>
           </Slide>
           <Slide>
             <iframe width="800" height="600" frameBorder="0" src="http://polooo2.github.io/ggj2016/" />
@@ -336,6 +404,7 @@ export default class Presentation extends React.Component {
             <div className="playground-slide">
               <Playground codeText={codeText2} scope={{ React, templar: images.templar, AnimatedSpriteSheet: SpriteSheet.AnimatedSpriteSheet }} />
             </div>
+            <Link style={{ marginTop: 40, display: "block" }} href="https://github.com/frostney/react-spritesheet">https://github.com/frostney/react-spritesheet</Link>
           </Slide>
           <Slide>
             <Heading size={1} caps lineHeight={1}>
@@ -383,20 +452,7 @@ export default class Presentation extends React.Component {
             </Heading>
           </Slide>
           <Slide>
-            <Heading size={2} caps lineHeight={1}>
-              A red dragon could spit fire
-            </Heading>
-            <Appear>
-              <Image src={images.reddragon} />
-            </Appear>
-          </Slide>
-          <Slide>
-            <Heading size={2} caps lineHeight={1}>
-              A blue dragon could spit ice
-            </Heading>
-            <Appear>
-              <Image src={images.bluedragon} />
-            </Appear>
+            <Image src={images.pirateship} />
           </Slide>
           <Slide>
             <Heading size={2} caps lineHeight={1}>
@@ -405,12 +461,12 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={2} caps lineHeight={1}>
-              The base object (dragon) would be referred to as an <S type="italic">entity</S>
+              The base object (ship) would be referred to as an <S type="italic">entity</S>
             </Heading>
           </Slide>
           <Slide>
             <Heading size={2} caps lineHeight={1}>
-              Behaviors or attributes (attack, fire, ice, shield, etc) would be referred to as a <S type="italic">component</S>
+              Behaviors or attributes (attack, cannonballs, crew, inventory, etc) would be referred to as a <S type="italic">component</S>
             </Heading>
           </Slide>
           <Slide>
@@ -433,21 +489,10 @@ export default class Presentation extends React.Component {
               In React, everything is a component
             </Heading>
           </Slide>
-          <Slide>
-            <Image src={images.bluedragon} />
-            <CodePane
-              lang="javascript"
-              source={require("raw!../assets/bluedragon.example")}
-              margin="20px auto"
-            />
-          </Slide>
-          <Slide>
-            <Image src={images.reddragon} />
-            <CodePane
-              lang="javascript"
-              source={require("raw!../assets/reddragon.example")}
-              margin="20px auto"
-            />
+          <Slide margin={1}>
+            <div className="playground-slide">
+              <Playground codeText={require("raw!../assets/composition.example")} scope={{ React, World, Ship, Cannonball, BlackFlag, Hit }} />
+            </div>
           </Slide>
           <Slide>
             <Heading size={1} caps lineHeight={1}>
@@ -504,13 +549,18 @@ export default class Presentation extends React.Component {
               { loc: [10, 15] }
             ]}
           />
-          <Slide align="flex-start flex-start">
+          <Slide>
             <div className="playground-slide">
               <Playground codeText={require("raw!../assets/scenedirector_demo.example")} scope={{ React, SceneDirector }} />
             </div>
+            <Link style={{ marginTop: 40, display: "block" }} href="https://github.com/frostney/react-scenedirector">https://github.com/frostney/react-scenedirector</Link>
           </Slide>
           <Slide>
             <Heading size={1} caps lineHeight={1}>Let's summarize</Heading>
+          </Slide>
+          <Slide>
+            <iframe width="800" height="600" frameBorder="0" src="http://frostney.github.io/survivalguide-vampires" />
+            <Link href="http://frostney.github.io/survivalguide-vampires">http://frostney.github.io/survivalguide-vampires</Link>
           </Slide>
           <Slide>
             <Heading size={1} caps lineHeight={1}>React Native for Game Development?</Heading>
@@ -544,6 +594,15 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={1} caps lineHeight={1}>Thank you!</Heading>
+            <Heading size={5} caps lineHeight={4} textColor="white">Questions?</Heading>
+            <Layout>
+              <Fill>
+                <Text>@frostney_</Text>
+              </Fill>
+              <Fill>
+                <Text>#reactamsterdam</Text>
+              </Fill>
+            </Layout>
           </Slide>
         </Deck>
       </Spectacle>

@@ -13,12 +13,25 @@
     .playground-slide .playground {
       text-align: left;
       overflow: hidden;
-      font-size: 24px;
+      font-size: 1.65rem;
     }
 
     .playground-slide .playground .playgroundPreview {
       position: relative;
       overflow: auto;
+    }
+
+    .playground-slide .playground .playgroundError {
+      position: absolute;
+      z-index: 100;
+      color: white;
+      width: 100%;
+      background: rgba(255, 0, 0, 0.6);
+      padding: 6px;
+    }
+
+    .playground-slide .playground .previewArea {
+      height: 300px;
     }
 
     .playground-slide .playground .playgroundCode, .playgroundPreview {

@@ -1,0 +1,6 @@
+<World>
+  <Ship x={10} y={10} />
+  <Ship x={200} y={100}>
+    <BlackFlag />
+  </Ship>
+</World>
