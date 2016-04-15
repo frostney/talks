@@ -151,6 +151,25 @@ const Cannonball = ({ x, y }) => {
   );
 };
 
+const GameButton = ({ children, onClick }) => (
+  <button style={{
+    background: "#3498db",
+    border: 0,
+    borderRadius: 20,
+    boxShadow: "0px 5px 0px #2980b9",
+    color: "white",
+    display: "block",
+    fontSize: 18,
+    fontWeight: "bold",
+    margin: "20px auto",
+    minWidth: 200,
+    outline: 0,
+    padding: 10
+  }}
+    onClick={onClick}
+  >{children}</button>
+);
+
 export default class Presentation extends React.Component {
   render() {
     return (
@@ -253,12 +272,20 @@ export default class Presentation extends React.Component {
               <Text style={{ marginTop: 60 }}>Or any of these: EaselJS, pixi.js, Three.js, melonJS, Cocos2D-HTML5, Panda.js, LimeJS, Crafty, Lyria, PlayCanvas ...</Text>
             </Appear>
           </Slide>
-          <Slide bgImage={images.fightclub} bgDarken={0.75} notes="and game development">
+          <Slide bgImage={images.fightclub} bgDarken={0.75} notes="explain game jams (hackathons)">
             <Appear>
               <Heading size={1} fit caps lineHeight={2}>
-                First rule of game jams
+                First rule of game jams*
               </Heading>
             </Appear>
+            <Layout style={{ marginTop: -40 }}>
+              <Fill />
+              <Fill>
+                <Appear>
+                  <Heading fit size={6} textColor="white">* which also applies to game development</Heading>
+                </Appear>
+              </Fill>
+            </Layout>
             <Appear>
               <Heading size={1}>Use the tools you're most familiar with</Heading>
             </Appear>
@@ -551,7 +578,7 @@ export default class Presentation extends React.Component {
           />
           <Slide>
             <div className="playground-slide">
-              <Playground codeText={require("raw!../assets/scenedirector_demo.example")} scope={{ React, SceneDirector }} />
+              <Playground codeText={require("raw!../assets/scenedirector_demo.example")} scope={{ React, SceneDirector, GameButton }} />
             </div>
             <Link style={{ marginTop: 40, display: "block" }} href="https://github.com/frostney/react-scenedirector">https://github.com/frostney/react-scenedirector</Link>
           </Slide>
@@ -603,6 +630,16 @@ export default class Presentation extends React.Component {
                 <Text>#reactamsterdam</Text>
               </Fill>
             </Layout>
+          </Slide>
+          <Slide>
+            <Heading size={1} caps lineHeight={2}>Credits</Heading>
+            <Heading size={6} textColor="white">F8 2014 Rethinking Web Development: https://www.youtube.com/watch?v=nYkdrAPrdcw</Heading>
+            <Heading size={6} textColor="white">LucasArts Entertainment Company LLC - The Secret of Monkey Island</Heading>
+            <Heading size={6} textColor="white">Nintendo - Super Mario Bros.</Heading>
+            <Heading size={6} textColor="white">Lucasfilm Ltd. LLC</Heading>
+            <Heading size={6} textColor="white">20th Century Fox</Heading>
+            <Heading size={6} textColor="white">CBS - http://giphy.com/gifs/how-i-met-your-mother-yes-thumbs-up-3WY8qMF9l3ldK</Heading>
+            <Heading size={6} textColor="white">http://gameprogrammingpatterns.com/ - Robert Nystrom</Heading>
           </Slide>
         </Deck>
       </Spectacle>

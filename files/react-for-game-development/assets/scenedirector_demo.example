@@ -5,8 +5,8 @@
 
       return (
         <div>
-          <button onClick={switchToLevel1}>Switch to level 1</button>
-          <div>This is the main menu</div>
+          <GameButton onClick={switchToLevel1}>Switch to level 1</GameButton>
+          <div style={{ textAlign: 'center' }}>This is the main menu</div>
         </div>
       );
     },
@@ -15,8 +15,8 @@
 
       return (
         <div>
-          <button onClick={switchBack}>Go back</button>
-          <div>This is the first level</div>
+          <GameButton onClick={switchBack}>Go back</GameButton>
+          <div style={{ textAlign: 'center' }}>This is the first level</div>
         </div>
       )
     }
