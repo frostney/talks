@@ -107,7 +107,6 @@ const World = ({ children }) => (
 const Hit = () => <div />;
 const BlackFlag = () => <div />;
 
-
 const Ship = ({ x, y, children }) => {
   const styles = {
     position: "absolute",
@@ -428,7 +427,7 @@ export default class Presentation extends React.Component {
             </Heading>
           </Slide>
           <Slide margin={1}>
-            <div className="playground-slide">
+            <div className="playground-slide scale">
               <Playground codeText={codeText2} scope={{ React, templar: images.templar, AnimatedSpriteSheet: SpriteSheet.AnimatedSpriteSheet }} />
             </div>
             <Link style={{ marginTop: 40, display: "block" }} href="https://github.com/frostney/react-spritesheet">https://github.com/frostney/react-spritesheet</Link>
@@ -577,7 +576,7 @@ export default class Presentation extends React.Component {
             ]}
           />
           <Slide>
-            <div className="playground-slide">
+            <div className="playground-slide small-font">
               <Playground codeText={require("raw!../assets/scenedirector_demo.example")} scope={{ React, SceneDirector, GameButton }} />
             </div>
             <Link style={{ marginTop: 40, display: "block" }} href="https://github.com/frostney/react-scenedirector">https://github.com/frostney/react-scenedirector</Link>
