@@ -150,6 +150,20 @@ const Cannonball = ({ x, y }) => {
   );
 };
 
+const Healthbar = ({ value, width, height }) => {
+  return (
+    <div style={{ width, height, marginTop: -6, position: "absolute", backgroundColor: "red" }}>
+      <div style={{ width: ((value / 100) * width), height, position: "absolute", backgroundColor: "lime" }} />
+    </div>
+  );
+};
+
+Healthbar.defaultProps = {
+  value: 100,
+  width: 160,
+  height: 6
+};
+
 const GameButton = ({ children, onClick }) => (
   <button style={{
     background: "#3498db",
@@ -517,7 +531,7 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide margin={1}>
             <div className="playground-slide">
-              <Playground codeText={require("raw!../assets/composition.example")} scope={{ React, World, Ship, Cannonball, BlackFlag, Hit }} />
+              <Playground codeText={require("raw!../assets/composition.example")} scope={{ React, World, Ship, Healthbar, Cannonball, BlackFlag, Hit }} />
             </div>
           </Slide>
           <Slide>
