@@ -152,7 +152,7 @@ const Cannonball = ({ x, y }) => {
 
 const Healthbar = ({ value, width, height }) => {
   return (
-    <div style={{ width, height, marginTop: -6, position: "absolute", backgroundColor: "red" }}>
+    <div style={{ width, height, marginTop: -6, position: "absolute", backgroundColor: "red", borderRadius: 4 }}>
       <div style={{ width: ((value / 100) * width), height, position: "absolute", backgroundColor: "lime" }} />
     </div>
   );
@@ -161,7 +161,7 @@ const Healthbar = ({ value, width, height }) => {
 Healthbar.defaultProps = {
   value: 100,
   width: 160,
-  height: 6
+  height: 5
 };
 
 const GameButton = ({ children, onClick }) => (
