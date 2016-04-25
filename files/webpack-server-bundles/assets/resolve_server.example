@@ -1,0 +1,6 @@
+// Tell `require` calls to look into `/src` also
+// it will avoid `../../../../../` require strings
+process.env.NODE_PATH = 'src';
+require('module').Module._initPaths();
+// Unfortunately that's only completely
+// same as the Webpack config

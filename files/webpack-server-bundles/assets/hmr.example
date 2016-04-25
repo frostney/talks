@@ -1,0 +1,14 @@
+var path = require('path');
+var nodeExternals = require('webpack-node-externals');
+
+module.exports = {
+  entry: ['webpack/hot/poll?1000', './src/server.js'],
+  target: 'node',
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'server.js',
+  },
+  externals: [nodeExternals({
+    whitelist: ['webpack/hot/poll?1000']
+  })],
+};

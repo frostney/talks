@@ -1,0 +1,1 @@
+var myImage = require('assets/images/my-image.png');

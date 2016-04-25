@@ -8,7 +8,7 @@ This talk will be part history lesson, part showcase, part live coding. I will g
 
 ### React for Game Development
 Length: ~30 minutes  
-Proposed to: React Conf 2015, React Amsterdam, React Europe
+Proposed to: React Conf 2016, React Amsterdam, React Europe  
 Accepted at: React Amsterdam
 
 Using React for game development may not seem like an obvious choice at first. With React itself being compared to the Doom 3 game engine at F8 2014, we may not find ourselves in such a bad spot. We will take a look at how games are usually structured. Then we will examine different concepts in game development such as the entity-component pattern, game loops, and how we can implement them in React.
@@ -33,11 +33,11 @@ Length: ~30 minutes
 
 AVA touts itself as being a futuristic test runner. It bundles with Babel and allows your tests to be written in ECMAScript 2015+. We'll go into use cases of how we would write different kind of tests with AVA, from the simple checking equality over to asynchronous tests.
 
-### Obfuscate into
-Length: ~30 minutes
+### Obfuscate into Obscurity
+Length: ~30 minutes  
 Proposed to: JSConf Iceland
 
-When do
+If we take this piece of JavaScript `var myFunction = () => 42;`. How far can we go to still have executable but non-human readable version of  
 
 ### Let's develop a React-powered game in 30 minutes
 Length: ~30 minutes
