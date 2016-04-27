@@ -41,3 +41,38 @@ If we take this piece of JavaScript `var myFunction = () => 42;`. How far can we
 
 ### Let's develop a React-powered game in 30 minutes
 Length: ~30 minutes
+Proposed to: React Rally
+
+It's probably fair to assume that React is not your typical choice when it comes to game development. Surprisingly though, creating games with React is way easier and more fun than one would expect it to be. During this talk we will take a look at a typical game development process example by example. With each example we will be implementing a new feature until we have a playable prototype to show for by the end of the talk.
+
+I have previously spoken at another conference about using React for game development. That talk was focusing more on the theory on game development and sprinkled in same interactive live coding examples every now and again. Back then, the audience really liked the interactivity and the live coding which is what I would like to expand on with this talk. Consequently, the focus here would be more on live coding than on the theory behind it. 
+
+I would keep a similar structure to my previous React game development talk and we will be implementing a pirate based game:
+- Entity-component pattern (Placing ships on the screen)
+- User events (moving ships around, shooting cannon balls)
+- Animation (moving the enemy)
+- Collision (explaining the term game loop and being able to hit enemies)
+- What's next? A look into what we could or need to do from turning that the prototype into a real game
+
+At the end we would have a very basic game with a core game mechanic.
+
+All of the live coding would happen in the slides themselves, reducing the switching around different windows/workspaces and slides and it won't crash and burn as badly. :)
+
+Intended audience: Beginner and intermediate level
+Intended outcome: The audience gains a different perspective of what we can do with React besides the usual single-page app or client-server application.
+
+### Can we stop using lowercased components now?
+Proposed to: React Rally
+
+React is an amazing abstraction layer: Once we have created a component, we don't really need to care about how it is implemented or what happens under the hood. As long as we pass in the props that are expected we get the component on the screen. We don't really need to care if it's DOM, Canvas or WebGL in the background. Where will this lead ultimately? Could this even go so far that don't really need to care about the platform we are on? Would we be able write truly cross-platform code with React at some point?
+
+The rough outline of this talk would be:
+- Short refresher on how components work and what we can abstract away safely (Using React-Bootstrap as an example)
+- Targeting other backends than DOM (using React Canvas as an example)
+- Cross-platform code with React Native (using react-native-web)
+- If we were to implement something like that for ourselves, what are the things we would need to consider? Code examples will show important steps along the way
+- Going through caveats, pitfalls and things to consider when are abstracting away that much (The feeling of having a black box, not being able to customize as much, etc.)
+
+
+Intended audience: Intermediate
+Takeaway: Try to find the balance between abstracting away implementation details versus the need to control the implementation details.
