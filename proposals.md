@@ -34,14 +34,22 @@ Length: ~30 minutes
 AVA touts itself as being a futuristic test runner. It bundles with Babel and allows your tests to be written in ECMAScript 2015+. We'll go into use cases of how we would write different kind of tests with AVA, from the simple checking equality over to asynchronous tests.
 
 ### Obfuscate into Obscurity
-Length: ~30 minutes  
-Proposed to: JSConf Iceland
+Length: ~30 minutes 
+Proposed to: JSConf BP 2014, JSConf Iceland 2016, JS Kongress 2016
 
-If we take this piece of JavaScript `var myFunction = () => 42;`. How far can we go to still have executable but non-human readable version of  
+Did you know `[]+{}` equals to zero in JavaScript? Or that every string in JavaScript could be written as a combination of brackets, parenthesis, plusses and exclamation marks?
+We may have already heard of Hieroglyphy, JSFuck, node-obf or similar obfuscators that turn our carefully handcrafted JavaScript code into an unreadable mess. But what would it mean if we would want to create such an obfuscator by ourselves? What parts would be we able to customize and what effects will that lead to in the end? We will delve into performance implications, output size and even potential use cases.
+
+### Is tech recruiting broken?
+Length: ~30 minutes
+Proposed to: JSConf BP 2014, ffconf 2016
+
+When talking about making the decision of hiring someone it may have jokingly been referred to as being the equivalent of going on a first date and asking the person to marry you. Both the candidate and the company have to decide if it's a good fit within a short amount of time. Coupled with whiteboard algorithm exercises and LinkedIn recruiter spam, there seems to be a lot of negativity surronding the process of tech recruiting.
+We will take a look at the different stages in tech recruiting and try to turn the negativity into constructive criticism by proposing some improvements along the way.
 
 ### Let's develop a React-powered game in 30 minutes
-Length: ~30 minutes
-Proposed to: React Rally
+Length: ~30 minutes  
+Proposed to: React Rally 2016, JS Kongress 2016
 
 It's probably fair to assume that React is not your typical choice when it comes to game development. Surprisingly though, creating games with React is way easier and more fun than one would expect it to be. During this talk we will take a look at a typical game development process example by example. With each example we will be implementing a new feature until we have a playable prototype to show for by the end of the talk.
 
@@ -58,11 +66,11 @@ At the end we would have a very basic game with a core game mechanic.
 
 All of the live coding would happen in the slides themselves, reducing the switching around different windows/workspaces and slides and it won't crash and burn as badly. :)
 
-Intended audience: Beginner and intermediate level
+Intended audience: Beginner and intermediate level  
 Intended outcome: The audience gains a different perspective of what we can do with React besides the usual single-page app or client-server application.
 
 ### Can we stop using lowercased components now?
-Proposed to: React Rally
+Proposed to: React Rally 2016
 
 React is an amazing abstraction layer: Once we have created a component, we don't really need to care about how it is implemented or what happens under the hood. As long as we pass in the props that are expected we get the component on the screen. We don't really need to care if it's DOM, Canvas or WebGL in the background. Where will this lead ultimately? Could this even go so far that don't really need to care about the platform we are on? Would we be able write truly cross-platform code with React at some point?
 
@@ -74,5 +82,5 @@ The rough outline of this talk would be:
 - Going through caveats, pitfalls and things to consider when are abstracting away that much (The feeling of having a black box, not being able to customize as much, etc.)
 
 
-Intended audience: Intermediate
+Intended audience: Intermediate  
 Takeaway: Try to find the balance between abstracting away implementation details versus the need to control the implementation details.
