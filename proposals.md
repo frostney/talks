@@ -84,3 +84,16 @@ The rough outline of this talk would be:
 
 Intended audience: Intermediate  
 Takeaway: Try to find the balance between abstracting away implementation details versus the need to control the implementation details.
+
+
+### Bundles as a service
+Length: ~30 minutes  
+Traditionally, we have bundling our JavaScript by defining configuration files and executing these configurations on our local machine. But what if we create builds on the fly through a server? What are the advantages and disadvantages with this approach? Can we still have the goodies of modern web development such as live reloading and hot module reloading?
+
+### Individual paint for your React components
+Length: ~25 minutes  
+Theming with React is not always as straight-forward as we would like it to be. Often we rather style our CSS leading to masses of unneeded and convoluted classes. With universal JavaScript, React Native and Javascript for inline styles we may want a mechanism that's coupled more deeply into React. In this talk, we will explore we would explore current common approaches and how we take as step further to create React-coupled theming.
+
+### Location updates in React Native
+Length: ~30 minutes  
+One of the most interesting things in mobile applications are accessing the user's location and using its data to our advantage. We will take a look at how we would access location data, such as Bluetooth, GPS and iBeacon with React Native. We will also look into best practices and potential pitfalls with this technologies.
