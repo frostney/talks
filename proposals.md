@@ -71,7 +71,7 @@ Intended audience: Beginner and intermediate level
 Intended outcome: The audience gains a different perspective of what we can do with React besides the usual single-page app or client-server application.
 
 ### Can we stop using lowercased components now?
-Proposed to: React Rally 2016, ReactNext 2016  
+Proposed to: React Rally 2016, ReactNext 2016, ReactDay Verona 2016  
 
 React is an amazing abstraction layer: Once we have created a component, we don't really need to care about how it is implemented or what happens under the hood. As long as we pass in the props that are expected we get the component we want on the screen. We don't really need to care if it's DOM, Canvas or WebGL in the background. Where will this lead ultimately? Could this even go so far that don't really need to care about the platform we are on? Would we be able write truly cross-platform code with React at some point?
 
@@ -88,14 +88,14 @@ Takeaway: Try to find the balance between abstracting away implementation detail
 
 
 ### Bundles as a service
-Proposed to: ReactNext 2016, JSConf Columbia 2016  
+Proposed to: ReactNext 2016, JSConf Columbia 2016, ReactJS Day Verona 2016  
 Length: ~30 minutes  
-Traditionally, we have been bundling our JavaScript by defining configuration files and executing these on our local machine. But what if we move that those bundles to be served from a server? What are the advantages and disadvantages with this approach? Can we still have the goodies of modern web development such as live reloading and hot module reloading?
+Traditionally, we have been bundling our JavaScript by defining configuration files and executing these on our local machine. But what if we move that those bundles to be served from a centralized location? What are the advantages and disadvantages of this approach? Can we still have the goodies of a modern web developer experience with live reloading and hot module replacement?
 
 ### Individual paint for your React components
-Proposed to: ReactNext 2016  
+Proposed to: ReactNext 2016, ReactJS Day Verona 2016  
 Length: ~25 minutes  
-Theming with React is not always as straight-forward as we would like it to be. Often we rather style our CSS leading to masses of unneeded and convoluted classes. With universal JavaScript, React Native and Javascript for inline styles we may want a mechanism that's coupled more deeply into React. In this talk, we will explore we would explore current common approaches and how we take as step further to create React-coupled theming.
+Theming with React is not always as straight-forward as we would like it to be. Often we rather style our CSS leading to masses of unneeded and convoluted classes. With universal JavaScript, React Native and Javascript for styles we may want a mechanism that's coupled more deeply into React. In this talk, we will explore current common approaches to this problem and how we can take a step further to create React-coupled theming.
 
 ### Location APIs in React Native
 Proposed to: ReactNext 2016  
