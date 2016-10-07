@@ -223,6 +223,7 @@ export default class Presentation extends React.Component {
             <Appear>
               <Image src={images.contextproblem} />
             </Appear>
+            <Link href="https://medium.com/@mweststrate/how-to-safely-use-react-context-b7e343eff076#.44w62hnhe">Michel Westrate's excellent blog post</Link>
           </Slide>
           <Slide>
             <Heading size={1} fit caps lineHeight={2}>
