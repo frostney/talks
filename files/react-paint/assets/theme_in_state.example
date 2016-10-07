@@ -1,0 +1,14 @@
+import React from 'react';
+import { connect } from 'react-redux';
+
+const Button = ({ color, children }) => (
+  <button style={{ backgroundColor: color }}>
+  {children}
+  </button>
+);
+
+const mapStateToProps = (state) => ({
+  color: state.themeColor,
+});
+
+export default connect(mapStateToProps)(Button);

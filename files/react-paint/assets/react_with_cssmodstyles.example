@@ -1,0 +1,25 @@
+import React, { Component } from 'react';
+import { themr } from 'react-css-themr';
+
+@themr('MyThemedButton')
+class Button extends Component {
+  render() {
+    const { theme, icon, children } = this.props;
+    return (
+      <button className={theme.button}>
+        { icon ? <i className={theme.icon}>{icon}</i> : null}
+        <span className={theme.content}>{children}</span>
+      </button>
+    )
+  }
+}
+
+
+import successTheme from './SuccessButton.css';
+
+const App = (props) => (
+  <div {...props}>
+    <p>Do you like it?</p>
+    <Button theme={successTheme}>Yeah!</Button>
+  </div>
+);

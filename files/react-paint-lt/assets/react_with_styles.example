@@ -1,0 +1,20 @@
+import React from 'react';
+
+import ThemedStyleSheet from 'react-with-styles/lib/ThemedStyleSheet';
+import aphroditeInterface from 'react-with-styles-interface-aphrodite';
+import { css, withStyles, ThemeProvider } from 'react-with-styles';
+
+ThemedStyleSheet.registerDefaultTheme({
+  color: 'red',
+});
+
+ThemedStyleSheet.registerInterface(aphroditeInterface);
+
+const Button = ({ styles, children }) =>
+  <button {...css(styles.button)}>{children}</button>
+
+export default withStyles(({ color }) => ({
+  button: {
+    backgroundColor: color,
+  },
+}))(Button);

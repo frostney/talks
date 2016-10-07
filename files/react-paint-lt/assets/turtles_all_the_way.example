@@ -1,0 +1,14 @@
+const Button = ({ children, style = {} }) =>
+  <button style={style}>{children}</button>
+
+const YellowThemeButton = ({ children, style = {} }) =>
+  <Button style={[
+    style,
+    { backgroundColor: 'yellow' }]
+  }>{children}</Button>
+
+const BlueThemeButton = ({ children, style = {} }) =>
+  <Button style={[
+    style,
+    { backgroundColor: 'blue' }]
+  }>{children}</Button>

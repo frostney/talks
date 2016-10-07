@@ -1,0 +1,30 @@
+import React, { Component } from 'react';
+
+const themeData = {
+  color: 'green',
+};
+
+const themes = new EventEmitter();
+themes.addListener('change', color => {
+  themeData.color = color;
+});
+
+class Button extends Component {
+  state = { color: themeData.color };
+
+  componentDidMount() {
+    themes.addListener('change', color => {
+      this.setState({
+        color
+      });
+    });
+  }
+
+  render() {
+    return (
+      <button style={{ backgroundColor: this.state.color }}>
+        {this.props.children}
+      </button>
+    );
+  }
+};

@@ -12,7 +12,7 @@ import {
   Heading,
   Image,
   Layout,
-  Link,
+//  Link,
 //  ListItem,
 //  List,
 //  Markdown,
@@ -50,9 +50,7 @@ require("spectacle/lib/themes/default/index.css");
 // import codeText2 from "raw!./component2.example";
 
 const images = {
-  dannyQuote: require("../assets/danny_quote.png"),
-  underthehood: require("../assets/underthehood.jpg"),
-  contextproblem: require("../assets/contextproblem.png")
+  dannyQuote: require("../assets/danny_quote.png")
 };
 
 preloader(images);
@@ -72,7 +70,7 @@ export default class Presentation extends React.Component {
               Individual paint for your React components
             </Heading>
             <Heading size={2}>🎨</Heading>
-            <Heading size={6} textColor="white" lineHeight={3}>ReactJS Day 2016</Heading>
+            <Heading size={6} textColor="white" lineHeight={3}>ReactNext 2016</Heading>
             <Layout>
               <Fill>
                 <Text>Johannes Stein</Text>
@@ -81,21 +79,6 @@ export default class Presentation extends React.Component {
                 <Text>@frostney_</Text>
               </Fill>
             </Layout>
-          </Slide>
-          <Slide bgColor="primary">
-            <Heading size={1} fit caps lineHeight={2}>
-              A wild <Link href="https://twitter.com/frostney_">@frostney</Link> appears
-            </Heading>
-            <Appear>
-              <Text lineHeight={1.5}>
-                Also known as <S type="bold">Johannes Stein</S> in the real world
-              </Text>
-            </Appear>
-          </Slide>
-          <Slide>
-            <Heading size={1} fit caps lineHeight={2}>
-              When do we need themes?
-            </Heading>
           </Slide>
           <Slide notes="When choosing a traditional UI framework like Bootstrap or Foundation, I was longing for more. Since I really liked the way I was defining my routes in JSX with React Router, I wanted something similar for theming. Instead of being able to author my theme-related logic in JSX, CSS or preprocessors are the way to go. The components structure that we have in the app does not really apply to CSS and we always have context switches between styling our component and modifying our component.">
             <Heading size={1} fit caps lineHeight={2}>
@@ -116,9 +99,6 @@ export default class Presentation extends React.Component {
               <Text lineHeight={1.5}>Is there a React way?</Text>
             </Appear>
           </Slide>
-          <Slide>
-            <Image src={images.underthehood} />
-          </Slide>
           <Slide notes="So there is an obvious solution. Everything that is theme-related should live as inline styles. And that works, until someone needs to hack on styles, puts in an important somwehere and everything is totally messed up now. But, inline styles are the only option if we are going React Native. So I think we are onto something here.">
             <Heading size={1} fit caps lineHeight={2}>
               Inline styles to the rescue?
@@ -136,41 +116,6 @@ export default class Presentation extends React.Component {
               source={require("raw!../assets/turtles_all_the_way.example")}
             />
           </Slide>
-          <Slide>
-            <Heading size={1} fit caps lineHeight={2}>
-              How to deliver those styles?
-            </Heading>
-          </Slide>
-          <Slide>
-            <Heading size={1} fit caps lineHeight={2}>
-              <S type="italic"> EventEmitter</S> maybe?
-            </Heading>
-          </Slide>
-          <CodeSlide
-            transition={[]}
-            lang="jsx"
-            code={require("raw!../assets/eventemitter.example")}
-            ranges={[
-              { loc: [0, 31] },
-              { loc: [2, 10] },
-              { loc: [11, 30] }
-            ]}
-          />
-          <Slide>
-            <Heading size={1} fit caps lineHeight={2}>
-              Putting the themes into app state management?
-            </Heading>
-          </Slide>
-          <CodeSlide
-            transition={[]}
-            lang="jsx"
-            code={require("raw!../assets/theme_in_state.example")}
-            ranges={[
-              { loc: [0, 15] },
-              { loc: [3, 8] },
-              { loc: [9, 14] }
-            ]}
-          />
           <Slide notes="One of the questions we might have when implementing theming is if we should use context. And the answer is and I am paraphrasing Dan Abramov here: Avoid it if you can">
             <Heading size={1} fit caps lineHeight={2}>
               Should we use <S type="italic">context</S>?
@@ -217,53 +162,8 @@ export default class Presentation extends React.Component {
             ]}
           />
           <Slide>
-            <Heading size={1} fit caps lineHeight={2}>
-              The problem with <S type="italic">context</S>
-            </Heading>
-            <Appear>
-              <Image src={images.contextproblem} />
-            </Appear>
-          </Slide>
-          <Slide>
-            <Heading size={1} fit caps lineHeight={2}>
-              But I strongly dislike inline styles!
-            </Heading>
-            <Appear>
-              <Text lineHeight={1.5}>Inline styles !== "style" attribute</Text>
-            </Appear>
-          </Slide>
-          <Slide>
-            <Heading size={1} fit caps lineHeight={2}>
-              react-css-themr
-            </Heading>
-            <Appear>
-              <Text lineHeight={1.5}>https://github.com/javivelasco/react-css-themr</Text>
-            </Appear>
-            <Appear>
-              <Text lineHeight={1.5}>Theming with React with CSS Modules</Text>
-            </Appear>
-          </Slide>
-          <CodeSlide
-            transition={[]}
-            lang="jsx"
-            code={require("raw!../assets/react_with_cssmodstyles.example")}
-            ranges={[
-              { loc: [0, 26] },
-              { loc: [3, 15] },
-              { loc: [17, 25] }
-            ]}
-          />
-          <Slide>
             <Heading size={1} caps lineHeight={1}>Thank you!</Heading>
             <Heading size={2}>🍻</Heading>
-            <Layout>
-              <Fill>
-                <Text>@frostney_</Text>
-              </Fill>
-              <Fill>
-                <Text />
-              </Fill>
-            </Layout>
           </Slide>
         </Deck>
       </Spectacle>
