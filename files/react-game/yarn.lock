@@ -2872,7 +2872,7 @@ lodash.istypedarray@^3.0.0:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/lodash.istypedarray/-/lodash.istypedarray-3.0.6.tgz#c9a477498607501d8e8494d283b87c39281cef62"
 
-lodash.keys@^3.0.0:
+lodash.keys@^3.0.0, lodash.keys@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/lodash.keys/-/lodash.keys-3.1.2.tgz#4dbc0472b156be50a0b286855d1bd0b0c656098a"
   dependencies:
@@ -3936,6 +3936,13 @@ react-redux@^4.0.0:
     lodash "^4.2.0"
     loose-envify "^1.1.0"
 
+react-spritesheet@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-spritesheet/-/react-spritesheet-1.0.1.tgz#28253270d4498cc6bac5d6a0e7cc17104de1d5f7"
+  dependencies:
+    react "^15.0.1"
+    shallowequal "^0.2.2"
+
 react-transform-catch-errors@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-transform-catch-errors/-/react-transform-catch-errors-1.0.2.tgz#1b4d4a76e97271896fc16fe3086c793ec88a9eeb"
@@ -3953,7 +3960,7 @@ react-tween-state@0.1.3:
   dependencies:
     tween-functions "^1.0.1"
 
-"react@^15.0.1 || ^0.14.7", react@^15.2.1:
+react@^15.0.1, "react@^15.0.1 || ^0.14.7", react@^15.2.1:
   version "15.4.1"
   resolved "https://registry.yarnpkg.com/react/-/react-15.4.1.tgz#498e918602677a3983cd0fd206dfe700389a0dd6"
   dependencies:
@@ -4256,6 +4263,12 @@ setprototypeof@1.0.2:
 sha.js@2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/sha.js/-/sha.js-2.2.6.tgz#17ddeddc5f722fb66501658895461977867315ba"
+
+shallowequal@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-0.2.2.tgz#1e32fd5bcab6ad688a4812cb0cc04efc75c7014e"
+  dependencies:
+    lodash.keys "^3.1.2"
 
 shelljs@^0.5.3:
   version "0.5.3"

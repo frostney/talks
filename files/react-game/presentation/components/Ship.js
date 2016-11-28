@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from "react";
+import { Body } from "react-game-kit";
 import Matter from "matter-js";
 import BlackFlag from "./BlackFlag";
+import PhysicsBody from "./PhysicsBody";
 import Hit from "./Hit";
 import KeyEvent from "./KeyEvent";
 import Input from "../Input";
@@ -15,8 +17,13 @@ class Ship extends Component {
     this.state = {
       x: props.x,
       y: props.y,
-      directionIndex: props.directionIndex
+      directionIndex: props.directionIndex,
+      moveLeft: false,
+      moveRight: true,
+      hasPhysics: false
     };
+
+    this.update = this.update.bind(this);
   }
 
   componentDidMount() {
@@ -71,6 +78,10 @@ class Ship extends Component {
         });
       }
     }
+
+    if (this.body.body) {
+      Matter.Body.setVelocity(this.body.body, { x: this.state.x, y: this.state.y });
+    }
   }
 
   render() {
@@ -98,7 +109,28 @@ class Ship extends Component {
         styles.filter = filter;
         styles.WebkitFilter = filter;
       }
+
+      if (child.type === PhysicsBody) {
+        this.setState({
+          hasPhysics: true
+        });
+      }
     });
+
+    // if (this.state.hasPhysics) {
+      return (
+        <div style={styles}>
+          <Body
+            args={[this.state.x, this.state.y, WIDTH, HEIGHT]}
+            ref={(b) => this.body = b }
+          >
+            <div>
+              {children}
+            </div>
+          </Body>
+        </div>
+      );
+    // }
 
     return (
       <div style={styles}>{children}</div>

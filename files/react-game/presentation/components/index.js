@@ -7,3 +7,4 @@ export Game from "./Game";
 export Background from "./Background";
 export KeyEvent from "./KeyEvent";
 export PhysicsBody from "./PhysicsBody";
+export AnimatedPirateShip from "./AnimatedPirateShip";

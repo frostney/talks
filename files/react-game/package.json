@@ -19,6 +19,7 @@
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-game-kit": "^0.0.1",
+    "react-spritesheet": "^1.0.1",
     "spectacle": "^1.0.0"
   },
   "devDependencies": {

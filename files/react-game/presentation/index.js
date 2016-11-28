@@ -210,7 +210,7 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={1} fit caps lineHeight={2}>
-              Collision handling
+              Putting the pirate ship on patrol
             </Heading>
           </Slide>
           <Slide margin={1}>
@@ -220,22 +220,12 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={1} fit caps lineHeight={2}>
-              Putting the pirate ship on patrol
-            </Heading>
-          </Slide>
-          <Slide margin={1}>
-            <div className="playground-slide">
-              <Playground codeText={require("raw!assets/step2.example")} scope={imports} />
-            </div>
-          </Slide>
-          <Slide>
-            <Heading size={1} fit caps lineHeight={2}>
               Shooting cannonballs
             </Heading>
           </Slide>
           <Slide margin={1}>
             <div className="playground-slide">
-              <Playground codeText={require("raw!assets/step2.example")} scope={imports} />
+              <Playground codeText={require("raw!assets/step5.example")} scope={imports} />
             </div>
           </Slide>
           <Slide>
@@ -248,7 +238,7 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide margin={1}>
             <div className="playground-slide">
-              <Playground codeText={require("raw!assets/step2.example")} scope={imports} />
+              <Playground codeText={require("raw!assets/step6.example")} scope={imports} />
             </div>
           </Slide>
           <Slide>
