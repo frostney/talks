@@ -120,9 +120,6 @@ export default class Presentation extends React.Component {
             <Appear>
               <Text lineHeight={1.5}>Animations</Text>
             </Appear>
-            <Appear>
-              <Text lineHeight={1.5}>Collision handling</Text>
-            </Appear>
           </Slide>
           <Slide>
             <Heading size={2} caps lineHeight={1}>
