@@ -1,0 +1,9 @@
+const Character = () => (
+  <Container>
+    <Head />
+    <Torso>
+      <Arms waving />
+    </Torso>
+    <Legs />
+  </Container>
+);

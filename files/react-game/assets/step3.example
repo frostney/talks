@@ -1,0 +1,29 @@
+<Game>
+  <Background />
+  <Ship x={10} y={10}>
+    <KeyEvent onDown={function(keyCodes, state) {
+      const movement = {};
+
+      if (keyCodes.indexOf(Key.w) >= 0) {
+        movement.y = state.y - 4;
+      }
+
+      if (keyCodes.indexOf(Key.s) >= 0) {
+        movement.y = state.y + 4;
+      }
+
+      if (keyCodes.indexOf(Key.a) >= 0) {
+        movement.x = state.x - 4;
+      }
+
+      if (keyCodes.indexOf(Key.d) >= 0) {
+        movement.x = state.x + 4;
+      }
+
+      return movement;
+    }} />
+  </Ship>
+  <Ship x={200} y={100}>
+    <BlackFlag />
+  </Ship>
+</Game>
