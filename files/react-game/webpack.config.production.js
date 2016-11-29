@@ -11,10 +11,10 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
     filename: "bundle.js",
-    publicPath: "/dist/"
+    publicPath: "./dist/"
   },
   resolve: {
-    root: "./"
+    root: __dirname
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
