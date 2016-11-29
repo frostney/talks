@@ -21,6 +21,6 @@
     "remark": "^0.1.0"
   },
   "devDependencies": {
-    "gh-pages": "tschaub/gh-pages#only"
+    "gh-pages": "0.12.0"
   }
 }
