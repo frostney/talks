@@ -248,7 +248,7 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide margin={1}>
             <div className="playground-slide">
-              <Playground codeText={require("raw!assets/step2.example")} scope={imports} />
+              <Playground codeText={require("raw!assets/step7.example")} scope={imports} />
             </div>
           </Slide>
           <Slide>
