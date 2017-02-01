@@ -1,0 +1,6 @@
+define('myModule', ['./myOtherModule'], function(myOtherModule) {
+
+  return function() {
+    // ...
+  }
+})

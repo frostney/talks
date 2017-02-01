@@ -1,0 +1,13 @@
+// In our Webpack config
+plugins: [
+  new webpack.DefinePlugin({
+    'process.env.BROWSER': true,
+  }),
+]
+
+// In our code
+var myImage = null;
+
+if (process.env.BROWSER) {
+  require('assets/images/my-image.png');
+}

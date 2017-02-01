@@ -1,0 +1,16 @@
+var MyApp = window.MyApp || {};
+
+MyApp.Common = MyApp.Common || {};
+MyApp.Common.render = function() {
+
+};
+
+MyApp.InfoPage = MyApp.InfoPage || {};
+MyApp.InfoPage.initialize = function() {
+
+};
+
+MyApp.OtherSite = MyApp.OtherSite || {};
+MyApp.OtherSite.initialize = function() {
+
+};

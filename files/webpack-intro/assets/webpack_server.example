@@ -1,0 +1,10 @@
+var path = require('path');
+
+module.exports = {
+  entry: './src/server.js',
+  target: 'node',
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'server.js',
+  },
+};

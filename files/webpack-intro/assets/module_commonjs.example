@@ -1,0 +1,5 @@
+var myModule = require('./myModule')
+
+module.exports = function() {
+ // ...
+}

@@ -1,0 +1,5 @@
+import myOtherModule from './myOtherModule';
+
+export default function() {
+  // ...
+}
