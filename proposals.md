@@ -101,3 +101,7 @@ Theming with React is not always as straight-forward as we would like it to be. 
 Proposed to: ReactNext 2016  
 Length: ~30 minutes  
 One of the most interesting features in mobile applications are accessing the user's location and using its data to our advantage. We will take a look at how we would access location data, such as Bluetooth, GPS and iBeacon with React Native. Then we'll go into best practices and potential pitfalls with this technologies.
+
+### The rocky road of monorepos
+Length: ~10 minutes
+Monorepos have often stigmatized as bad practice and as such something that should be avoided at all costs. Still, big companies like Facebook, AirBnB and Google are actively using monorepos to manage their projects. In the open source world, monorepos have become more popular as well with Babel being the most prominent example. We'll dive into why monorepos might have this bad reputation and go into where it makes sense to have monorepos, talk about their advantages and their shortcomings. We'll also look into what tooling solutions are available - especially in a JavaScript context.
