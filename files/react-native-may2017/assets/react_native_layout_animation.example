@@ -1,0 +1,24 @@
+import React, { Component } from 'react';
+import { View, Text, TouchableHighlight, LayoutAnimation } from 'react-native';
+
+export default class extends Component {
+  this.state = { displayView: false };
+
+  onPress = () => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    this.setState(prevState => ({
+      displayView: !prevState.displayView
+    }));
+  }
+
+  render() {
+    return (
+      <View>
+        <TouchableHighlight onPress={this.onPress}>
+          <Text>Press for magic!</Text>
+        </TouchableHighlight>
+        { this.state.displayView ? <View style={backgroundColor: 'red', width: 100, height: 100} /> : null }
+      </View>
+    );
+  }
+}

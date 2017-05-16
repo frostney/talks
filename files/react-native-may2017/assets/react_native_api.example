@@ -1,0 +1,21 @@
+import React, { Component } from 'react';
+import { View, Text, TouchableHighlight, Share } from 'react-native';
+
+class MyComponent extends Component {
+  onPress = () => Share.share({
+    title: 'Share something',
+    message: 'Let\'s share this message.'
+  });
+
+  render() {
+    return (
+      <View>
+        <TouchableHighlight onPress={this.onPress}>
+          <Text>Press to share</Text>
+        </TouchableHighlight>
+      </View>
+    )
+  }
+}
+
+export default MyComponent;

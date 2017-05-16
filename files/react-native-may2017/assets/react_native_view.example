@@ -1,0 +1,18 @@
+import React, { Component } from 'react';
+import { View, Text, TouchableHighlight } from 'react-native';
+
+class MyComponent extends Component {
+  onPress = () => alert('Hello meetup');
+
+  render() {
+    return (
+      <View>
+        <TouchableHighlight onPress={this.onPress}>
+          <Text>Hello meetup</Text>
+        </TouchableHighlight>
+      </View>
+    )
+  }
+}
+
+export default MyComponent;
