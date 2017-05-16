@@ -5,6 +5,8 @@
   "main": "index.js",
   "private": true,
   "scripts": {
+    "build": "shjs build.js",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d files -v node_modules"
   },
   "repository": {
@@ -17,10 +19,9 @@
     "url": "https://github.com/frostney/talks/issues"
   },
   "homepage": "https://github.com/frostney/talks#readme",
-  "dependencies": {
-    "remark": "^0.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "gh-pages": "0.12.0"
+    "gh-pages": "^1.0.0",
+    "shelljs": "^0.7.7"
   }
 }
