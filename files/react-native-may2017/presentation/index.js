@@ -58,6 +58,9 @@ export default () => (
       <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
         Where is it now? (Almost two years after its inception)
       </Text>
+      <Text margin="50px 0 0" textColor="tertiary" size={6}>
+        Johannes Stein
+      </Text>
     </Slide>
     <Slide bgColor="primary">
       <Heading size={1} fit caps lineHeight={1} textColor="secondary">
