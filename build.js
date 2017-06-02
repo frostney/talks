@@ -16,7 +16,7 @@ const folders = fs.readdirSync(FOLDER_PREFIX)
   })
   .forEach(folder => {
     cd(`${FOLDER_PREFIX}/${folder}`);
-    exec('yarn');
-    exec('yarn build');
+    exec('npm install');
+    exec('npm run build');
     cd('..');
   })
