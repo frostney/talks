@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "build": "shjs build.js",
-    "predeploy": "yarn build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d files -v node_modules"
   },
   "repository": {
