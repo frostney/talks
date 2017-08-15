@@ -1,0 +1,9 @@
+const Game = ({ children }) => (
+  <Loop>
+    <Stage>
+      <World>
+        {children}
+      </World>
+    </Stage>
+  </Loop>
+)

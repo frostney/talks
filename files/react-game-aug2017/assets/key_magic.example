@@ -1,0 +1,11 @@
+const KeyEvent = () => null;
+
+const Ship = ({ children }) => {
+  React.Children.forEach(children, (child) => {
+    if (child.type === KeyEvent) {
+      if (child.props.onDown) {
+        // Yay, someone defined a key handler
+      }
+    }
+  });
+}

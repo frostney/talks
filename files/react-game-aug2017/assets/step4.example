@@ -1,0 +1,49 @@
+<Game>
+  <Background />
+  <Ship x={10} y={10}>
+    <KeyEvent onDown={(keys, prevState) => {
+      const state = {};
+
+      if (keys.indexOf(Key.w) >= 0) {
+        state.y = prevState.y - 4;
+        state.directionIndex = 4;
+      }
+
+      if (keys.indexOf(Key.s) >= 0) {
+        state.y = prevState.y + 4;
+        state.directionIndex = 0;
+      }
+
+      if (keys.indexOf(Key.a) >= 0) {
+        state.x = prevState.x - 4;
+        state.directionIndex = 6;
+      }
+
+      if (keys.indexOf(Key.d) >= 0) {
+        state.x = prevState.x + 4;
+        state.directionIndex = 2;
+      }
+
+      if (keys.indexOf(Key.w) >= 0 && keys.indexOf(Key.a) >= 0) {
+        state.directionIndex = 5;
+      }
+
+      if (keys.indexOf(Key.w) >= 0 && keys.indexOf(Key.d) >= 0) {
+        state.directionIndex = 3;
+      }
+
+      if (keys.indexOf(Key.s) >= 0 && keys.indexOf(Key.a) >= 0) {
+        state.directionIndex = 7;
+      }
+
+      if (keys.indexOf(Key.s) >= 0 && keys.indexOf(Key.d) >= 0) {
+        state.directionIndex = 1;
+      }
+
+      return state;
+    }} />
+  </Ship>
+  <Ship x={200} y={100}>
+    <BlackFlag />
+  </Ship>
+</Game>

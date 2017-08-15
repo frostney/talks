@@ -1,0 +1,90 @@
+<Game>
+  <Background />
+  <Ship x={10} y={10}>
+    <Cannonball x={40} y={40} visible={false} onUpdate={(prevState) => {
+      if (prevState.isShooting) {
+        if (prevState.y <= -40) {
+          return { isShooting: false, visible: false };
+        } else {
+          return { y: prevState.y - 2 };
+        }
+      }
+    }}>
+      <KeyEvent onDown={(keys, prevState) => {
+        if (keys.indexOf(Key.q) >= 0) {
+          return { isShooting: true, visible: true, y: 40 };
+        }
+      }} />
+    </Cannonball>
+    <KeyEvent onDown={(keys, prevState) => {
+      const state = {};
+
+      if (keys.indexOf(Key.w) >= 0) {
+        state.y = prevState.y - 4;
+        state.directionIndex = 4;
+      }
+
+      if (keys.indexOf(Key.s) >= 0) {
+        state.y = prevState.y + 4;
+        state.directionIndex = 0;
+      }
+
+      if (keys.indexOf(Key.a) >= 0) {
+        state.x = prevState.x - 4;
+        state.directionIndex = 6;
+      }
+
+      if (keys.indexOf(Key.d) >= 0) {
+        state.x = prevState.x + 4;
+        state.directionIndex = 2;
+      }
+
+      if (keys.indexOf(Key.w) >= 0 && keys.indexOf(Key.a) >= 0) {
+        state.directionIndex = 5;
+      }
+
+      if (keys.indexOf(Key.w) >= 0 && keys.indexOf(Key.d) >= 0) {
+        state.directionIndex = 3;
+      }
+
+      if (keys.indexOf(Key.s) >= 0 && keys.indexOf(Key.a) >= 0) {
+        state.directionIndex = 7;
+      }
+
+      if (keys.indexOf(Key.s) >= 0 && keys.indexOf(Key.d) >= 0) {
+        state.directionIndex = 1;
+      }
+
+      return state;
+    }} />
+  </Ship>
+  <Ship x={200} y={100} onUpdate={function(prevState) {
+    if (prevState.x >= 300 && prevState.moveRight) {
+      return {
+        moveLeft: true,
+        moveRight: false
+      }
+    }
+
+    if (prevState.x <= 100 && prevState.moveLeft) {
+      return {
+        moveLeft: false,
+        moveRight: true
+      }
+    }
+
+    if (prevState.moveRight) {
+      return {
+        x: prevState.x + 1
+      }
+    }
+
+    if (prevState.moveLeft) {
+      return {
+        x: prevState.x - 1
+      }
+    }
+  }}>
+    <BlackFlag />
+  </Ship>
+</Game>
