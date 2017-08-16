@@ -153,6 +153,11 @@ export default class Presentation extends React.Component {
               <Playground codeText={require("raw!assets/step5.example")} scope={imports} />
             </div>
           </Slide>
+          <Slide margin={1}>
+          <div className="playground-slide">
+            <Playground codeText={require("raw!assets/step6.example")} scope={imports} />
+          </div>
+        </Slide>
           <Slide>
             <Heading size={1} fit caps lineHeight={1}>
               There is still a lot to do
@@ -179,7 +184,7 @@ export default class Presentation extends React.Component {
                 <Text>@frostney_</Text>
               </Fill>
               <Fill>
-                <Text>Reactivate London #5</Text>
+                <Text>#ReactivateLDN</Text>
               </Fill>
             </Layout>
           </Slide>
