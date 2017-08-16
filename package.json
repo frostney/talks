@@ -8,7 +8,7 @@
     "build": "shjs build.js",
     "precopy": "npm run build",
     "copy": "copyfiles -u 1 'files/index.html' 'files/*/slides/**/*' 'files/*/index.html' 'files/*/dist/**/*' docs",
-    "prepush": "npm run copy && git add . && git commit -m 'Update Github pages'"
+    "prepush": "shjs prepush.js"
   },
   "repository": {
     "type": "git",
