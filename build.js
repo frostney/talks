@@ -19,4 +19,5 @@ const folders = fs.readdirSync(FOLDER_PREFIX)
     exec('npm install');
     exec('npm run build');
     cd('..');
+    cd('..');
   })
