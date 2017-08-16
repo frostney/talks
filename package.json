@@ -6,8 +6,9 @@
   "private": true,
   "scripts": {
     "build": "shjs build.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d files -v node_modules"
+    "precopy": "npm run build",
+    "copy": "copyfiles -u 1 'files/index.html' 'files/*/slides/**/*' 'files/*/index.html' 'files/*/dist/**/*' docs",
+    "prepush": "npm run copy && git add . && git commit -m 'Update Github pages'"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,8 @@
   "homepage": "https://github.com/frostney/talks#readme",
   "dependencies": {},
   "devDependencies": {
-    "gh-pages": "^1.0.0",
+    "copyfiles": "^1.2.0",
+    "husky": "^0.14.3",
     "shelljs": "^0.7.7"
   }
 }

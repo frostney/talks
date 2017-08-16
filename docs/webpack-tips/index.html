@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Useful tips for your Webpack config</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1 {
+        font-weight: bold;
+      }
+
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .remark-slide-content {
+        background: rgba(255,255,255,1);
+        background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(226,231,233,1) 41%, rgba(178,191,194,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(41%, rgba(226,231,233,1)), color-stop(100%, rgba(178,191,194,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(226,231,233,1) 41%, rgba(178,191,194,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(226,231,233,1) 41%, rgba(178,191,194,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(226,231,233,1) 41%, rgba(178,191,194,1) 100%);
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(226,231,233,1) 41%, rgba(178,191,194,1) 100%);
+      }
+
+      .orange {
+        background: rgba(255,255,255,1);
+        background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,231,213,1) 41%, rgba(229,190,143,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(41%, rgba(246,231,213,1)), color-stop(100%, rgba(229,190,143,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,231,213,1) 41%, rgba(229,190,143,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,231,213,1) 41%, rgba(229,190,143,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,231,213,1) 41%, rgba(229,190,143,1) 100%);
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(246,231,213,1) 41%, rgba(229,190,143,1) 100%);
+      }
+
+      .blue {
+        background: rgba(255,255,255,1);
+        background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,230,238,1) 41%, rgba(163,188,210,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(41%, rgba(221,230,238,1)), color-stop(100%, rgba(163,188,210,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,230,238,1) 41%, rgba(163,188,210,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,230,238,1) 41%, rgba(163,188,210,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,230,238,1) 41%, rgba(163,188,210,1) 100%);
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(221,230,238,1) 41%, rgba(163,188,210,1) 100%);
+      }
+
+      .green {
+        background: rgba(255,255,255,1);
+        background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,238,227,1) 41%, rgba(163,210,181,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(41%, rgba(221,238,227,1)), color-stop(100%, rgba(163,210,181,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,238,227,1) 41%, rgba(163,210,181,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,238,227,1) 41%, rgba(163,210,181,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(221,238,227,1) 41%, rgba(163,210,181,1) 100%);
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(221,238,227,1) 41%, rgba(163,210,181,1) 100%);
+      }
+
+      .bigcode .remark-code {
+        font-size: 26px;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      .right-column ul li {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      ul li {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      ul li:first-child {
+        margin-top: 0;
+      }
+
+      a, a:hover, a:visited {
+        text-decoration: none;
+        color: navy;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Useful tips for your webpack config
+---
+class: center, middle
+
+# <strike>Useful tips for your webpack config</strike>
+
+# Things I wish I had known when I started using Webpack
+---
+class: center, middle
+
+# A wild __[@frostney](https://twitter.com/frostney_)__ appears
+
+--
+
+### I do React (and React Native) for a living
+
+--
+
+### Open-source is in my blood
+
+--
+
+### Tries to not jump on bord every hype train
+
+--
+
+## <i class="fa fa-twitter"></i> @frostney_
+
+--
+
+## <i class="fa fa-github"></i> frostney
+
+---
+class: center, middle, orange
+
+# Require hell
+
+### `require('../../../../MyFancyComponent.js')`
+---
+class: middle, bigcode
+
+```
+|- webpack.config.js
+|- src
+ |- actions
+ |- components
+ |- images
+ |- stores
+ |- styles
+```
+---
+class: middle, bigcode
+
+```
+|- webpack.config.js
+|- src
+ |- actions
+ |- components
+  |- MyComponent.js
+ |- images
+ |- stores
+  |- MyStore.js
+ |- styles
+```
+
+### `MyComponent.js`
+
+```javascript
+var MyStore = require('../stores/MyStore.js');
+```
+---
+class: middle, bigcode
+
+```
+|- webpack.config.js
+|- src
+ |- actions
+ |- components
+  |- ui
+   |- toolbar
+    |- Button.js
+ |- images
+ |- stores
+  |- MyStore.js
+ |- styles
+```
+
+### `Button.js`
+
+```javascript
+var MyStore = require('../../../stores/MyStore.js');
+```
+---
+class: middle, bigcode
+
+```javascript
+resolve: {
+  extensions: ['', '.js', '.jsx'],
+},
+```
+
+---
+class: middle, bigcode, blue
+
+```javascript
+resolve: {
+  extensions: ['', '.js', '.jsx'],
+*  alias: {
+*    styles: __dirname + '/src/styles',
+*  },
+}
+```
+
+---
+class: middle, bigcode, blue
+
+```javascript
+resolve: {
+  extensions: ['', '.js', '.jsx'],
+*  alias: {
+*    styles: __dirname + '/src/styles',
+*    components: __dirname + '/src/components',
+*  },
+}
+```
+
+---
+class: middle, bigcode, green
+
+```javascript
+resolve: {
+  extensions: ['', '.js', '.jsx'],
+*  root: __dirname + '/src'
+}
+```
+
+---
+class: center, middle, orange
+
+# Integrating third-party libraries
+
+---
+class: middle, blue, bigcode
+
+# `webpack.config.js`
+```javascript
+loaders: [
+/* ... */
+  {
+    test: /\somelibrary.js$/,
+    loader: 'imports?this=>window'
+  }
+/* ... */
+]
+```
+
+---
+class: middle, blue, bigcode
+
+# `webpack.config.js`
+```javascript
+loaders: [
+/* ... */
+  {
+    test: /\somelibrary.js$/,
+    loader: 'exports?window.SomeLibrary'
+  }
+/* ... */
+]
+```
+
+---
+class: middle, blue, bigcode
+
+# `webpack.config.js`
+```javascript
+loaders: [
+/* ... */
+  {
+    test: /\somelibrary.js$/,
+    loader: 'imports?this=>window,exports?window.SomeLibrary'
+  }
+/* ... */
+]
+```
+
+---
+class: center, middle, orange
+
+# Integrating Modernizr
+
+---
+class: middle, blue, bigcode
+# `webpack.config.js`
+```javascript
+loaders: [
+/* ... */
+  {
+    test: /\modernizr.js$/,
+    loader: 'imports?this=>window,html5=>window.html5!exports?window.Modernizr'
+  }
+/* ... */
+]
+```
+
+---
+class: center, middle
+
+# https://github.com/peerigon/modernizr-loader
+
+---
+class: middle, green, bigcode
+
+### `.modernizrrc`
+```json
+{
+  "minify": true,
+  "options": [
+    "setClasses"
+  ],
+  "feature-detects": []
+}
+```
+---
+class: middle, green, bigcode
+
+### `webpack.config.js`
+```javascript
+module: {
+  loaders: [
+    {
+      test: /\.modernizrrc$/,
+      loader: 'modernizr'
+    }
+  ]
+},
+resolve: {
+  alias: {
+    modernizr$: path.resolve(__dirname, '.modernizrrc')
+  }
+}
+```
+
+---
+class: center, middle, orange
+
+# Using fonts
+
+---
+class: middle, green
+
+```javascript
+loaders: [
+/* ... */
+{
+  test: /\.woff$/,
+  loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+}, {
+  test: /\.woff2$/,
+  loader: 'url-loader?limit=10000&mimetype=application/font-woff2'
+}, {
+  test: /\.ttf$/,
+  loader: 'file-loader'
+}, {
+  test: /\.otf$/,
+  loader: 'file-loader'
+}, {
+  test: /\.eot$/,
+  loader: 'file-loader'
+}, {
+  test: /\.svg$/,
+  loader: 'file-loader'
+}
+/* ... */
+]
+```
+
+---
+
+class: center, middle, orange
+
+# UMD versions for our React-infused libraries
+
+---
+
+### `webpack.config.js`
+```javascript
+module.exports = {
+  entry: './src',
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+  output: {
+    path: './dist',
+    filename: 'react-myfancylibrary.js',
+  },
+  module: {
+    loaders: [{
+      test: /\.jsx?$/,
+      exclude: /(node_modules)/,
+      loader: 'babel-loader',
+    }],
+  },
+};
+```
+
+---
+
+### `webpack.config.js`
+```javascript
+module.exports = {
+  entry: './src',
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+*  externals: {
+*    react: 'React',
+*  },
+  output: {
+    path: './dist',
+    filename: 'react-myfancylibrary.js',
+*    library: 'FancyLibrary',
+*    libraryTarget: 'umd',
+  },
+  module: {
+    loaders: [{
+      test: /\.jsx?$/,
+      exclude: /(node_modules)/,
+      loader: 'babel-loader',
+    }],
+  },
+};
+```
+
+---
+class: middle
+
+# So we got our library. But...
+```javascript
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+*		 module.exports = factory(require("React"));
+	else if(typeof define === 'function' && define.amd)
+*		 define(["React"], factory);
+	else if(typeof exports === 'object')
+*		 exports["FancyLibrary"] = factory(require("React"));
+	else
+		root["FancyLibrary"] = factory(root["React"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_2__) {
+/* ... */
+```
+
+---
+class: middle, green
+
+### `webpack.config.js`
+```javascript
+module.exports = {
+  entry: './src',
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+*  externals: {
+*    react: {
+*    root: 'React',
+*    amd: 'react',
+*    commonjs: 'react',
+*    commonjs2: 'react'
+*    },
+*  },
+  output: {
+    path: './dist',
+    filename: 'react-myfancylibrary.js',
+    library: 'FancyLibrary',
+    libraryTarget: 'umd',
+  },
+  module: {
+    loaders: [{
+      test: /\.jsx?$/,
+      exclude: /(node_modules)/,
+      loader: 'babel-loader',
+    }],
+  },
+};
+```
+
+---
+class: middle, green
+
+
+```javascript
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+*		 module.exports = factory(require("react"));
+	else if(typeof define === 'function' && define.amd)
+*	 	 define(["react"], factory);
+	else if(typeof exports === 'object')
+* 		exports["FancyLibrary"] = factory(require("react"));
+	else
+		root["FancyLibrary"] = factory(root["React"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_2__) {
+/* ... */
+```
+
+---
+class: center, middle, orange
+
+# My tests are taking too long
+
+---
+class: middle, bigcode
+
+### `webpack.config.js`
+```javascript
+loaders: [
+  /* ... */
+  {
+    test: /\.(png|gif|jpg)$/,
+    loader: 'url-loader?limit=8192',
+  }
+  /* ... */
+],
+```
+
+---
+class: middle, bigcode, green
+
+### `webpack.config.js`
+```javascript
+loaders: [
+  /* ... */
+  {
+    test: /\.(png|gif|jpg)$/,
+    loader: 'null-loader',
+  }
+  /* ... */
+],
+```
+
+---
+
+class: center, middle, orange
+
+# Require all JavaScript files from a directory
+
+---
+class: middle, bigcode
+
+```
+|- someFile.js
+|- anotherFile.js
+|- someOtherFile.js
+|- index.js
+```
+
+---
+class: middle, bigcode
+
+### `index.js`
+```javascript
+var someFile = require('./someFile');
+var anotherFile = require('./anotherFile');
+var someOtherFile = require('./someOtherFile');
+
+module.exports = {someFile, anotherFile, someOtherFile};
+```
+
+---
+class: middle, bigcode, green
+
+### `index.js`
+```javascript
+var path = require('path');
+var req = require.context('./', false, /\.js$/);
+
+module.exports = req.keys().reduce(function(obj, name) {
+  var ext = path.extname(name);
+  var moduleName = path.basename(name).split(ext)[0];
+
+  obj[moduleName] = req(name);
+  return obj;
+}, {});
+```
+
+--
+
+```javascript
+{
+  someFile: /* ... */,
+  anotherFile: /* ... */,
+  someOtherFile: /* ... */
+}
+```
+
+---
+
+class: center, middle, orange
+
+# Execute all JavaScript files from a directory
+
+---
+class: middle, bigcode, green
+
+```javascript
+var req = require.context('./', false, /\.js$/);
+
+req.keys().forEach(req);
+```
+
+---
+class: center, middle
+
+# Shameless plug incoming
+
+---
+class: center, middle
+
+# More about Webpack at...
+## Web & Wine Meetup
+### December 15th
+### University of Applied Sciences in Augsburg
+### http://www.meetup.com/de/web-and-wine/events/226911260/
+
+---
+class: center, middle
+
+# Thank you!
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>

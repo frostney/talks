@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>From development choas to development processes</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        padding-top: 1rem;
+      }
+      .left-column h2:last-of-type, .left-column h3:last-child, .left-column h4:last-child, .left-column h5:last-child {
+        color: #000;
+      }
+      .left-column h2:first-child, .left-column h3:first-child {
+        margin-top: 0;
+      }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1rem;
+        font-size: 1.8rem;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      .right-column ul li {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      ul li {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      ul li:first-child {
+        margin-top: 0;
+      }
+
+      a, a:hover, a:visited {
+        text-decoration: none;
+        color: navy;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# From development chaos to development processes
+---
+class: center, middle
+
+![intro](images/intro.gif)
+---
+class: center, middle
+
+# Disclaimer
+
+## Most of this is based on my own opinion
+### This doesn't that this is right. This doesn't mean that it's wrong either.
+
+Johannes Stein
+
+Twitter: [@frostney_](https://twitter.com/frostney_)
+
+Github: [frostney](https://github.com/frostney)
+
+---
+
+# Joel Test
+### http://www.joelonsoftware.com/articles/fog0000000043.html
+
+```
+1. Do you use source control?
+2. Can you make a build in one step?
+3. Do you make daily builds?
+4. Do you have a bug database?
+5. Do you fix bugs before writing new code?
+6. Do you have an up-to-date schedule?
+7. Do you have a spec?
+8. Do programmers have quiet working conditions?
+9. Do you use the best tools money can buy?
+10. Do you have testers?
+11. Do new candidates write code during their interview?
+12. Do you do hallway usability testing?
+```
+
+---
+
+# Joel Test
+### http://www.joelonsoftware.com/articles/fog0000000043.html
+
+```
+1. Do you use source control?
+*2. Can you make a build in one step?
+*3. Do you make daily builds?
+4. Do you have a bug database?
+*5. Do you fix bugs before writing new code?
+*6. Do you have an up-to-date schedule?
+*7. Do you have a spec?
+*8. Do programmers have quiet working conditions?
+9. Do you use the best tools money can buy?
+10. Do you have testers?
+11. Do new candidates write code during their interview?
+12. Do you do hallway usability testing?
+```
+
+---
+
+# Joel Test
+### http://www.joelonsoftware.com/articles/fog0000000043.html
+
+> A score of 12 is perfect, 11 is tolerable, but 10 or lower and you've got serious problems. The truth is that most software organizations are running with a score of 2 or 3, and they need serious help, because companies like Microsoft run at 12 full-time.
+
+---
+
+# What is development chaos?
+
+--
+
+![cowboycoder](images/cowboy-coder.png)
+
+--
+
+- People do what they want (regardless of deadlines or vision)
+
+--
+
+- Failure to deliver ("Let's move this release, because...")
+
+--
+
+- Unpredictability
+
+---
+class: center, middle
+
+# Story Time
+#### Suprise deployments
+
+![surprise](images/surprise.gif)
+
+---
+
+# How can we fix this?
+
+--
+
+- Set a schedule
+
+--
+
+- Stick to the schedule
+
+--
+
+- STICK TO THE SCHEDULE!!!
+
+--
+
+- STICK TO THE ... Ok, I think you get it
+
+---
+class: center, middle
+
+# Story time
+#### Wait a minute... employees do actually take their vacation and they are prone to get sick?
+
+![surprise](images/overtime.jpg)
+
+---
+
+# How can we fix this?
+
+--
+
+- Capacity planning
+
+--
+
+- Rough estimation
+
+--
+
+- Priorize
+
+---
+
+class: center, middle
+
+# Story Time
+#### You got a minute, right?
+
+![yougotaminute](images/yougotaminute.jpg)
+
+---
+
+# How can we fix this?
+
+--
+
+- Software engineers need long uninterrupted amounts of time ("Flow")
+
+--
+
+- Try to reduce interruptions as much as possible
+
+--
+
+- Keep meetings to a minimum
+
+--
+
+- Prefer asynchronous communication
+
+--
+
+- Get rid of spontaneous meetings completely!
+
+---
+class: center, middle
+
+# Story Time
+#### But wasn't that bug fixed a long time ago?
+
+![notsureifbug](images/notsureifbug.jpg)
+
+---
+
+# How can we fix this?
+
+--
+
+- Feature freeze
+
+--
+
+- Dedicated testing & bugfixing phase
+
+--
+
+- Priorize
+
+---
+
+# Let's compare notes
+
+### https://www.youtube.com/watch?v=mOyoTUETmSM
+
+![facebook-cycle](images/facebook-cycle.png)
+
+---
+class: center, middle
+
+![weneedtogodeeper](images/weneedtogodeeper.jpg)
+
+---
+
+# Guidelines
+
+--
+
+#### Commit Guidelines
+Why? Because we don't want 100+ commits that just say `stuff`
+
+Examples: Atom Commit Guideline, Angular Commit Guideline
+
+--
+
+#### Linting
+Why? Because everyone has their own opinion on where to put semi-colons and colons
+
+Tools: JSHint, JSCS, ESLint
+
+Examples: AirBnB guideline
+
+---
+
+# Guidelines
+
+--
+
+- Nobody pushes to master (unless the building is on fire)
+
+--
+
+- Create feature/bugfix/etc. in a separate branch
+
+--
+
+- Pull request
+
+--
+
+- Git Flow or Github Flow
+
+---
+
+# Continous Integration & Continous Delivery
+
+--
+
+- Unit Tests
+
+--
+
+- Push -> Lint + Test on CI Server -> Build on CI Server -> Deploy
+
+---
+
+# Dedicated planning phase
+
+--
+
+- No coding allowed
+
+--
+
+- Write down requirements and its acceptance criteria
+
+--
+
+- Estimate
+
+---
+
+# Software engineers are particularly bad at estimation
+
+--
+
+> "Show me a software engineer who's good at estimation and I'll show you a software without bugs" - Old chinese proverb
+
+--
+
+- We are bad at estimating "big" things (Example: User wants to export a CSV file)
+
+--
+
+- We are good at estimating "small" things (Example: Add a modal dialog)
+
+--
+
+- Solution: Break down big things into smaller ones
+
+--
+
+- Ideally, one small thing should only take a couple of hours max
+
+---
+class: center, middle
+
+![calendar](images/calendar.png)
+
+---
+
+# Joel Test revisited
+
+```
+1. Do you use source control?
+*2. Can you make a build in one step?
+*3. Do you make daily builds?
+4. Do you have a bug database?
+*5. Do you fix bugs before writing new code?
+*6. Do you have an up-to-date schedule?
+*7. Do you have a spec?
+*8. Do programmers have quiet working conditions?
+9. Do you use the best tools money can buy?
+10. Do you have testers?
+11. Do new candidates write code during their interview?
+12. Do you do hallway usability testing?
+```
+
+---
+
+# Joel Test revisited
+
+```
+1. Do you use source control?
+*2. Can you make a build in one step? YES
+*3. Do you make daily builds? YES
+4. Do you have a bug database?
+*5. Do you fix bugs before writing new code? YES
+*6. Do you have an up-to-date schedule? YES
+*7. Do you have a spec? YES
+*8. Do programmers have quiet working conditions? YES (Well, maybe.)
+9. Do you use the best tools money can buy?
+10. Do you have testers?
+11. Do new candidates write code during their interview?
+12. Do you do hallway usability testing?
+```
+
+---
+
+class: center, middle
+
+# Thank you!
+
+## http://frostney.github.io/talks/devprocess/slides
+
+### Twitter: [@frostney_](https://twitter.com/frostney_)
+
+### Github: [frostney](https://github.com/frostney)
+
+---
+
+# References
+
+* http://www.joelonsoftware.com/articles/fog0000000043.html
+* https://www.youtube.com/watch?v=mOyoTUETmSM
+
+# Credits
+* http://giphy.com
+* https://memegenerator.net
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to React Native</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        padding-top: 1rem;
+      }
+      .left-column h2:last-of-type, .left-column h3:last-child, .left-column h4:last-child, .left-column h5:last-child {
+        color: #000;
+      }
+      .left-column h2:first-child, .left-column h3:first-child {
+        margin-top: 0;
+      }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1rem;
+        font-size: 1.8rem;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      .right-column ul li {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      ul li {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      ul li:first-child {
+        margin-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Introduction to React Native
+
+---
+
+class: center, middle
+
+Johannes Stein
+
+Twitter: @frostney_
+
+Github: frostney
+
+---
+
+# Agenda
+
+![React](images/react-logo.png)
+
+1. What is React Native?
+2. React Native vs. React
+3. Getting started
+4. Let's make a thing (Livedemo)
+5. Native modules
+6. The current state of React Native
+7. The future of React Native
+
+---
+
+class: center, middle
+
+![One does not simply build mobile apps](images/meme1.jpg)
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+]
+
+.right-column[
+
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+]
+
+.right-column[
+- Create native applications in JavaScript
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+]
+
+.right-column[
+- Create native applications in JavaScript
+- Apply `React` principles
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+]
+
+.right-column[
+- Create native applications in JavaScript
+- Apply `React` principles
+- iOS & Android
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+]
+
+.right-column[
+
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+]
+
+.right-column[
+- JavaScriptCore
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+]
+
+.right-column[
+- JavaScriptCore
+- No WebView
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+]
+
+.right-column[
+- JavaScriptCore
+- No WebView
+- Runs in a separate thread
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+### Philosophy
+]
+
+.right-column[
+
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+### Philosophy
+]
+
+.right-column[
+- "Learn once, write everywhere"
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+### Philosophy
+]
+
+.right-column[
+- "Learn once, write everywhere"
+- Web development workflow brought to mobile
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+### Philosophy
+### Cordova
+]
+
+.right-column[
+
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+### Philosophy
+### Cordova
+]
+
+.right-column[
+- Bundles web application in a WebView
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+### Philosophy
+### Cordova
+]
+
+.right-column[
+- Bundles web application in a WebView
+
+![It feels native](images/meme2.jpg)
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+### Philosophy
+### Cordova
+### NativeScript
+]
+
+.right-column[
+
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+### Philosophy
+### Cordova
+### NativeScript
+]
+
+.right-column[
+- Similar to React Native in many ways
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+### Philosophy
+### Cordova
+### NativeScript
+]
+
+.right-column[
+- Similar to React Native in many ways
+- MVC-style structure
+]
+
+---
+
+# What is React Native?
+
+.left-column[
+### Basics
+### Internals
+### Philosophy
+### Cordova
+### NativeScript
+]
+
+.right-column[
+- Similar to React Native in many ways
+- MVC-style structure
+- Available for iOS, Android and Windows Phone
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+
+]
+
+.right-column[
+
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+
+]
+
+.right-column[
+  ![Components](images/meme3.jpg)
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+#### Props
+]
+
+.right-column[
+![Props](images/props.png)
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+#### Props
+]
+
+.right-column[
+![Props](images/props.png)
+
+```javascript
+var MyComponent = function(props) {
+  // Do something with props
+  // But you can't change them
+};
+```
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+#### Props
+#### State
+]
+
+.right-column[
+
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+#### Props
+#### State
+]
+
+.right-column[
+![Props](images/state.png)
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+#### Props
+#### State
+]
+
+.right-column[
+![Props](images/state.png)
+
+```javascript
+var MyComponent = React.createClass({
+  somethingHappens: function() {
+    this.setState({
+      count: this.state.count + 1
+    });
+  }
+});
+```
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+#### Props
+#### State
+#### Rendering
+]
+
+.right-column[
+
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+#### Props
+#### State
+#### Rendering
+]
+
+.right-column[
+```javascript
+var MyComponent = React.createClass({
+  render: function() {
+    // My rendering goes here
+  }
+});
+```
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+#### Props
+#### State
+#### Rendering
+]
+
+.right-column[
+```javascript
+var MyComponent = React.createClass({
+  render: function() {
+*    return <div className="my-component">Hello there</div>;
+  }
+});
+```
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+#### Props
+#### State
+#### Rendering
+]
+
+.right-column[
+```javascript
+var MyComponent = React.createClass({
+  render: function() {
+    return <div className="my-component">Hello there</div>;
+  }
+});
+```
+
+```javascript
+var MyComponent = React.createClass({
+  displayName: "MyComponent",
+  render: function() {
+     return React.createElement("div", {
+       className: "my-component"
+     }, "Hello there");
+  }
+});
+```
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+#### Props
+#### State
+#### Rendering
+#### Virtual DOM
+]
+
+.right-column[
+
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+#### Props
+#### State
+#### Rendering
+#### Virtual DOM
+]
+
+.right-column[
+- Diffs changes in the component tree
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+#### Props
+#### State
+#### Rendering
+#### Virtual DOM
+]
+
+.right-column[
+- Diffs changes in the component tree
+- Only renders the changes
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+### Engage!
+]
+
+.right-column[
+
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+### Engage!
+]
+
+.right-column[
+```javascript
+var React = require('react');
+
+var HelloThere = React.createClass({
+  render: function() {
+    return (
+      <div className="box">My name is {this.props.name}</div>
+    );
+  }
+});
+
+React.render(<HelloThere name="Johannes" />,
+  document.getElementById('content'));
+```
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+### Engage!
+]
+
+.right-column[
+```javascript
+*var React = require('react-native');
+
+var HelloThere = React.createClass({
+  render: function() {
+    return (
+      <div className="box">My name is {this.props.name}</div>
+    );
+  }
+});
+
+React.render(<HelloThere name="Johannes" />,
+  document.getElementById('content'));
+```
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+### Engage!
+#### No DOM
+]
+
+.right-column[
+```javascript
+var React = require('react-native');
+*var {View} = React;
+
+var HelloThere = React.createClass({
+  render: function() {
+    return (
+*      <View>My name is {this.props.name}</View>
+    );
+  }
+});
+
+React.render(<HelloThere name="Johannes" />,
+  document.getElementById('content'));
+```
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+### Engage!
+#### No DOM
+]
+
+.right-column[
+```javascript
+var React = require('react-native');
+*var {View, Text} = React;
+
+var HelloThere = React.createClass({
+  render: function() {
+    return (
+*      <View>
+*        <Text>My name is {this.props.name}</Text>
+*      </View>
+    );
+  }
+});
+
+React.render(<HelloThere name="Johannes" />,
+  document.getElementById('content'));
+```
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+### Engage!
+#### No DOM
+]
+
+.right-column[
+```javascript
+var React = require('react-native');
+*var {View, Text, AppRegistry} = React;
+
+var HelloThere = React.createClass({
+  render: function() {
+    return (
+      <View>
+        <Text>My name is {this.props.name}</Text>
+      </View>
+    );
+  }
+});
+
+*var MainComponent = React.createClass({
+*  render: function() {
+*    return <HelloThere name="Johannes" />;
+*  }
+*});
+
+*AppRegistry.registerComponent('MainComponent', function() {
+*  return MainComponent;
+*});
+```
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+### Engage!
+#### No DOM
+#### Inline styles
+]
+
+.right-column[
+```javascript
+var React = require('react-native');
+var {View, Text, AppRegistry} = React;
+
+var HelloThere = React.createClass({
+  render: function() {
+    return (
+      <View>
+        <Text>My name is {this.props.name}</Text>
+      </View>
+    );
+  }
+});
+
+*// AppRegistry stuff
+```
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+### Engage!
+#### No DOM
+#### Inline styles
+]
+
+.right-column[
+```javascript
+var React = require('react-native');
+*var {View, Text, AppRegistry, StyleSheet} = React;
+
+var HelloThere = React.createClass({
+  render: function() {
+    return (
+      <View>
+        <Text>My name is {this.props.name}</Text>
+      </View>
+    );
+  }
+});
+
+*var styles = StyleSheet.create({
+*  box: {
+*    flex: 1,
+*    alignItems: 'center'
+*  },
+*  font: {
+*    fontSize: 28
+*  }
+*});
+
+// AppRegistry stuff
+```
+]
+
+---
+
+# React Native vs. React
+
+.left-column[
+### React Primer
+### Engage!
+#### No DOM
+#### Inline styles
+]
+
+.right-column[
+```javascript
+var React = require('react-native');
+var {View, Text, AppRegistry, StyleSheet} = React;
+
+var HelloThere = React.createClass({
+  render: function() {
+    return (
+*      <View style={styles.box}>
+*        <Text style={style.font}>My name is {this.props.name}</Text>
+      </View>
+    );
+  }
+});
+
+var styles = StyleSheet.create({
+  box: {
+    flex: 1,
+    alignItems: 'center'
+  },
+  font: {
+    fontSize: 28
+  }
+});
+
+// AppRegistry stuff
+```
+]
+
+---
+
+# React Native vs. React (ES2015 edition)
+
+.left-column[
+### React Primer
+### Engage!
+#### No DOM
+#### Inline styles
+]
+
+.right-column[
+```javascript
+import React, { Component, View, Text, AppRegistry, StyleSheet } from 'react';
+
+class HelloThere extends Component {
+  render() {
+    return (
+      <View style={styles.box}>
+        <Text style={style.font}>My name is {this.props.name}</Text>
+      </View>
+    );
+  }
+}
+
+var styles = StyleSheet.create({
+  box: {
+    flex: 1,
+    alignItems: 'center'
+  },
+  font: {
+    fontSize: 28
+  }
+});
+
+// AppRegistry stuff
+```
+]
+
+---
+
+# Getting started
+
+## Prerequisites
+- OS X (Linux & Windows supported by the community)
+- Node.js 4.0 or higher
+- (Homebrew, Watchman and Flow)
+
+--
+
+# Command-line application
+`npm install -g react-native-cli`
+
+---
+
+# Getting started
+
+### Getting started (iOS)
+
+- Xcode 6.3
+- (Apple Developer account)
+
+--
+
+### Getting started (Android)
+
+- Latest JDK
+- Android SDK
+
+--
+
+#### Simulator
+Android stock simulator or Genymotion
+
+---
+
+# Let's make a thing
+
+---
+
+# Deploying on the real device
+
+--
+
+## Development
+
+--
+
+Server running all the time fetching the latest code bundle
+
+--
+
+## Production
+
+--
+
+Create an offline bundle to be packaged inside the mobile app
+
+---
+
+# Native extensions (iOS)
+
+--
+
+- Write extensions in Objective-C or Swift
+
+--
+
+- Create custom modules as `NSObject` or `UIView`
+
+--
+
+- Automagically maps Objective-C primitives, dictionaries and arrays
+
+---
+
+# Native modules (iOS - Simple classes)
+
+--
+
+```objc
+#import "RCTBridgeModule.h"
+
+@interface RNExample : NSObject <RCTBridgeModule>
+
+@end
+```
+
+--
+
+```objc
+#import "RCTBridge.h"
+
+#import "RNExample.h"
+
+@implementation RNExample
+
+RCT_EXPORT_MODULE()
+
+@synthesize bridge = _bridge;
+
+RCT_EXPORT_METHOD(someCoolMethod)
+{
+    NSLog(@"Hi there, you called this cool method.");
+}
+
+@end
+```
+
+--
+
+```javascript
+var RNExample = require('react-native').NativeModules.RNExample;
+RNExample.someCoolMethod(); // Some nice text on the console now
+```
+
+---
+
+# Native modules (iOS - Custom views 1/2)
+
+--
+
+```objc
+#import "RCTViewManager.h"
+
+@interface RNMyViewManager : RCTViewManager
+
+@end
+```
+
+--
+
+```obj
+#import "RNMyViewManager.h"
+#import "RNMyView.h"
+#import "RCTBridge.h"
+
+@implementation RNMyViewManager
+
+RCT_EXPORT_MODULE();
+
+@synthesize bridge = _bridge;
+
+- (UIView *)view
+{
+    return [[RNMyView alloc] init];
+}
+
+@end
+```
+
+---
+
+# Native modules (iOS - Custom views 2/2)
+
+--
+
+```objc
+#import "RCTView.h"
+
+@interface RNMyView : RCTView
+
+@end
+```
+
+--
+
+```objc
+#import "RNMyView.h"
+
+@implementation RNMyView
+
+- (void)drawRect:(CGRect)rect
+{
+    [super drawRect:rect];
+}
+
+@end
+```
+
+--
+
+```javascript
+var { requireNativeComponent } = require('react-native');
+
+module.exports = requireNativeComponent('RNMyView', null);
+```
+
+---
+
+# Integration
+
+--
+
+- Babel 6 support
+
+--
+
+- Use modules from NPM
+
+--
+
+- Can be integrated into existing mobile applications
+
+---
+
+# The current state of React Native
+
+--
+
+- Publicly available since March 2015
+
+--
+
+- Initial version of React Native for Android released in September 2015
+
+--
+
+- Used in Facebook production apps (Facebook Ads, Facebook Groups)
+
+---
+
+# The future of React Native
+
+--
+
+- Hot module reloading
+
+--
+
+- Parity between Android and iOS
+
+---
+
+# Things I should mention
+
+--
+
+### RNPlay: Online playground for React Native
+
+http://www.rnplay.org
+
+![RNPlay](images/rnplay.png)
+
+---
+
+# Things I should mention
+
+### AppHub / CodePush: Update React Native apps without re-submitting the app
+
+https://apphub.io/
+
+https://microsoft.github.io/code-push/
+
+![AppHub](images/apphub.png)
+
+---
+
+# Things I should mention
+
+### React Web SDK: React Native back in the browser
+
+https://github.com/necolas/react-web-sdk
+
+![ReactWebSDK](images/reactwebsdk.png)
+
+---
+
+# Things I should mention
+
+### JSXStyle: Inline styles with JSX syntax
+
+https://github.com/petehunt/jsxstyle
+
+![ReactWebSDK](images/jsxstyle.png)
+
+---
+
+# Things I should mention
+
+### RNPM: React Native Package Manager
+
+Simplifies tooling for packages with native code
+
+---
+
+class: center, middle
+
+# Thank you!
+
+http://frostney.github.io/talks/react-native-jan2016/slides
+
+### Twitter: @frostney_
+
+### Github: frostney
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>
