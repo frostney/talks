@@ -1,0 +1,10 @@
+const changeList = exec('git diff --name-only HEAD~1..HEAD').split('\n');
+
+changeList.forEach(change => {
+      const projectName = change.split('/')[0]
+
+      // Check for folder names
+      if (path.extname(projectName) === '') {
+        // Changes only happened in this project
+      }
+    });
