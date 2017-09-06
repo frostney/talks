@@ -201,6 +201,11 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
         <Slide bgColor="primary">
+          <Heading size={4} textColor="secondary">
+            Continous integration might need to be configured
+          </Heading>
+        </Slide>
+        <Slide bgColor="primary">
           <Image src={images.lerna} />
         </Slide>
         <Slide>

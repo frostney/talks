@@ -1,0 +1,28 @@
+package com.reactlibrary;
+
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.Callback;
+
+import android.util.Log;
+
+public class RNEveryoneLikesHelloWorldModule extends ReactContextBaseJavaModule {
+
+  private final ReactApplicationContext reactContext;
+
+  public RNEveryoneLikesHelloWorldModule(ReactApplicationContext reactContext) {
+    super(reactContext);
+    this.reactContext = reactContext;
+  }
+
+  @Override
+  public String getName() {
+    return "RNEveryoneLikesHelloWorld";
+  }
+
+  @ReactMethod
+  public void helloWorld() {
+    Log.i(this.getString(), "Hello World!");
+  }
+}

@@ -1,0 +1,3 @@
+import EveryoneLikes from 'react-native-everyone-likes-helloworld';
+
+EveryoneLikes.helloWorld();
