@@ -1,0 +1,10 @@
+├── birdy-api-server
+├── birdy-web-desktop
+├── birdy-web-mobile
+├── birdy-mobile
+├── birdy-ui-components
+├── birdy-ui-components-button
+├── birdy-ui-components-avatar
+├── birdy-ui-components-message
+├── babel-preset-birdy
+└── eslint-config-birdy

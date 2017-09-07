@@ -14,6 +14,7 @@ import {
   List,
   ListItem,
   CodePane,
+  Code,
   Link,
   Layout,
   Fill,
@@ -42,7 +43,10 @@ const images = {
   title: require("../assets/title.jpg"),
   step1: require("../assets/step1.png"),
   step2: require("../assets/step2.png"),
-  step3: require("../assets/step3.png")
+  step3: require("../assets/step3.png"),
+  step4: require("../assets/step4.png"),
+  step5: require("../assets/step5.png"),
+  step6: require("../assets/step6.png")
 };
 
 preloader(images);
@@ -56,6 +60,20 @@ const theme = createTheme({
   primary: "Montserrat",
   secondary: "Helvetica"
 });
+
+class SlideWithTitle extends React.Component {
+  render() {
+    const { size = 2, title, children } = this.props;
+
+    return (
+      <Slide>
+        <Heading size={size} textColor="secondary" style={{ paddingBottom: 40 }}>
+          {children}
+        </Heading>
+      </Slide>
+    );
+  }
+}
 
 export default class Presentation extends React.Component {
   render() {
@@ -73,12 +91,10 @@ export default class Presentation extends React.Component {
               </Fill>
             </Layout>
         </Slide>
-        <Slide>
-          <Heading size={2} textColor="secondary" style={{ paddingBottom: 40 }}>
-            What is a monorepo?
-          </Heading>
+        <SlideWithTitle title="🖐" />
+        <SlideWithTitle title="What is a monorepo?">
           <Link href="https://developer.atlassian.com/blog/2015/10/monorepos-in-git/" textColor="secondary">developer.atlassian.com/blog/2015/10/monorepos-in-git/</Link>
-        </Slide>
+        </SlideWithTitle>
         <Slide>
           <Heading size={4} textColor="secondary">
             The repository contains more than one logical project
@@ -86,8 +102,11 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading size={4} textColor="secondary">
-          These projects are most likely unrelated, loosely connected or can be connected by other means
+            These projects are most likely unrelated, loosely connected or can be connected by other means
           </Heading>
+        </Slide>
+        <Slide>
+          Mad science?
         </Slide>
         <Slide bgColor="secondary" textColor="primary">
           <BlockQuote>
@@ -97,7 +116,15 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading size={2} textColor="secondary" style={{ paddingBottom: 20 }}>
-            Let's imagine a project evolving over time
+            Let's create a Twitter clone
+          </Heading>
+          <Appear>
+            <Heading size={4} textColor="secondary">Not for realsies, just as an architecture example for the purposes of this talk</Heading>
+          </Appear>
+        </Slide>
+        <Slide>
+          <Heading size={2} textColor="secondary" style={{ paddingBottom: 20 }}>
+            Imagine this project growing over time
           </Heading>
         </Slide>
         <Slide bgColor="primary">
@@ -109,21 +136,33 @@ export default class Presentation extends React.Component {
         <Slide bgColor="primary">
           <Image src={images.step3} />
         </Slide>
+          <Slide bgColor="primary">
+          <Image src={images.step4} />
+        </Slide>
+        <Slide bgColor="primary">
+          <Image src={images.step5} />
+        </Slide>
+        <Slide bgColor="primary">
+          <Image src={images.step6} />
+        </Slide>
         <Slide>
-          <Terminal title="~" output={[
-            "tree",
-            `├── chat-client
-├── chat-server
-├── newsfeed
-└── ui-components
-
-4 directories, 0 files`
-          ]}
-          />
+          <Heading size={2}>Before</Heading>
+        </Slide>
+        <Slide>
+          <CodePane source={require("raw-loader!../assets/polyrepo.example")} />
+        </Slide>
+        <Slide>
+          <Heading size={2}>After</Heading>
+        </Slide>
+        <Slide>
+          <CodePane source={require("raw-loader!../assets/monorepo.example")} />
+        </Slide>
+        <Slide>
+          <Heading size={2}>It's just a bunch of folders</Heading>
         </Slide>
         <Slide bgColor="primary">
           <Heading size={2} textColor="secondary">
-            Advantages
+            Benefits
           </Heading>
         </Slide>
         <Slide bgColor="primary">
@@ -151,15 +190,15 @@ export default class Presentation extends React.Component {
             Easier to coordinate changes across the codebase
           </Heading>
         </Slide>
-        <Slide bgColor="primary">
-          <List>
-            <Appear>
-              <ListItem>Removes dependencies on code reviews</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Removes the need to release common pieces of code</ListItem>
-            </Appear>
-          </List>
+        <Slide>
+          <Heading size={4} textColor="secondary">
+            Removes dependencies on code reviews
+          </Heading>
+        </Slide>
+        <Slide>
+          <Heading size={4} textColor="secondary">
+            Removes the need to release common pieces of code
+          </Heading>
         </Slide>
         <Slide bgColor="primary">
           <Heading size={4} textColor="secondary">
@@ -168,25 +207,14 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide bgColor="primary">
           <Heading size={2} textColor="secondary">
-            Disadvantages
+            Challenges
           </Heading>
         </Slide>
         <Slide bgColor="primary">
           <Heading size={4} textColor="secondary">
             Intimidating codebase
           </Heading>
-        </Slide>
-        <Slide bgColor="secondary" textColor="primary">
-          <BlockQuote>
-            <Quote>Juggling a multimodule project over multiple repos is like trying to teach a newborn baby how to ride a bike.</Quote>
-            <Cite>Babel (https://github.com/babel/babel/blob/7.0/doc/design/monorepo.md)</Cite>
-          </BlockQuote>
-        </Slide>
-        <Slide bgColor="primary">
-          <Heading size={2} textColor="secondary">
-            Tips when dealing with monorepos
-          </Heading>
-        </Slide>
+      </Slide>
         <Slide bgColor="primary">
           <Heading size={4} textColor="secondary">
             Continous integration might need to be configured
@@ -196,35 +224,95 @@ export default class Presentation extends React.Component {
           <CodePane lang="jsx" source={require("raw-loader!../assets/ci.example")} />
         </Slide>
         <Slide bgColor="primary">
+          <Heading size={4} textColor="secondary">
+            Dealing with the size of monorepos
+          </Heading>
+        </Slide>
+        <Slide bgColor="primary">
+          <Heading size={4} textColor="secondary">
+            Check out single branch
+          </Heading>
+          <Appear>
+            <Code textColor="secondary">git clone myrepo --single-branch</Code>
+          </Appear>
+        </Slide>
+        <Slide>
+          <Heading size={4} textColor="secondary">
+            Shallow clone
+          </Heading>
+          <Appear>
+            <Code textColor="secondary">git clone myrepo --depth=1</Code>
+          </Appear>
+          <Appear>
+          <Heading size={4} textColor="secondary">(Uses <Code textColor="secondary">--single-branch</Code> by default)</Heading>
+          </Appear>
+        </Slide>
+        <Slide>
+          <Heading size={4} textColor="secondary">Check out specific folders (sparse checkout)</Heading>
+        </Slide>
+        <Slide>
+          <Heading size={4} textColor="secondary">
+            Git Large File Storage
+          </Heading>
+        </Slide>
+        <Slide bgColor="primary">
+          <Heading size={4} textColor="secondary">
+            Synchronization with Open Source repositories
+          </Heading>
+        </Slide>
+        <Slide bgColor="primary">
+          <Heading size={4} textColor="secondary">
+            Git submodules
+          </Heading>
+        </Slide>
+        <Slide bgColor="primary">
+          <Heading size={4} textColor="secondary">
+            Keeping certain modules independant
+          </Heading>
+        </Slide>
+        <Slide bgColor="primary">
+          <Heading size={4} textColor="secondary">
+            Ownership
+          </Heading>
+        </Slide>
+        <Slide bgColor="primary">
           <Heading size={2} textColor="secondary">
             Tooling
           </Heading>
         </Slide>
         <Slide bgColor="primary">
           <Heading size={4} textColor="secondary">
-            Continous integration might need to be configured
+            It's just a bunch of folders
           </Heading>
+          <Appear>
+          <Heading size={4} textColor="secondary">
+            We need a tool to run the same command across multiple folders
+          </Heading>
+          </Appear>
         </Slide>
         <Slide bgColor="primary">
           <Image src={images.lerna} />
         </Slide>
+        <Slide bgColor="secondary" textColor="primary">
+          <BlockQuote>
+            <Quote>Juggling a multimodule project over multiple repos is like trying to teach a newborn baby how to ride a bike.</Quote>
+            <Cite>Babel (github.com/babel/babel/blob/7.0/doc/design/monorepo.md)</Cite>
+          </BlockQuote>
+        </Slide>
         <Slide>
+          <Heading size={2} textColor="secondary" style={{ paddingBottom: 40, lineHeight: 0.5 }}>
+            <Code textColor="secondary">yarn add global lerna</Code>
+          </Heading>
+          <Appear>
+            <Heading size={4} textColor="secondary" style={{ lineHeight: 0.75 }}>
+              (<Code textColor="secondary">npm install -g lerna</Code>)
+            </Heading>
+          </Appear>
+        </Slide>
+        <Slide>
+          <Heading size={2} textColor="secondary">Let's create a monorepo</Heading>
           <Terminal title="" output={[
-            "npm install -g lerna",
-            "tree",
-            `└── packages
-    ├── chat-client
-    │   └── package.json
-    ├── chat-server
-    │   └── package.json
-    ├── newsfeed
-    │   └── package.json
-    └── ui-components
-        └── package.json
-
-5 directories, 4 files`,
             "lerna init",
-            "lerna bootstrap",
             `├── lerna-debug.log
     ├── lerna.json
     ├── package.json
@@ -266,6 +354,13 @@ export default class Presentation extends React.Component {
           ]}
           />
         </Slide>
+        <Slide>
+          <Heading size={2}><Code>lerna.json</Code></Heading>
+          <CodePane lang="json" source={require("raw-loader!../assets/lerna.json.example")} />
+        </Slide>
+        <Slide>
+          <Heading size={2}>Bootstrap</Heading>
+        </Slide>
         <Slide bgColor="primary">
           <Heading size={4} textColor="secondary">
             Install dependencies
@@ -276,17 +371,21 @@ export default class Presentation extends React.Component {
             Link dependencies
           </Heading>
         </Slide>
+        <Slide>
+          <Heading size={2}>Running scripts</Heading>
+        </Slide>
+        <Slide>
+          <Heading size={2}>Releases</Heading>
+        </Slide>
+        <Slide>
+          <Heading size={2}>Import repositories</Heading>
+        </Slide>
         <Slide bgColor="primary">
           <Image src={images.yarn} />
         </Slide>
         <Slide bgColor="primary">
           <Heading size={4} textColor="secondary">
             Remember when Lerna installs its dependencies for each project?
-          </Heading>
-        </Slide>
-        <Slide bgColor="primary">
-          <Heading size={4} textColor="secondary">
-            Todo: More slides
           </Heading>
         </Slide>
         <Slide>
