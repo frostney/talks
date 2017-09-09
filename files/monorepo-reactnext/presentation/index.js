@@ -21,6 +21,9 @@ import {
   Text
 } from "spectacle";
 
+import Typist from "react-typist";
+import "react-typist/dist/Typist.css";
+
 // Import image preloader util
 import preloader from "spectacle/lib/utils/preloader";
 
@@ -60,6 +63,36 @@ const theme = createTheme({
   secondary: "Montserrat"
 });
 
+const outputRemote = `Updating origin
+remote: Counting objects: 942, done.
+remote: Compressing objects: 100% (51/51), done.
+remote: Total 942 (delta 34), reused 73 (delta 27), pack-reused 857
+Receiving objects: 100% (942/942), 38.10 MiB | 464.00 KiB/s, done.
+Resolving deltas: 100% (393/393), done.
+From https://link/to/my/repo.git
+ * [new branch]      master     -> origin/master`;
+
+const outputPull = `From https://link/to/my/repo.git
+* branch            master     -> FETCH_HEAD
+Checking out files: 100% (582/582), done.`;
+
+const cursor = {
+  show: true,
+  blink: true,
+  element: " █",
+  hideWhenDone: true,
+  hideWhenDoneDelay: 500
+};
+
+const createCommand = (command, prefix = "~") => (
+  <div>
+    <div style={{ display: "inline-block" }}>{prefix}> </div>
+    <div style={{ display: "inline-block" }}>
+      <Typist cursor={ cursor }>{command}</Typist>
+    </div>
+  </div>
+);
+
 export default class Presentation extends React.Component {
   render() {
     return (
@@ -80,9 +113,9 @@ export default class Presentation extends React.Component {
           <Heading size={2} textColor="secondary">🖐</Heading>
         </Slide>
         <Slide>
-          <Heading size={2} textColor="secondary">What is a monorepo?</Heading>
+          <Heading size={2} textColor="secondary" style={{ paddingBottom: 40 }}>What is a monorepo?</Heading>
           <Link href="https://developer.atlassian.com/blog/2015/10/monorepos-in-git/" textColor="secondary">developer.atlassian.com/blog/2015/10/monorepos-in-git/</Link>
-          </Slide>
+        </Slide>
         <Slide>
           <Heading size={3} textColor="secondary">
             The repository contains more than one logical project
@@ -106,7 +139,7 @@ export default class Presentation extends React.Component {
           </BlockQuote>
         </Slide>
         <Slide>
-          <Heading size={2} textColor="secondary" style={{ paddingBottom: 20 }}>
+          <Heading size={2} textColor="secondary" style={{ paddingBottom: 40 }}>
             Let's create a Twitter clone
           </Heading>
           <Appear>
@@ -114,7 +147,7 @@ export default class Presentation extends React.Component {
           </Appear>
         </Slide>
         <Slide>
-          <Heading size={3} textColor="secondary" style={{ paddingBottom: 20 }}>
+          <Heading size={3} textColor="secondary">
             Imagine this project growing over time
           </Heading>
         </Slide>
@@ -137,9 +170,15 @@ export default class Presentation extends React.Component {
           <Image src={images.step6} />
         </Slide>
         <Slide>
+          <Heading size={3} textColor="secondary" style={{ paddingBottom: 40 }}>
+            Multiple repositories
+          </Heading>
           <CodePane source={require("raw-loader!../assets/polyrepo.example")} />
         </Slide>
         <Slide>
+          <Heading size={3} textColor="secondary" style={{ paddingBottom: 40 }}>
+            Monorepo
+          </Heading>
           <CodePane source={require("raw-loader!../assets/monorepo.example")} />
         </Slide>
         <Slide>
@@ -147,7 +186,7 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide bgImage={images.benefits} bgDarken={0.45}>
           <Heading size={2} textColor="secondary">
-            Benefits
+            What is working well
           </Heading>
         </Slide>
         <Slide bgColor="primary">
@@ -207,14 +246,6 @@ export default class Presentation extends React.Component {
           <Heading size={3} textColor="secondary">
             Intimidating codebase
           </Heading>
-      </Slide>
-        <Slide bgColor="primary">
-          <Heading size={3} textColor="secondary">
-            Continous integration might need to be configured
-          </Heading>
-        </Slide>
-        <Slide>
-          <CodePane lang="jsx" source={require("raw-loader!../assets/ci.example")} />
         </Slide>
         <Slide bgColor="primary">
           <Heading size={3} textColor="secondary">
@@ -222,7 +253,7 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
         <Slide bgColor="primary">
-          <Heading size={4} textColor="secondary">
+          <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>
             Check out single branch
           </Heading>
           <Appear>
@@ -230,13 +261,13 @@ export default class Presentation extends React.Component {
           </Appear>
         </Slide>
         <Slide>
-          <Heading size={4} textColor="secondary">
+          <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>
             Shallow clone
           </Heading>
           <Appear>
             <Code textColor="secondary">git clone myrepo --depth=1</Code>
           </Appear>
-          <br/>
+          <br/><br/>
           <Appear>
             <Code textColor="secondary">git clone myrepo --shallow-since=2017-01-01</Code>
           </Appear>
@@ -245,11 +276,28 @@ export default class Presentation extends React.Component {
           </Appear>
         </Slide>
         <Slide>
-          <Heading size={4} textColor="secondary">Check out specific folders (sparse checkout)</Heading>
+          <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>Check out specific folders (sparse checkout)</Heading>
+          <Terminal output={[
+            createCommand("mkdir submonorepo"),
+            createCommand("cd ./submonorepo"),
+            createCommand("git init", "~/submonorepo"),
+            "Initialized empty Git repository in ~/submonorepo/.git/",
+            createCommand("git remote add origin -f https://link/to/my/repo.git", "~/submonorepo"),
+            outputRemote,
+            createCommand("git config core.sparsecheckout true", "~/submonorepo"),
+            createCommand("git pull origin master", "~/submonorepo"),
+            outputPull
+          ]}
+          />
         </Slide>
         <Slide>
           <Heading size={4} textColor="secondary">
             Git Large File Storage
+          </Heading>
+        </Slide>
+        <Slide bgColor="primary">
+          <Heading size={3} textColor="secondary">
+            Continous integration might need to be configured
           </Heading>
         </Slide>
         <Slide>
@@ -272,13 +320,13 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide bgColor="primary">
           <Heading size={3} textColor="secondary">
-            Keeping certain modules independant
-          </Heading>
-        </Slide>
-        <Slide bgColor="primary">
-          <Heading size={3} textColor="secondary">
             Ownership
           </Heading>
+        </Slide>
+        <Slide>
+          <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}><Code textColor="secondary">CODEOWNERS</Code></Heading>
+          <CodePane source={require("raw-loader!../assets/codeowners.example")} style={{ marginBottom: 40 }} />
+          <Link href="https://help.github.com/articles/about-codeowners/" textColor="secondary">help.github.com/articles/about-codeowners/</Link>
         </Slide>
         <Slide bgColor="primary">
           <Heading size={2} textColor="secondary">
@@ -289,6 +337,7 @@ export default class Presentation extends React.Component {
           <Heading size={3} textColor="secondary">
             It's just a bunch of folders
           </Heading>
+          <br />
           <Appear>
           <Heading size={3} textColor="secondary">
             We need a tool to run the same command across multiple folders
@@ -315,11 +364,26 @@ export default class Presentation extends React.Component {
           </Appear>
         </Slide>
         <Slide>
-          <Heading size={3} textColor="secondary">Let's create a monorepo</Heading>
+          <Heading size={3} textColor="secondary" style={{ paddingBottom: 40 }}>Let's create a monorepo</Heading>
           <Terminal title="" output={[
-            "lerna init",
-            `├── lerna-debug.log
-    ├── lerna.json
+            createCommand("lerna init"),
+            `lerna info version 2.1.2
+            lerna info Initializing Git repository
+            lerna info Updating package.json
+            lerna info Creating lerna.json
+            lerna success Initialized Lerna files`
+          ]}
+          />
+        </Slide>
+        <Slide>
+          <Heading size={3} style={{ paddingBottom: 40 }}><Code textColor="secondary">lerna.json</Code></Heading>
+          <CodePane lang="json" source={require("raw-loader!../assets/lerna.json.example")} />
+        </Slide>
+        <Slide>
+          <Heading size={3}>Bootstrap</Heading>
+          <Terminal title="" output={[
+            createCommand("lerna bootstrap"),
+            `├── lerna.json
     ├── package.json
     └── packages
         ├── chat-client
@@ -352,7 +416,6 @@ export default class Presentation extends React.Component {
             │   ├── setimmediate
             │   ├── ua-parser-js
             │   └── whatwg-fetch
-            ├── package-lock.json
             └── package.json
 
 28 directories, 8 files`
@@ -360,41 +423,27 @@ export default class Presentation extends React.Component {
           />
         </Slide>
         <Slide>
-          <Heading size={3}><Code>lerna.json</Code></Heading>
-          <CodePane lang="json" source={require("raw-loader!../assets/lerna.json.example")} />
-        </Slide>
-        <Slide>
-          <Heading size={3}>Bootstrap</Heading>
-        </Slide>
-        <Slide bgColor="primary">
-          <Heading size={4} textColor="secondary">
-            Install dependencies
-          </Heading>
-        </Slide>
-        <Slide bgColor="primary">
-          <Heading size={4} textColor="secondary">
-            Link dependencies
+          <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>
+            Target specific packages with <Code textColor="secondary">--ignore</Code> or <Code textColor="secondary">--scope</Code>
           </Heading>
         </Slide>
         <Slide>
-          <Heading size={3}>Running scripts</Heading>
+          <Heading size={3} textColor="secondary">Running scripts</Heading>
         </Slide>
         <Slide>
-          <Heading size={3}>Releases</Heading>
+          <Heading size={3} textColor="secondary">Releases</Heading>
         </Slide>
         <Slide>
-          <Heading size={4}>Independant release</Heading>
+          <Heading size={4} textColor="secondary">Fixed mode</Heading>
         </Slide>
         <Slide>
-          <Heading size={3}>Import repositories</Heading>
+          <Heading size={4} textColor="secondary">Independant release</Heading>
+        </Slide>
+        <Slide>
+          <Heading size={3} textColor="secondary">Import repositories</Heading>
         </Slide>
         <Slide bgColor="primary">
           <Image src={images.yarn} />
-        </Slide>
-        <Slide bgColor="primary">
-          <Heading size={4} textColor="secondary">
-            Remember when Lerna installs its dependencies for each project?
-          </Heading>
         </Slide>
         <Slide>
             <Heading size={1} textColor="secondary" caps lineHeight={1}>Thank you!</Heading>
