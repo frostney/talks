@@ -266,6 +266,11 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
         <Slide bgColor="primary">
+          <Heading size={4} textColor="secondary">
+            Compare commits, create patches and apply them on the monorepo
+          </Heading>
+        </Slide>
+        <Slide bgColor="primary">
           <Heading size={3} textColor="secondary">
             Keeping certain modules independant
           </Heading>
