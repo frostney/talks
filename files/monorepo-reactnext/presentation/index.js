@@ -58,7 +58,7 @@ const theme = createTheme({
   quartenary: "#CECECE"
 }, {
   primary: "Montserrat",
-  secondary: "Helvetica"
+  secondary: "Montserrat"
 });
 
 class SlideWithTitle extends React.Component {
@@ -68,8 +68,9 @@ class SlideWithTitle extends React.Component {
     return (
       <Slide>
         <Heading size={size} textColor="secondary" style={{ paddingBottom: 40 }}>
-          {children}
+          {title}
         </Heading>
+        {children}
       </Slide>
     );
   }
@@ -146,13 +147,7 @@ export default class Presentation extends React.Component {
           <Image src={images.step6} />
         </Slide>
         <Slide>
-          <Heading size={2}>Before</Heading>
-        </Slide>
-        <Slide>
           <CodePane source={require("raw-loader!../assets/polyrepo.example")} />
-        </Slide>
-        <Slide>
-          <Heading size={2}>After</Heading>
         </Slide>
         <Slide>
           <CodePane source={require("raw-loader!../assets/monorepo.example")} />
@@ -211,12 +206,12 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
         <Slide bgColor="primary">
-          <Heading size={4} textColor="secondary">
+          <Heading size={3} textColor="secondary">
             Intimidating codebase
           </Heading>
       </Slide>
         <Slide bgColor="primary">
-          <Heading size={4} textColor="secondary">
+          <Heading size={3} textColor="secondary">
             Continous integration might need to be configured
           </Heading>
         </Slide>
@@ -224,7 +219,7 @@ export default class Presentation extends React.Component {
           <CodePane lang="jsx" source={require("raw-loader!../assets/ci.example")} />
         </Slide>
         <Slide bgColor="primary">
-          <Heading size={4} textColor="secondary">
+          <Heading size={3} textColor="secondary">
             Dealing with the size of monorepos
           </Heading>
         </Slide>
@@ -243,6 +238,10 @@ export default class Presentation extends React.Component {
           <Appear>
             <Code textColor="secondary">git clone myrepo --depth=1</Code>
           </Appear>
+          <br/>
+          <Appear>
+            <Code textColor="secondary">git clone myrepo --shallow-since=2017-01-01</Code>
+          </Appear>
           <Appear>
           <Heading size={4} textColor="secondary">(Uses <Code textColor="secondary">--single-branch</Code> by default)</Heading>
           </Appear>
@@ -254,6 +253,9 @@ export default class Presentation extends React.Component {
           <Heading size={4} textColor="secondary">
             Git Large File Storage
           </Heading>
+        </Slide>
+        <Slide>
+          <CodePane lang="jsx" source={require("raw-loader!../assets/ci.example")} />
         </Slide>
         <Slide bgColor="primary">
           <Heading size={4} textColor="secondary">
