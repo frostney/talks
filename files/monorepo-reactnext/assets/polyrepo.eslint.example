@@ -1,0 +1,13 @@
+├── birdy-api-server
+│   └── .eslintrc
+├── birdy-web-desktop
+│   └── .eslintrc
+├── birdy-web-mobile
+│   └── .eslintrc
+├── birdy-mobile
+├── birdy-ui-components
+├── birdy-ui-components-button
+├── birdy-ui-components-avatar
+├── birdy-ui-components-message
+├── babel-preset-birdy
+└── eslint-config-birdy
