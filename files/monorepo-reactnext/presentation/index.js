@@ -48,7 +48,9 @@ const images = {
   step6: require("../assets/step6.png"),
   benefits: require("../assets/benefits.jpg"),
   challenges: require("../assets/challenges.jpg"),
-  madscience: require("../assets/madscience.png")
+  madscience: require("../assets/madscience.png"),
+  repetitivechanges: require("../assets/repetitivechanges.png"),
+  prchaos: require("../assets/prchaos.png")
 };
 
 preloader(images);
@@ -75,6 +77,12 @@ From https://link/to/my/repo.git
 const outputPull = `From https://link/to/my/repo.git
 * branch            master     -> FETCH_HEAD
 Checking out files: 100% (582/582), done.`;
+
+const outputLernaInit = `lerna info version 2.1.2
+lerna info Initializing Git repository
+lerna info Updating package.json
+lerna info Creating lerna.json
+lerna success Initialized Lerna files`;
 
 const cursor = {
   show: true,
@@ -223,9 +231,15 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
         <Slide>
+          <Image src={images.repetitivechanges} />
+        </Slide>
+        <Slide>
           <Heading size={3} textColor="secondary">
             Removes dependencies on code reviews
           </Heading>
+        </Slide>
+        <Slide>
+          <Image src={images.prchaos} />
         </Slide>
         <Slide>
           <Heading size={3} textColor="secondary">
@@ -367,11 +381,7 @@ export default class Presentation extends React.Component {
           <Heading size={3} textColor="secondary" style={{ paddingBottom: 40 }}>Let's create a monorepo</Heading>
           <Terminal title="" output={[
             createCommand("lerna init"),
-            `lerna info version 2.1.2
-            lerna info Initializing Git repository
-            lerna info Updating package.json
-            lerna info Creating lerna.json
-            lerna success Initialized Lerna files`
+            outputLernaInit
           ]}
           />
         </Slide>
@@ -429,6 +439,13 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading size={3} textColor="secondary">Running scripts</Heading>
+          <Appear>
+            <Code textColor="secondary">lerna run test</Code>
+          </Appear>
+          <br/><br/>
+          <Appear>
+            <Code textColor="secondary">lerna exec -- rm -rf node_modules</Code>
+          </Appear>
         </Slide>
         <Slide>
           <Heading size={3} textColor="secondary">Releases</Heading>
@@ -441,6 +458,9 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading size={3} textColor="secondary">Import repositories</Heading>
+          <Appear>
+            <Code textColor="secondary">lerna import</Code>
+          </Appear>
         </Slide>
         <Slide bgColor="primary">
           <Image src={images.yarn} />
