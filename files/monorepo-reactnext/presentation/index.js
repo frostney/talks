@@ -50,7 +50,10 @@ const images = {
   challenges: require("../assets/challenges.jpg"),
   madscience: require("../assets/madscience.png"),
   repetitivechanges: require("../assets/repetitivechanges.png"),
-  prchaos: require("../assets/prchaos.png")
+  prchaos: require("../assets/prchaos.png"),
+  camel1: require("../assets/camel1.jpg"),
+  camel2: require("../assets/camel2.jpg"),
+  cameluber: require("../assets/cameluber.png")
 };
 
 preloader(images);
@@ -140,13 +143,27 @@ export default class Presentation extends React.Component {
             <Cite>Doc Brown (Back To The Future)</Cite>
           </BlockQuote>
         </Slide>
+        <Slide bgColor="primary">
+          <Image src={images.camel1} />
+        </Slide>
+        <Slide bgColor="primary">
+          <Image src={images.camel2} />
+        </Slide>
         <Slide>
           <Heading size={2} textColor="secondary" style={{ paddingBottom: 40 }}>
-            Let's create a Twitter clone
+            "It's Uber, but..."
+          </Heading>
+        </Slide>
+        <Slide>
+          <Heading size={2} textColor="secondary" style={{ paddingBottom: 40 }}>
+            Let's create Uber, but with camels
           </Heading>
           <Appear>
             <Heading size={4} textColor="secondary">Not for realsies, just as an architecture example for the purposes of this talk</Heading>
           </Appear>
+        </Slide>
+        <Slide bgColor="primary">
+          <Image src={images.cameluber} />
         </Slide>
         <Slide>
           <Heading size={3} textColor="secondary">

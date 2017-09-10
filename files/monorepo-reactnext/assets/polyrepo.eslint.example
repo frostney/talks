@@ -1,13 +1,13 @@
-├── birdy-api-server
+├── rideacamel-api-server
 │   └── .eslintrc
-├── birdy-web-desktop
+├── rideacamel-web-desktop
 │   └── .eslintrc
-├── birdy-web-mobile
+├── rideacamel-web-mobile
 │   └── .eslintrc
-├── birdy-mobile
-├── birdy-ui-components
-├── birdy-ui-components-button
-├── birdy-ui-components-avatar
-├── birdy-ui-components-message
-├── babel-preset-birdy
-└── eslint-config-birdy
+├── rideacamel-mobile
+├── rideacamel-ui-components
+├── rideacamel-ui-components-topbar
+├── rideacamel-ui-components-inputbar
+├── rideacamel-ui-components-hamburger
+├── babel-preset-hummus
+└── eslint-config-hummus
