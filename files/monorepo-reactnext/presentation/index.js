@@ -416,39 +416,39 @@ export default class Presentation extends React.Component {
           <Terminal title="" output={[
             createCommand("lerna bootstrap"),
             `├── lerna.json
-    ├── package.json
-    └── packages
-        ├── web-mobile
-        │   ├── node_modules
-        │   │   └── ui-components -> ../../ui-components
-        │   └── package.json
-        ├── api-server
-        │   └── package.json
-        ├── web-desktop
-        │   ├── node_modules
-        │   │   └── ui-components -> ../../ui-components
-        │   └── package.json
-        └── ui-components
-            ├── node_modules
-            │   ├── asap
-            │   ├── core-js
-            │   ├── create-react-class
-            │   ├── encoding
-            │   ├── fbjs
-            │   ├── iconv-lite
-            │   ├── is-stream
-            │   ├── isomorphic-fetch
-            │   ├── js-tokens
-            │   ├── loose-envify
-            │   ├── node-fetch
-            │   ├── object-assign
-            │   ├── promise
-            │   ├── prop-types
-            │   ├── react
-            │   ├── setimmediate
-            │   ├── ua-parser-js
-            │   └── whatwg-fetch
-            └── package.json
+├── package.json
+└── packages
+    ├── rideacamel-web-mobile
+    │   ├── node_modules
+    │   │   └── ui-components -> ../../ui-components
+    │   └── package.json
+    ├── rideacamel-api-server
+    │   └── package.json
+    ├── rideacamel-web-desktop
+    │   ├── node_modules
+    │   │   └── ui-components -> ../../ui-components
+    │   └── package.json
+    └── rideacamel-ui-components
+        ├── node_modules
+        │   ├── asap
+        │   ├── core-js
+        │   ├── create-react-class
+        │   ├── encoding
+        │   ├── fbjs
+        │   ├── iconv-lite
+        │   ├── is-stream
+        │   ├── isomorphic-fetch
+        │   ├── js-tokens
+        │   ├── loose-envify
+        │   ├── node-fetch
+        │   ├── object-assign
+        │   ├── promise
+        │   ├── prop-types
+        │   ├── react
+        │   ├── setimmediate
+        │   ├── ua-parser-js
+        │   └── whatwg-fetch
+        └── package.json
 
 28 directories, 8 files`
           ]}
