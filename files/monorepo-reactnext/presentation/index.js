@@ -140,12 +140,6 @@ export default class Presentation extends React.Component {
             <Cite>Doc Brown (Back To The Future)</Cite>
           </BlockQuote>
         </Slide>
-        <Slide bgColor="secondary" textColor="primary">
-          <BlockQuote>
-            <Quote>Give it five minutes.</Quote>
-            <Cite>https://signalvnoise.com/posts/3124-give-it-five-minutes</Cite>
-          </BlockQuote>
-        </Slide>
         <Slide>
           <Heading size={2} textColor="secondary" style={{ paddingBottom: 40 }}>
             Let's create a Twitter clone
@@ -305,9 +299,10 @@ export default class Presentation extends React.Component {
           />
         </Slide>
         <Slide>
-          <Heading size={4} textColor="secondary">
+          <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>
             Git Large File Storage
           </Heading>
+          <Link href="https://git-lfs.github.com" textColor="secondary" style={{ paddingBottom: 40 }}>git-lfs.github.com</Link>
         </Slide>
         <Slide bgColor="primary">
           <Heading size={3} textColor="secondary">
@@ -329,8 +324,18 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide bgColor="primary">
           <Heading size={4} textColor="secondary">
-            Compare commits, create patches and apply them on the monorepo
+            Compare commits
           </Heading>
+          <Appear>
+            <Heading size={4} textColor="secondary">
+              Create patches
+            </Heading>
+          </Appear>
+          <Appear>
+            <Heading size={4} textColor="secondary">
+              Apply patches on monorepo
+            </Heading>
+          </Appear>
         </Slide>
         <Slide bgColor="primary">
           <Heading size={3} textColor="secondary">
@@ -372,7 +377,7 @@ export default class Presentation extends React.Component {
             <Code textColor="secondary">yarn add global lerna</Code>
           </Heading>
           <Appear>
-            <Heading size={3} textColor="secondary" style={{ lineHeight: 0.75 }}>
+            <Heading size={4} textColor="secondary" style={{ lineHeight: 0.75 }}>
               (<Code textColor="secondary">npm install -g lerna</Code>)
             </Heading>
           </Appear>
@@ -390,7 +395,7 @@ export default class Presentation extends React.Component {
           <CodePane lang="json" source={require("raw-loader!../assets/lerna.json.example")} />
         </Slide>
         <Slide>
-          <Heading size={3}>Bootstrap</Heading>
+          <Heading size={3} textColor="secondary">Bootstrap</Heading>
           <Terminal title="" output={[
             createCommand("lerna bootstrap"),
             `├── lerna.json
@@ -438,7 +443,7 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
         <Slide>
-          <Heading size={3} textColor="secondary">Running scripts</Heading>
+          <Heading size={3} textColor="secondary" style={{ paddingBottom: 40 }}>Running scripts</Heading>
           <Appear>
             <Code textColor="secondary">lerna run test</Code>
           </Appear>
@@ -457,7 +462,7 @@ export default class Presentation extends React.Component {
           <Heading size={4} textColor="secondary">Independant release</Heading>
         </Slide>
         <Slide>
-          <Heading size={3} textColor="secondary">Import repositories</Heading>
+          <Heading size={3} textColor="secondary" style={{ paddingBottom: 40 }}>Import repositories</Heading>
           <Appear>
             <Code textColor="secondary">lerna import</Code>
           </Appear>
