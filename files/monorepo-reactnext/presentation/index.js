@@ -137,7 +137,7 @@ export default class Presentation extends React.Component {
             These projects are most likely unrelated, loosely connected or can be connected by other means
           </Heading>
         </Slide>
-        <Slide bgImage={images.madscience} bgDarken={0.5}>
+        <Slide bgImage={images.madscience} bgDarken={0.05}>
           <BlockQuote>
             <Quote textColor="secondary">Multiple repositories? Where we're going, we don't need... multiple repositories.</Quote>
             <Cite>Doc Brown (Back To The Future)</Cite>
@@ -203,7 +203,7 @@ export default class Presentation extends React.Component {
         <Slide>
           <Heading size={3} textColor="secondary">It's just a bunch of folders</Heading>
         </Slide>
-        <Slide bgImage={images.benefits} bgDarken={0.45}>
+        <Slide bgImage={images.benefits} bgDarken={0.1}>
           <Heading size={2} textColor="secondary">
             What is working well
           </Heading>
@@ -262,7 +262,7 @@ export default class Presentation extends React.Component {
             Simplifies end-to-end testing
           </Heading>
         </Slide>
-        <Slide bgImage={images.challenges} bgDarken={0.45}>
+        <Slide bgImage={images.challenges} bgDarken={0.15}>
           <Heading size={2} textColor="secondary">
             Challenges
           </Heading>
@@ -412,19 +412,19 @@ export default class Presentation extends React.Component {
           <CodePane lang="json" source={require("raw-loader!../assets/lerna.json.example")} />
         </Slide>
         <Slide>
-          <Heading size={3} textColor="secondary">Bootstrap</Heading>
+          <Heading size={3} textColor="secondary" style={{ paddingBottom: 40 }}>Bootstrap</Heading>
           <Terminal title="" output={[
             createCommand("lerna bootstrap"),
             `├── lerna.json
     ├── package.json
     └── packages
-        ├── chat-client
+        ├── web-mobile
         │   ├── node_modules
         │   │   └── ui-components -> ../../ui-components
         │   └── package.json
-        ├── chat-server
+        ├── api-server
         │   └── package.json
-        ├── newsfeed
+        ├── web-desktop
         │   ├── node_modules
         │   │   └── ui-components -> ../../ui-components
         │   └── package.json
@@ -479,6 +479,9 @@ export default class Presentation extends React.Component {
           <Heading size={4} textColor="secondary">Independant release</Heading>
         </Slide>
         <Slide>
+          <Code textColor="secondary">lerna publish</Code>
+        </Slide>
+        <Slide>
           <Heading size={3} textColor="secondary" style={{ paddingBottom: 40 }}>Import repositories</Heading>
           <Appear>
             <Code textColor="secondary">lerna import</Code>
@@ -486,6 +489,12 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide bgColor="primary">
           <Image src={images.yarn} />
+        </Slide>
+        <Slide>
+          <CodePane lang="json" source={require("raw-loader!../assets/lerna-yarn.json.example")} />
+        </Slide>
+        <Slide>
+          <Heading size={3} textColor="secondary">Yarn workspaces</Heading>
         </Slide>
         <Slide>
             <Heading size={1} textColor="secondary" caps lineHeight={1}>Thank you!</Heading>
