@@ -310,6 +310,7 @@ export default class Presentation extends React.Component {
             createCommand("git remote add origin -f https://link/to/my/repo.git", "~/submonorepo"),
             outputRemote,
             createCommand("git config core.sparsecheckout true", "~/submonorepo"),
+            createCommand("echo 'subdirectory/*' >> .git/info/sparse-checkout"),
             createCommand("git pull origin master", "~/submonorepo"),
             outputPull
           ]}
