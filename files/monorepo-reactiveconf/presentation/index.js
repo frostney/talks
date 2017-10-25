@@ -134,38 +134,8 @@ export default class Presentation extends React.Component {
             These projects are most likely unrelated, loosely connected or can be connected by other means
           </Heading>
         </Slide>
-        <Slide bgImage={images.madscience} bgDarken={0.05}>
-          <BlockQuote>
-            <Quote textColor="secondary">Multiple repositories? Where we're going, we don't need... multiple repositories.</Quote>
-            <Cite>Doc Brown (Back To The Future)</Cite>
-          </BlockQuote>
-        </Slide>
-        <Slide bgColor="primary">
-          <Image src={images.camel1} />
-        </Slide>
-        <Slide bgColor="primary">
-          <Image src={images.camel2} />
-        </Slide>
         <Slide>
-          <Heading size={2} textColor="secondary" style={{ paddingBottom: 40 }}>
-            "It's Uber, but..."
-          </Heading>
-        </Slide>
-        <Slide>
-          <Heading size={2} textColor="secondary" style={{ paddingBottom: 40 }}>
-            Let's create Uber, but with camels
-          </Heading>
-          <Appear>
-            <Heading size={4} textColor="secondary">Not for realsies, just as an architecture example for the purposes of this talk</Heading>
-          </Appear>
-        </Slide>
-        <Slide bgColor="primary">
-          <Image src={images.cameluber} />
-        </Slide>
-        <Slide>
-          <Heading size={3} textColor="secondary">
-            Imagine this project growing over time
-          </Heading>
+          <Heading size={2} textColor="secondary" style={{ paddingBottom: 40 }}>We 💖 modularity, don't we?</Heading>
         </Slide>
         <Slide bgColor="primary">
           <Image src={images.step1} />
@@ -261,12 +231,7 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide bgImage={images.challenges} bgDarken={0.15}>
           <Heading size={2} textColor="secondary">
-            Challenges
-          </Heading>
-        </Slide>
-        <Slide bgColor="primary">
-          <Heading size={3} textColor="secondary">
-            Intimidating codebase
+            Three tips when dealing with monorepos
           </Heading>
         </Slide>
         <Slide bgColor="primary">
@@ -297,28 +262,6 @@ export default class Presentation extends React.Component {
           <Heading size={4} textColor="secondary">(Uses <Code textColor="secondary">--single-branch</Code> by default)</Heading>
           </Appear>
         </Slide>
-        <Slide>
-          <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>Check out specific folders (sparse checkout)</Heading>
-          <Terminal output={[
-            createCommand("mkdir submonorepo"),
-            createCommand("cd ./submonorepo"),
-            createCommand("git init", "~/submonorepo"),
-            "Initialized empty Git repository in ~/submonorepo/.git/",
-            createCommand("git remote add origin -f https://link/to/my/repo.git", "~/submonorepo"),
-            outputRemote,
-            createCommand("git config core.sparsecheckout true", "~/submonorepo"),
-            createCommand("echo 'subdirectory/*' >> .git/info/sparse-checkout"),
-            createCommand("git pull origin master", "~/submonorepo"),
-            outputPull
-          ]}
-          />
-        </Slide>
-        <Slide>
-          <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>
-            Git Large File Storage
-          </Heading>
-          <Link href="https://git-lfs.github.com" textColor="secondary" style={{ paddingBottom: 40 }}>git-lfs.github.com</Link>
-        </Slide>
         <Slide bgColor="primary">
           <Heading size={3} textColor="secondary">
             Continous integration might need to be configured
@@ -326,31 +269,6 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <CodePane lang="jsx" source={require("raw-loader!../assets/ci.example")} />
-        </Slide>
-        <Slide bgColor="primary">
-          <Heading size={3} textColor="secondary">
-            Synchronization with Open Source repositories
-          </Heading>
-        </Slide>
-        <Slide bgColor="primary">
-          <Heading size={4} textColor="secondary">
-            Git submodules
-          </Heading>
-        </Slide>
-        <Slide bgColor="primary">
-          <Heading size={4} textColor="secondary">
-            Compare commits
-          </Heading>
-          <Appear>
-            <Heading size={4} textColor="secondary">
-              Create patches
-            </Heading>
-          </Appear>
-          <Appear>
-            <Heading size={4} textColor="secondary">
-              Apply patches on monorepo
-            </Heading>
-          </Appear>
         </Slide>
         <Slide bgColor="primary">
           <Heading size={3} textColor="secondary">
@@ -381,125 +299,15 @@ export default class Presentation extends React.Component {
         <Slide bgColor="primary">
           <Image src={images.lerna} />
         </Slide>
-        <Slide bgColor="secondary" textColor="primary">
-          <BlockQuote>
-            <Quote>Juggling a multimodule project over multiple repos is like trying to teach a newborn baby how to ride a bike.</Quote>
-            <Cite>Babel (github.com/babel/babel/blob/7.0/doc/design/monorepo.md)</Cite>
-          </BlockQuote>
-        </Slide>
-        <Slide>
-          <Heading size={3} textColor="secondary" style={{ paddingBottom: 40, lineHeight: 0.5 }}>
-            <Code textColor="secondary">yarn add global lerna</Code>
-          </Heading>
-          <Appear>
-            <Heading size={4} textColor="secondary" style={{ lineHeight: 0.75 }}>
-              (<Code textColor="secondary">npm install -g lerna</Code>)
-            </Heading>
-          </Appear>
-        </Slide>
-        <Slide>
-          <Heading size={3} textColor="secondary" style={{ paddingBottom: 40 }}>Let's create a monorepo</Heading>
-          <Terminal title="" output={[
-            createCommand("lerna init"),
-            outputLernaInit
-          ]}
-          />
-        </Slide>
-        <Slide>
-          <Heading size={3} style={{ paddingBottom: 40 }}><Code textColor="secondary">lerna.json</Code></Heading>
-          <CodePane lang="json" source={require("raw-loader!../assets/lerna.json.example")} />
-        </Slide>
-        <Slide>
-          <Heading size={3} textColor="secondary" style={{ paddingBottom: 40 }}>Bootstrap</Heading>
-          <Terminal title="" output={[
-            createCommand("lerna bootstrap"),
-            `├── lerna.json
-├── package.json
-└── packages
-    ├── rideacamel-web-mobile
-    │   ├── node_modules
-    │   │   └── ui-components -> ../../ui-components
-    │   └── package.json
-    ├── rideacamel-api-server
-    │   └── package.json
-    ├── rideacamel-web-desktop
-    │   ├── node_modules
-    │   │   └── ui-components -> ../../ui-components
-    │   └── package.json
-    └── rideacamel-ui-components
-        ├── node_modules
-        │   ├── asap
-        │   ├── core-js
-        │   ├── create-react-class
-        │   ├── encoding
-        │   ├── fbjs
-        │   ├── iconv-lite
-        │   ├── is-stream
-        │   ├── isomorphic-fetch
-        │   ├── js-tokens
-        │   ├── loose-envify
-        │   ├── node-fetch
-        │   ├── object-assign
-        │   ├── promise
-        │   ├── prop-types
-        │   ├── react
-        │   ├── setimmediate
-        │   ├── ua-parser-js
-        │   └── whatwg-fetch
-        └── package.json
-
-28 directories, 8 files`
-          ]}
-          />
-        </Slide>
-        <Slide>
-          <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>
-            Target specific packages with <Code textColor="secondary">--ignore</Code> or <Code textColor="secondary">--scope</Code>
-          </Heading>
-        </Slide>
-        <Slide>
-          <Heading size={3} textColor="secondary" style={{ paddingBottom: 40 }}>Running scripts</Heading>
-          <Appear>
-            <Code textColor="secondary">lerna run test</Code>
-          </Appear>
-          <br/><br/>
-          <Appear>
-            <Code textColor="secondary">lerna exec -- rm -rf node_modules</Code>
-          </Appear>
-        </Slide>
-        <Slide>
-          <Heading size={3} textColor="secondary">Releases</Heading>
-        </Slide>
-        <Slide>
-          <Heading size={4} textColor="secondary">Fixed mode</Heading>
-        </Slide>
-        <Slide>
-          <Heading size={4} textColor="secondary">Independant release</Heading>
-        </Slide>
-        <Slide>
-          <Code textColor="secondary">lerna publish</Code>
-        </Slide>
-        <Slide>
-          <Heading size={3} textColor="secondary" style={{ paddingBottom: 40 }}>Import repositories</Heading>
-          <Appear>
-            <Code textColor="secondary">lerna import</Code>
-          </Appear>
-        </Slide>
         <Slide bgColor="primary">
           <Image src={images.yarn} />
-        </Slide>
-        <Slide>
-          <CodePane lang="json" source={require("raw-loader!../assets/lerna-yarn.json.example")} />
-        </Slide>
-        <Slide>
-          <Heading size={3} textColor="secondary">Yarn workspaces</Heading>
         </Slide>
         <Slide>
             <Heading size={1} textColor="secondary" caps lineHeight={1}>Thank you!</Heading>
             <Heading size={2} textColor="secondary" style={{ marginTop: 40, marginBottom: 40 }}>❤️</Heading>
             <Heading size={2} textColor="secondary" style={{ marginTop: 40, marginBottom: 40 }}>
             <Text>
-              <Link textColor="secondary" href="http://frostney.github.io/talks/monorepo-reactnext">http://frostney.github.io/talks/monorepo-reactnext</Link>
+              <Link textColor="secondary" href="http://frostney.github.io/talks/monorepo-reactiveconf">http://frostney.github.io/talks/monorepo-reactiveconf</Link>
             </Text>
             </Heading>
             <Layout>
@@ -507,7 +315,7 @@ export default class Presentation extends React.Component {
                 <Text textColor="secondary">@frostney_</Text>
               </Fill>
               <Fill>
-                <Text textColor="secondary">#reactnext</Text>
+                <Text textColor="secondary">#reactiveconf</Text>
               </Fill>
             </Layout>
           </Slide>

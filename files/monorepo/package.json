@@ -1,5 +1,5 @@
 {
-  "name": "spectacle-boilerplate",
+  "name": "monorepo",
   "version": "1.0.1",
   "description": "ReactJS Powered Presentation Framework",
   "main": "lib/index.js",

@@ -5,7 +5,9 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "build": "shjs build.js",
+    "lerna": "lerna",
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
     "precopy": "npm run build",
     "copy": "copyfiles -u 1 'files/index.html' 'files/*/slides/**/*' 'files/*/index.html' 'files/*/dist/**/*' docs",
     "prepush": "shjs prepush.js"
@@ -20,10 +22,10 @@
     "url": "https://github.com/frostney/talks/issues"
   },
   "homepage": "https://github.com/frostney/talks#readme",
-  "dependencies": {},
   "devDependencies": {
     "copyfiles": "^1.2.0",
     "husky": "^0.14.3",
+    "lerna": "^2.1.2",
     "shelljs": "^0.7.7"
   }
 }
