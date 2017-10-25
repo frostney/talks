@@ -4565,7 +4565,7 @@ react-dom@15.4.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
-react-dom@^15.4.1, react-dom@^15.4.2:
+react-dom@^15.4.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.2.tgz#41cfadf693b757faf2708443a1d1fd5a02bef730"
   dependencies:
@@ -4617,12 +4617,6 @@ react-transition-group@^1.1.3:
     prop-types "^15.5.6"
     warning "^3.0.0"
 
-react-typist@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/react-typist/-/react-typist-1.1.1.tgz#3b651f8c89ce240f80afbd63038c1bcb113accf4"
-  dependencies:
-    prop-types "^15.5.10"
-
 react-typography@^0.15.10:
   version "0.15.10"
   resolved "https://registry.yarnpkg.com/react-typography/-/react-typography-0.15.10.tgz#1ece7bbd856735bd2ada4f6c40be508e994655a8"
@@ -4635,7 +4629,7 @@ react@15.4.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
-react@^15.4.1, react@^15.4.2:
+react@^15.4.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.6.2.tgz#dba0434ab439cfe82f108f0f511663908179aa72"
   dependencies:
@@ -5147,14 +5141,6 @@ spectacle-code-slide@^0.4.0:
     lodash.clamp "^4.0.1"
     lodash.memoize "^4.0.1"
     lodash.padstart "^4.2.0"
-
-spectacle-terminal@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/spectacle-terminal/-/spectacle-terminal-0.3.0.tgz#74396bd6c8e6c6481ec16735f911625ee76f5356"
-  dependencies:
-    classnames "^2.2.5"
-    react "^15.4.1"
-    react-dom "^15.4.1"
 
 spectacle@^2.0.0:
   version "2.2.2"
