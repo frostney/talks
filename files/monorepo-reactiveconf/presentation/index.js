@@ -281,22 +281,6 @@ export default class Presentation extends React.Component {
           <Link href="https://help.github.com/articles/about-codeowners/" textColor="secondary">help.github.com/articles/about-codeowners/</Link>
         </Slide>
         <Slide bgColor="primary">
-          <Heading size={2} textColor="secondary">
-            Tooling
-          </Heading>
-        </Slide>
-        <Slide bgColor="primary">
-          <Heading size={3} textColor="secondary">
-            It's just a bunch of folders
-          </Heading>
-          <br />
-          <Appear>
-          <Heading size={3} textColor="secondary">
-            We need a tool to run the same command across multiple folders
-          </Heading>
-          </Appear>
-        </Slide>
-        <Slide bgColor="primary">
           <Image src={images.lerna} />
         </Slide>
         <Slide bgColor="primary">
