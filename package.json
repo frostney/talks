@@ -7,9 +7,10 @@
   "scripts": {
     "lerna": "lerna",
     "bootstrap": "lerna bootstrap",
+    "clean": "rimraf docs",
     "build": "lerna run build",
     "precopy": "npm run build",
-    "copy": "copyfiles -u 1 'files/index.html' 'files/*/slides/**/*' 'files/*/index.html' 'files/*/dist/**/*' docs",
+    "copy": "copyfiles -u 1 \"files/index.html\" \"files/*/slides/**/*\" \"files/*/index.html\" \"files/*/dist/**/*\" docs",
     "prepush": "shjs prepush.js"
   },
   "repository": {
@@ -26,6 +27,7 @@
     "copyfiles": "^1.2.0",
     "husky": "^0.14.3",
     "lerna": "^2.1.2",
+    "rimraf": "^2.6.2",
     "shelljs": "^0.7.7"
   }
 }
