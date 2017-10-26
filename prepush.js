@@ -5,6 +5,7 @@ const lastCommit = exec('git log --format=%B -n 1 HEAD', { silent: true }).repla
 
 if (lastCommit !== commitMessage) {
   exec('yarn clean');
+  exec('yarn build');
   exec('yarn copy');
   exec('git add .');
   if (exec(`git commit -m "${commitMessage}"`).code !== 0) {
