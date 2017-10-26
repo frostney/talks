@@ -58,7 +58,7 @@ export default class Presentation extends React.Component {
             <Layout>
               <Fill>
                 <Text textColor="secondary">Johannes Stein</Text>
-                <Text textColor="secondary" style={{ fontSize: "1.75rem" }}>Senior Software Engineer at Gamesys</Text>
+                <Text textColor="secondary" style={{ fontSize: "1.75rem" }}>Senior Front-End Developer at Gamesys</Text>
               </Fill>
               <Fill>
                 <Text textColor="secondary">@frostney_</Text>
@@ -130,13 +130,17 @@ export default class Presentation extends React.Component {
         <Slide>
           <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}><Code textColor="secondary">CODEOWNERS</Code></Heading>
           <CodePane source={require("raw-loader!../assets/codeowners.example")} style={{ marginBottom: 40 }} />
-          <Link href="https://help.github.com/articles/about-codeowners/" textColor="secondary">help.github.com/articles/about-codeowners/</Link>
+          <Link href="https://help.github.com/articles/about-codeowners/" textColor="secondary">help.github.com/articles/about-codeowners</Link>
         </Slide>
         <Slide bgColor="primary">
           <Image src={images.lerna} />
+          <br />
+          <Link href="https://lernajs.io/" textColor="secondary">https://lernajs.io</Link>
         </Slide>
         <Slide bgColor="primary">
           <Image src={images.yarn} />
+          <br />
+          <Link href="https://yarnpkg.com" textColor="secondary">https://yarnpkg.com</Link>
         </Slide>
         <Slide>
             <Heading size={1} textColor="secondary" caps lineHeight={1}>Thank you!</Heading>
