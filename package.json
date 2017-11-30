@@ -10,7 +10,7 @@
     "clean": "rimraf docs",
     "build": "lerna run build",
     "precopy": "npm run build",
-    "copy": "copyfiles -u 1 \"files/index.html\" \"files/*/slides/**/*\" \"files/*/index.html\" \"files/*/dist/**/*\" docs",
+    "copy": "copyfiles -u 1 \"files/index.html\" \"files/*/slides/**/*\" \"files/*/index.html\" \"files/*/dist/**/*\" \"files/*/build/**/*\" docs",
     "prepush": "shjs prepush.js"
   },
   "repository": {
