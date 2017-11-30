@@ -24,7 +24,6 @@ import createTheme from "spectacle/lib/themes/default";
 
 // Require CSS
 require("normalize.css");
-require("spectacle/lib/themes/default/index.css");
 
 const images = {
   lerna: require("../assets/lerna.png"),
@@ -33,7 +32,9 @@ const images = {
   step1: require("../assets/step1.png"),
   step2: require("../assets/step2.png"),
   step3: require("../assets/step3.png"),
-  modular: require("../assets/modular_things.jpg")
+  modular: require("../assets/modular_things.jpg"),
+  repetitivechanges: require("../assets/repetitivechanges.png"),
+  prchaos: require("../assets/prchaos.png")
 };
 
 preloader(images);
@@ -70,6 +71,11 @@ export default class Presentation extends React.Component {
         <Slide bgColor="primary">
           <Image src={images.modular} />
         </Slide>
+        <Slide>
+          <Heading size={3} textColor="secondary">
+            Imagine a project growing over time
+          </Heading>
+        </Slide>
         <Slide bgColor="primary">
           <Image src={images.step1} />
         </Slide>
@@ -94,42 +100,175 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
         <Slide>
-          <Heading size={2} textColor="secondary">
-            A few quick tips when dealing with monorepos
+          <Heading size={3} textColor="secondary" style={{ paddingBottom: 40 }}>
+            Multiple repositories
           </Heading>
-        </Slide>
-        <Slide bgColor="primary">
-          <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>
-            Check out single branch
-          </Heading>
-          <Appear>
-            <Code textColor="secondary">git clone myrepo --single-branch</Code>
-          </Appear>
+          <CodePane source={require("raw-loader!../assets/polyrepo.example")} />
         </Slide>
         <Slide>
-          <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>
-            Shallow clone
+          <Heading size={3} textColor="secondary" style={{ paddingBottom: 40 }}>
+            Monorepo
           </Heading>
-          <Appear>
-            <Code textColor="secondary">git clone myrepo --depth=1</Code>
-          </Appear>
-          <br/><br/>
-          <Appear>
-            <Code textColor="secondary">git clone myrepo --shallow-since=2017-01-01</Code>
-          </Appear>
-          <Appear>
-          <Heading size={4} textColor="secondary">(Uses <Code textColor="secondary">--single-branch</Code> by default)</Heading>
-          </Appear>
+          <CodePane source={require("raw-loader!../assets/monorepo.example")} />
+        </Slide>
+        <Slide>
+          <Heading size={2} textColor="secondary">
+            What is working well
+          </Heading>
         </Slide>
         <Slide bgColor="primary">
           <Heading size={3} textColor="secondary">
-            Ownership
+            Single lint, build, test and release process
           </Heading>
         </Slide>
         <Slide>
-          <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}><Code textColor="secondary">CODEOWNERS</Code></Heading>
-          <CodePane source={require("raw-loader!../assets/codeowners.example")} style={{ marginBottom: 40 }} />
-          <Link href="https://help.github.com/articles/about-codeowners/" textColor="secondary">help.github.com/articles/about-codeowners</Link>
+          <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>
+            Decentralized ESLint files...
+          </Heading>
+          <CodePane source={require("raw-loader!../assets/polyrepo.eslint.example")} />
+        </Slide>
+        <Slide>
+          <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>
+            ...become centralized
+          </Heading>
+          <CodePane source={require("raw-loader!../assets/monorepo.eslint.example")} />
+        </Slide>
+        <Slide>
+          <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>
+            Extend from centralized if necessary
+          </Heading>
+          <CodePane lang="json" source={require("raw-loader!../assets/eslintrc.example")} />
+        </Slide>
+        <Slide bgColor="primary">
+          <Heading size={3} textColor="secondary">
+            Easier to set up the development environment
+          </Heading>
+        </Slide>
+        <Slide bgColor="primary">
+          <Heading size={3} textColor="secondary">
+            Easier to coordinate changes across the codebase
+          </Heading>
+        </Slide>
+        <Slide>
+          <Image src={images.repetitivechanges} />
+        </Slide>
+        <Slide>
+          <Heading size={3} textColor="secondary">
+            Removes dependencies on code reviews
+          </Heading>
+        </Slide>
+        <Slide>
+          <Image src={images.prchaos} />
+        </Slide>
+        <Slide>
+          <Heading size={3} textColor="secondary">
+            Removes the need to release common pieces of code
+          </Heading>
+        </Slide>
+        <Slide bgColor="primary">
+          <Heading size={3} textColor="secondary">
+            Simplifies end-to-end testing
+          </Heading>
+        </Slide>
+        <Slide bgImage={images.challenges} bgDarken={0.15}>
+        <Heading size={2} textColor="secondary">
+          Challenges
+        </Heading>
+      </Slide>
+      <Slide bgColor="primary">
+        <Heading size={3} textColor="secondary">
+          Intimidating codebase
+        </Heading>
+      </Slide>
+      <Slide bgColor="primary">
+        <Heading size={3} textColor="secondary">
+          Dealing with the size of monorepos
+        </Heading>
+      </Slide>
+      <Slide bgColor="primary">
+        <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>
+          Check out single branch
+        </Heading>
+        <Appear>
+          <Code textColor="secondary">git clone myrepo --single-branch</Code>
+        </Appear>
+      </Slide>
+      <Slide>
+        <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>
+          Shallow clone
+        </Heading>
+        <Appear>
+          <Code textColor="secondary">git clone myrepo --depth=1</Code>
+        </Appear>
+        <br/><br/>
+        <Appear>
+          <Code textColor="secondary">git clone myrepo --shallow-since=2017-01-01</Code>
+        </Appear>
+        <Appear>
+        <Heading size={4} textColor="secondary">(Uses <Code textColor="secondary">--single-branch</Code> by default)</Heading>
+        </Appear>
+      </Slide>
+      <Slide>
+        <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}>
+          Git Large File Storage
+        </Heading>
+        <Link href="https://git-lfs.github.com" textColor="secondary" style={{ paddingBottom: 40 }}>git-lfs.github.com</Link>
+      </Slide>
+      <Slide bgColor="primary">
+        <Heading size={3} textColor="secondary">
+          Continous integration might need to be configured
+        </Heading>
+      </Slide>
+      <Slide bgColor="primary">
+        <Heading size={3} textColor="secondary">
+          Synchronization with Open Source repositories
+        </Heading>
+      </Slide>
+      <Slide bgColor="primary">
+        <Heading size={4} textColor="secondary">
+          Git submodules
+        </Heading>
+      </Slide>
+      <Slide bgColor="primary">
+        <Heading size={4} textColor="secondary">
+          Compare commits
+        </Heading>
+        <Appear>
+          <Heading size={4} textColor="secondary">
+            Create patches
+          </Heading>
+        </Appear>
+        <Appear>
+          <Heading size={4} textColor="secondary">
+            Apply patches on monorepo
+          </Heading>
+        </Appear>
+      </Slide>
+      <Slide bgColor="primary">
+        <Heading size={3} textColor="secondary">
+          Ownership
+        </Heading>
+      </Slide>
+      <Slide>
+        <Heading size={4} textColor="secondary" style={{ paddingBottom: 40 }}><Code textColor="secondary">CODEOWNERS</Code></Heading>
+        <CodePane source={require("raw-loader!../assets/codeowners.example")} style={{ marginBottom: 40 }} />
+        <Link href="https://help.github.com/articles/about-codeowners/" textColor="secondary">help.github.com/articles/about-codeowners/</Link>
+      </Slide>
+      <Slide bgColor="primary">
+          <Heading size={2} textColor="secondary">
+            Tooling
+          </Heading>
+        </Slide>
+        <Slide bgColor="primary">
+          <Heading size={3} textColor="secondary">
+            It's just a bunch of folders
+          </Heading>
+          <br />
+          <Appear>
+          <Heading size={3} textColor="secondary">
+            We need a tool to run the same command across multiple folders
+          </Heading>
+          </Appear>
         </Slide>
         <Slide bgColor="primary">
           <Image src={images.lerna} />
@@ -146,15 +285,12 @@ export default class Presentation extends React.Component {
             <Heading size={2} textColor="secondary" style={{ marginTop: 40, marginBottom: 40 }}>❤️</Heading>
             <Heading size={2} textColor="secondary" style={{ marginTop: 40, marginBottom: 40 }}>
             <Text>
-              <Link textColor="secondary" href="http://frostney.github.io/talks/monorepo-reactiveconf">http://frostney.github.io/talks/monorepo-reactiveconf</Link>
+              <Link textColor="secondary" href="http://frostney.github.io/talks/monorepo-nov2017">http://frostney.github.io/talks/monorepo-nov2017</Link>
             </Text>
             </Heading>
             <Layout>
               <Fill>
                 <Text textColor="secondary">@frostney_</Text>
-              </Fill>
-              <Fill>
-                <Text textColor="secondary">#reactiveconf</Text>
               </Fill>
             </Layout>
           </Slide>
