@@ -1,0 +1,214 @@
+import { Cite } from "spectacle";
+import { DarkSlide, CodeSlide } from "./slides";
+import RegularComponent from "./regular-component";
+import Image from "./Image";
+
+# The Problem Space
+
+---
+
+- Independant teams working on their own features or apps
+- These team work on different features
+- How to integrate these?
+
+---
+
+# Context
+
+---
+
+- Frontend platform with around 25 developers
+- Frontend platform powers 12 (similar-looking) websites
+
+---
+
+- Three sub-teams with different methodologies
+- We release once a week
+- Other teams in the company (in-house and off-shore) want to integrate
+
+---
+
+<Image name="jpj" />
+
+---
+
+<Image name="frame" />
+
+---
+
+- Header is coupled to application state
+- Header might be slightly different on the website
+- Footer is content-managed
+
+---
+
+## Terminology
+
+---
+
+_Host_
+
+Frontend platform (where teams want or need to integrate into)
+
+---
+
+_Feature_
+
+A feature that needs to be integrated, which could be visual, non-visual or both
+
+---
+
+# iFrames
+
+---
+
+_Example_
+
+- Games are loaded in an iFrame
+- Options are being passed through as a query string
+- iFrame communicates through `postMessage`
+
+---
+
+## 😀
+
+- Technology agnostic
+
+---
+
+## 😧
+
+- Hard to optimise for
+- iFrame issues (Double scrollbars anyone?)
+
+---
+
+# Hook approach
+
+---
+
+- All teams gain access to the frontend platform codebase
+- These teams hook into the internals of the codebase
+
+---
+
+## 😀
+
+- Monkey-patching friendly
+
+---
+
+## 😧
+
+- Strong coupling
+- Maintainance overhead
+- Hard to communicate changes
+- Easy to introduce bloat
+
+---
+
+# WebComponents
+
+---
+
+<Image name="webcomponent" />
+
+---
+
+## 😀
+
+- Technology agnostic
+
+---
+
+## 😧
+
+- Browser support (especially older mobile browser)
+- Performance slowdowns
+- Hard to optimise for
+
+---
+
+# NPM Packages
+
+---
+
+- Semantic versioning
+- Feature published to registry, host consumes package
+- Defined contract
+
+---
+
+# 😀
+
+- Separation of concerns
+- Optimisation at build time by the host
+
+---
+
+# 😧
+
+- Coupled to the hosts' release cycle
+- Potential communucation overhead
+
+---
+
+# iFrames (again), kinda
+
+---
+
+[github.com/krakenjs/zoid](github.com/krakenjs/zoid)
+
+---
+
+## 😀
+
+- Abstracts away some of the iFrame pain points
+- Cross-domain support
+- Technology agnostic
+
+---
+
+## 😧
+
+- Hard to optimise for
+- It's still iFrames under the hood
+
+---
+
+# Micro Frontends
+
+---
+
+- Features as its own JavaScript bundle
+- Feature releases independantly
+- Host loads bundle at bundle at runtime
+
+---
+
+## Loading at runtime
+
+- Original inspiration: [unpkg.com](unpkg.com)
+- Request bundle from URL
+
+---
+
+- Breaking change as part of the URL, like `website.com/mfes/mycoolfrontend/v1`
+- Strict semantic versioning
+- Request returns JavaScript that will be executed
+
+---
+
+- SystemJS as transport mechanism
+- Module signature similar to AMD
+
+---
+
+## Things we are still figuring out
+
+- Server side rendering
+- How to optimise the bundle
+
+---
+
+Choose what best fits your use case
