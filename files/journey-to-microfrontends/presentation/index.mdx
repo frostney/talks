@@ -1,15 +1,22 @@
-import { Cite } from "spectacle";
+import { Cite, Notes } from "spectacle";
 import { DarkSlide, CodeSlide } from "./slides";
 import RegularComponent from "./regular-component";
 import Image from "./Image";
 
-# The Problem Space
+# What are we solving?
 
 ---
 
 - Independant teams working on their own features or apps
-- These team work on different features
+- These teams work in different environments
 - How to integrate these?
+
+<Notes>
+  <ul>
+    <li>Kanban, Scrum</li>
+    <li>One-Off Apps vs long-running ones</li>
+  </ul>
+</Notes>
 
 ---
 
@@ -25,6 +32,13 @@ import Image from "./Image";
 - Three sub-teams with different methodologies
 - We release once a week
 - Other teams in the company (in-house and off-shore) want to integrate
+
+<Notes>
+  <ul>
+    <li>Kanban, Scrum</li>
+    <li>No CD due to regulatory environment</li>
+  </ul>
+</Notes>
 
 ---
 
@@ -58,6 +72,17 @@ A feature that needs to be integrated, which could be visual, non-visual or both
 
 ---
 
+# Conditions of success
+
+---
+
+- Host and feature can release independantly
+- Technology choice integrates well into framework choice
+- Errors won't break the host
+- Potential to optimise host and feature apps
+
+---
+
 # iFrames
 
 ---
@@ -80,6 +105,13 @@ _Example_
 
 - Hard to optimise for
 - iFrame issues (Double scrollbars anyone?)
+
+---
+
+- ✅ Host and feature can release independantly
+- ☑️ Technology choice integrates well into framework choice
+- ✅ Errors won't break the host
+- ❌ Potential to optimise host and feature apps
 
 ---
 
@@ -107,6 +139,13 @@ _Example_
 
 ---
 
+- ❌ Host and feature can release independantly
+- ✅ Technology choice integrates well into framework choice
+- ❌ Errors won't break the host
+- ❌ Potential to optimise host and feature apps
+
+---
+
 # WebComponents
 
 ---
@@ -124,8 +163,16 @@ _Example_
 ## 😧
 
 - Browser support (especially older mobile browser)
-- Performance slowdowns
+- Potential performance slowdowns
 - Hard to optimise for
+- Potential for leaking variables and errors
+
+---
+
+- ✅ Host and feature can release independantly
+- ☑️ Technology choice integrates well into framework choice
+- ❌ Errors won't break the host
+- ☑️ Potential to optimise host and feature apps
 
 ---
 
@@ -153,6 +200,13 @@ _Example_
 
 ---
 
+- ❌ Host and feature can release independantly
+- ✅ Technology choice integrates well into framework choice
+- ☑️ Errors won't break the host
+- ✅ Potential to optimise host and feature apps
+
+---
+
 # iFrames (again), kinda
 
 ---
@@ -176,6 +230,13 @@ _Example_
 
 ---
 
+- ✅ Host and feature can release independantly
+- ☑️ Technology choice integrates well into framework choice
+- ✅ Errors won't break the host
+- ❌ Potential to optimise host and feature apps
+
+---
+
 # Micro Frontends
 
 ---
@@ -189,10 +250,12 @@ _Example_
 ## Loading at runtime
 
 - Original inspiration: [unpkg.com](unpkg.com)
-- Request bundle from URL
+- `unpkg.com/react` resolves to `https://unpkg.com/react@16.9.0/index.js`
+- `unpkg.com/react@15` resolves to `https://unpkg.com/react@15.6.2/react.js`
 
 ---
 
+- Request bundle from URL
 - Breaking change as part of the URL, like `website.com/mfes/mycoolfrontend/v1`
 - Strict semantic versioning
 - Request returns JavaScript that will be executed
@@ -202,12 +265,25 @@ _Example_
 - SystemJS as transport mechanism
 - Module signature similar to AMD
 
+```javascript
+System.register('mymodule', ['react', 'react-dom'], function() {
+  ...
+})
+```
+
 ---
 
 ## Things we are still figuring out
 
 - Server side rendering
-- How to optimise the bundle
+- How to best optimise the different bundles
+
+---
+
+- ✅ Host and feature can release independantly
+- ☑️ Technology choice integrates well into framework choice
+- ☑️ Errors won't break the host
+- ☑️ Potential to optimise host and feature apps
 
 ---
 
